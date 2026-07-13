@@ -199,7 +199,7 @@ function Landing() {
 
       {/* CONTRACT / PITCH */}
       <section id="contract" className="relative py-28">
-        <div className="mx-auto grid max-w-6xl gap-14 px-6 md:grid-cols-[1.2fr_1fr] md:items-center">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 px-6 md:grid-cols-[1.2fr_1fr] md:items-center">
           <div>
             <p className="text-display text-xs uppercase tracking-[0.5em] text-ember">
               § 1 — The Contract
