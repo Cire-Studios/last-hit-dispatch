@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { Instagram, Twitter, Youtube, MessagesSquare, Menu, X } from "lucide-react";
+import { SignupModal, type SignupInterest } from "@/components/SignupModal";
 import heroImg from "@/assets/hero-guildhall.jpg";
 import trollImg from "@/assets/bounty-troll.jpg";
 import drakeImg from "@/assets/bounty-drake.jpg";
