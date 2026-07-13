@@ -459,70 +459,52 @@ function Landing() {
       </section>
 
       {/* PLAYTESTERS */}
-      <section id="playtest" className="relative overflow-hidden border-t border-border/60 py-28">
+      <section id="playtest" className="relative overflow-hidden border-t border-border/60 py-32">
         <div className="absolute inset-0">
           <img
             src={inspiration3}
             alt=""
             loading="lazy"
-            className="h-full w-full object-cover opacity-30"
+            className="h-full w-full object-cover opacity-90"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background/70" />
 
-        <div className="relative mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1fr_1fr] lg:items-center">
-          <div>
-            <p className="text-display text-xs uppercase tracking-[0.5em] text-ember">
-              § 6 — Field Testers Wanted
-            </p>
-            <h2 className="text-display mt-4 text-4xl text-foreground md:text-5xl">
-              Pull a Contract Off the Board
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              We're running paper prototypes and print-and-play kits before the print run. If
-              you'd like to sit in on a session — remote or in-person — and help shape the final
-              rules, leave your mark below.
-            </p>
-            <p className="mt-3 text-sm italic text-muted-foreground/80">
-              Every playtester gets a name in the rulebook and a first look at each new revision.
-            </p>
-          </div>
+        <div className="relative mx-auto max-w-xl px-6 text-center">
+          <h2 className="text-display text-4xl text-foreground md:text-6xl ember-glow">
+            Playtesters Wanted!
+          </h2>
 
-          <div>
-            {ptStatus === "success" ? (
-              <div className="parchment-panel relative rounded-sm p-8 pt-10">
-                <span
-                  aria-hidden="true"
-                  className="iron-nail absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rounded-full"
-                />
-                <p className="text-display text-lg uppercase tracking-wider text-ink">
-                  Contract Pulled
-                </p>
-                <p className="mt-3 text-sm italic text-ink/70">
-                  We'll be in touch with the next playtest window and a print-and-play packet.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={onPlaytest} className="flex flex-col gap-3 sm:flex-row">
-                <input
-                  type="email"
-                  required
-                  value={ptEmail}
-                  onChange={(e) => setPtEmail(e.target.value)}
-                  placeholder="tester@guild.hall"
-                  className="flex-1 rounded-sm border border-border bg-background/80 px-5 py-4 text-base text-foreground placeholder:text-muted-foreground/60 focus:border-lantern focus:outline-none focus:ring-1 focus:ring-lantern"
-                />
-                <button
-                  type="submit"
-                  className="text-display rounded-sm border border-lantern/50 bg-lantern/10 px-8 py-4 text-sm uppercase tracking-[0.3em] text-lantern hover:bg-lantern/20 transition"
-                >
-                  Pull Contract
-                </button>
-              </form>
-            )}
-          </div>
+          {ptStatus === "success" ? (
+            <p className="text-display mt-8 text-lg uppercase tracking-wider text-lantern">
+              Contract pulled — we'll be in touch.
+            </p>
+          ) : (
+            <form onSubmit={onPlaytest} className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+              <input
+                type="email"
+                required
+                value={ptEmail}
+                onChange={(e) => setPtEmail(e.target.value)}
+                placeholder="tester@guild.hall"
+                className="flex-1 rounded-sm border border-border bg-background/80 px-5 py-4 text-base text-foreground placeholder:text-muted-foreground/60 focus:border-lantern focus:outline-none focus:ring-1 focus:ring-lantern"
+              />
+              <button
+                type="submit"
+                className="text-display rounded-sm px-8 py-4 text-sm uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-lantern)] transition hover:brightness-110"
+                style={{ background: "var(--gradient-ember)" }}
+              >
+                Sign Up
+              </button>
+            </form>
+          )}
+
+          <p className="mt-5 text-sm italic text-muted-foreground">
+            Help shape Last Hit before launch — remote or in-person sessions, print-and-play kits, and a name in the final rulebook.
+          </p>
         </div>
       </section>
+
 
       {/* FOOTER */}
       <footer className="border-t border-border/60 py-10 text-center">
