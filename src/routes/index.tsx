@@ -542,6 +542,12 @@ function Landing() {
           </div>
         </div>
       </footer>
+      <SignupModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        source={modalSource}
+        defaultInterests={modalDefaults}
+      />
     </main>
   );
 }
