@@ -60,6 +60,8 @@ const components = [
 function Landing() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "success">("idle");
+  const [ptEmail, setPtEmail] = useState("");
+  const [ptStatus, setPtStatus] = useState<"idle" | "success">("idle");
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -72,6 +74,19 @@ function Landing() {
       /* ignore */
     }
     setStatus("success");
+  };
+
+  const onPlaytest = (e: FormEvent) => {
+    e.preventDefault();
+    if (!ptEmail) return;
+    try {
+      const list = JSON.parse(localStorage.getItem("lasthit_playtesters") || "[]");
+      list.push({ email: ptEmail, ts: Date.now() });
+      localStorage.setItem("lasthit_playtesters", JSON.stringify(list));
+    } catch {
+      /* ignore */
+    }
+    setPtStatus("success");
   };
 
   return (
