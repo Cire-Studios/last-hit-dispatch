@@ -253,7 +253,7 @@ function Landing() {
       </section>
 
       {/* MECHANICS */}
-      <section id="mechanics" className="relative border-y border-border/60 bg-card/40 py-28">
+      <section id="mechanics" className="relative border-y border-border/60 bg-card/40 py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
             <p className="text-display text-xs uppercase tracking-[0.5em] text-ember">
@@ -515,7 +515,7 @@ function Landing() {
       </section>
 
       {/* PLAYTESTERS */}
-      <section id="playtest" className="relative overflow-hidden border-t border-border/60 py-32">
+      <section id="playtest" className="relative overflow-hidden border-t border-border/60 py-24 md:py-32">
         <div className="absolute inset-0">
           <img
             src={inspiration3}
