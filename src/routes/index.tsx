@@ -396,7 +396,7 @@ function Landing() {
 
       {/* IN DEVELOPMENT */}
       <section id="in-development" className="relative border-y border-border/60 py-28">
-        <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <figure className="relative overflow-hidden rounded-sm shadow-[var(--shadow-plank)]">
             <span
               aria-hidden="true"
