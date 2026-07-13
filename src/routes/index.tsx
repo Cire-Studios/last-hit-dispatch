@@ -500,29 +500,16 @@ function Landing() {
             Playtesters Wanted!
           </h2>
 
-          {ptStatus === "success" ? (
-            <p className="text-display mt-8 text-lg uppercase tracking-wider text-lantern">
-              Contract pulled — we'll be in touch.
-            </p>
-          ) : (
-            <form onSubmit={onPlaytest} className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                required
-                value={ptEmail}
-                onChange={(e) => setPtEmail(e.target.value)}
-                placeholder="tester@guild.hall"
-                className="flex-1 rounded-sm border border-border bg-background/80 px-5 py-4 text-base text-foreground placeholder:text-muted-foreground/60 focus:border-lantern focus:outline-none focus:ring-1 focus:ring-lantern"
-              />
-              <button
-                type="submit"
-                className="text-display rounded-sm px-8 py-4 text-sm uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-lantern)] transition hover:brightness-110"
-                style={{ background: "var(--gradient-ember)" }}
-              >
-                Sign Up
-              </button>
-            </form>
-          )}
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={() => openSignup("playtest-section", ["playtest", "updates"])}
+              className="text-display rounded-sm px-10 py-4 text-sm uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-lantern)] transition hover:brightness-110"
+              style={{ background: "var(--gradient-ember)" }}
+            >
+              Enlist as Playtester
+            </button>
+          </div>
 
           <p className="mt-5 text-sm italic text-muted-foreground">
             Help shape Last Hit before launch — remote or in-person sessions, print-and-play kits, and a name in the final rulebook.
