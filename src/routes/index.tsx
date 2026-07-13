@@ -361,44 +361,38 @@ function Landing() {
         </div>
       </section>
 
-      {/* GUILD HALL GALLERY */}
-      <section id="guildhall" className="relative py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="text-center">
+      {/* IN DEVELOPMENT */}
+      <section id="in-development" className="relative border-y border-border/60 py-28">
+        <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+          <figure className="relative overflow-hidden rounded-sm shadow-[var(--shadow-plank)]">
+            <span
+              aria-hidden="true"
+              className="iron-nail absolute top-3 left-1/2 z-10 h-4 w-4 -translate-x-1/2 rounded-full"
+            />
+            <img
+              src={inspiration2}
+              alt="Storyboard of Last Hit characters, monsters, and bounty commissions pinned across the guild wall"
+              loading="lazy"
+              className="w-full object-cover"
+            />
+          </figure>
+          <div>
             <p className="text-display text-xs uppercase tracking-[0.5em] text-ember">
-              § 5 — From the Guild Hall
+              § 5 — In Development
             </p>
             <h2 className="text-display mt-4 text-4xl text-foreground md:text-5xl">
-              Scenes Between Contracts
+              Still at the Workbench
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Lantern-lit boards, half-torn commissions, and the hunters who study them before
-              the ink is dry.
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              Last Hit is deep in field-test. Every session sharpens the bounty deck, retunes the
+              Attention economy, and hands us a new pile of scribbled notes to reckon with.
             </p>
-          </div>
-
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {[
-              { img: inspiration2, alt: "Guild board layered with weathered bounty commissions and hunter reference sheets" },
-              { img: inspiration1, alt: "Two hunters study the bounty board by lantern light" },
-              { img: inspiration3, alt: "A hunter pins a fresh dragon bounty to the board" },
-            ].map((s, i) => (
-              <figure
-                key={i}
-                className="group relative overflow-hidden rounded-sm shadow-[var(--shadow-plank)]"
-              >
-                <span
-                  aria-hidden="true"
-                  className="iron-nail absolute top-2 left-1/2 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full"
-                />
-                <img
-                  src={s.img}
-                  alt={s.alt}
-                  loading="lazy"
-                  className="h-72 w-full object-cover transition duration-700 group-hover:scale-105"
-                />
-              </figure>
-            ))}
+            <ul className="mt-8 space-y-3 text-muted-foreground">
+              <li className="flex gap-3"><span className="text-lantern">◆</span> Illustrating the full bounty roster</li>
+              <li className="flex gap-3"><span className="text-lantern">◆</span> Balancing Boons across hunter counts</li>
+              <li className="flex gap-3"><span className="text-lantern">◆</span> Prototyping the Master Hunter epilogue</li>
+              <li className="flex gap-3"><span className="text-lantern">◆</span> Manufacturing quotes for the crowdfunding push</li>
+            </ul>
           </div>
         </div>
       </section>
