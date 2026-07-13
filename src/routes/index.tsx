@@ -244,7 +244,7 @@ function Landing() {
                 ["Reveal", "Cards flip. Attention is spent."],
                 ["Position", "Low Attention slots first; High slots last, anywhere."],
                 ["Hunt", "Boon → Momentum → Roll → Split."],
-                ["Claim", "The last hit takes it all."],
+                ["Claim", "Killing blow takes the glory. Otherwise damage carries into the next round."],
               ].map(([name, body], i) => (
                 <li key={name} className="flex gap-4 border-b border-ink/10 pb-3 last:border-0">
                   <span className="text-display w-6 text-lg text-wax">{i + 1}</span>
