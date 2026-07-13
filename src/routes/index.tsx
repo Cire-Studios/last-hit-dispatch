@@ -198,7 +198,7 @@ function Landing() {
       </section>
 
       {/* CONTRACT / PITCH */}
-      <section id="contract" className="relative py-28">
+      <section id="contract" className="relative py-20 md:py-28">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 px-6 md:grid-cols-[1.2fr_1fr] md:items-center">
           <div>
             <p className="text-display text-xs uppercase tracking-[0.5em] text-ember">
@@ -301,7 +301,7 @@ function Landing() {
       </section>
 
       {/* BOUNTIES */}
-      <section id="bounties" className="relative py-28">
+      <section id="bounties" className="relative py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
             <p className="text-display text-xs uppercase tracking-[0.5em] text-ember">
@@ -351,7 +351,7 @@ function Landing() {
       </section>
 
       {/* COMPONENTS */}
-      <section id="components" className="relative border-y border-border/60 py-28">
+      <section id="components" className="relative border-y border-border/60 py-20 md:py-28">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 px-6 lg:grid-cols-2 lg:items-center">
           <div className="relative overflow-hidden rounded-sm shadow-[var(--shadow-plank)]">
             <img
@@ -395,7 +395,7 @@ function Landing() {
       </section>
 
       {/* IN DEVELOPMENT */}
-      <section id="in-development" className="relative border-y border-border/60 py-28">
+      <section id="in-development" className="relative border-y border-border/60 py-20 md:py-28">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <figure className="relative overflow-hidden rounded-sm shadow-[var(--shadow-plank)]">
             <span
@@ -453,7 +453,7 @@ function Landing() {
       </section>
 
       {/* SIGNUP */}
-      <section id="signup" className="relative overflow-hidden py-32">
+      <section id="signup" className="relative overflow-hidden py-24 md:py-32">
         <div className="absolute inset-0">
           <img
             src={inspiration1}
