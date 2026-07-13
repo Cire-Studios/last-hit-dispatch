@@ -466,35 +466,16 @@ function Landing() {
             board — no spam, no filler, only the horn call.
           </p>
 
-          {status === "success" ? (
-            <div className="parchment-panel mx-auto mt-10 max-w-md rounded-sm p-8">
-              <div className="wax-seal mx-auto mb-4 h-14 w-14 rounded-full" />
-              <p className="text-display text-lg uppercase tracking-wider text-ink">
-                Your Mark is Set
-              </p>
-              <p className="mt-3 text-sm italic text-ink/70">
-                The guild will send word by raven when the hunt begins.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={onSubmit} className="mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="hunter@guild.hall"
-                className="flex-1 rounded-sm border border-border bg-background/80 px-5 py-4 text-base text-foreground placeholder:text-muted-foreground/60 focus:border-lantern focus:outline-none focus:ring-1 focus:ring-lantern"
-              />
-              <button
-                type="submit"
-                className="text-display rounded-sm px-8 py-4 text-sm uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-lantern)] transition hover:brightness-110"
-                style={{ background: "var(--gradient-ember)" }}
-              >
-                Sign
-              </button>
-            </form>
-          )}
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => openSignup("signup-section", ["updates"])}
+              className="text-display rounded-sm px-10 py-4 text-sm uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-lantern)] transition hover:brightness-110"
+              style={{ background: "var(--gradient-ember)" }}
+            >
+              Sign the Ledger
+            </button>
+          </div>
 
           <p className="mt-6 text-xs italic text-muted-foreground/70">
             "Everyone fights. Only one gets paid."
