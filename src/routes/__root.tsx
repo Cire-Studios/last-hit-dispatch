@@ -77,21 +77,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Last Hit — Everyone Fights. Only One Gets Paid." },
+      {
+        name: "description",
+        content:
+          "Last Hit is a 2–6 player bounty-hunter board game of secret plans, split attention, and the killing blow. Sign up for launch updates.",
+      },
+      { property: "og:title", content: "Last Hit — A Bounty Hunter Board Game" },
+      {
+        property: "og:description",
+        content:
+          "Work together just long enough to bring the monsters down — then land the final blow and claim the reward for yourself.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:wght@400;500;600&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
