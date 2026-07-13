@@ -105,13 +105,17 @@ function Landing() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/50 to-background" />
         <div className="absolute inset-0" style={{ backgroundImage: "var(--gradient-lantern)" }} />
 
-        <nav className="relative z-20 mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-5 sm:px-6 sm:py-6">
-          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-            <img src={sigilImg} alt="" width={40} height={40} className="h-9 w-9 shrink-0 opacity-90 sm:h-10 sm:w-10" />
+      </section>
+
+      {/* STICKY NAV */}
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+          <a href="#top" className="flex min-w-0 items-center gap-2 sm:gap-3">
+            <img src={sigilImg} alt="" width={40} height={40} className="h-8 w-8 shrink-0 opacity-90 sm:h-9 sm:w-9" />
             <span className="text-display truncate text-[0.65rem] uppercase tracking-[0.25em] text-lantern sm:text-sm sm:tracking-[0.35em]">
               Bounty Hunters' Guild
             </span>
-          </div>
+          </a>
           <div className="hidden gap-8 text-sm uppercase tracking-widest text-muted-foreground md:flex">
             <a href="#contract" className="hover:text-lantern transition">The Contract</a>
             <a href="#mechanics" className="hover:text-lantern transition">Mechanics</a>
@@ -135,8 +139,8 @@ function Landing() {
           </button>
         </nav>
         {menuOpen && (
-          <div className="relative z-20 mx-auto max-w-7xl px-4 pb-4 md:hidden">
-            <div className="flex flex-col gap-1 rounded-sm border border-border bg-background/95 p-4 text-sm uppercase tracking-widest text-muted-foreground backdrop-blur">
+          <div className="absolute inset-x-0 top-full border-b border-border/40 bg-background/95 shadow-[var(--shadow-plank)] backdrop-blur-md md:hidden">
+            <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 text-sm uppercase tracking-widest text-muted-foreground">
               {[
                 ["#contract", "The Contract"],
                 ["#mechanics", "Mechanics"],
@@ -148,7 +152,7 @@ function Landing() {
                   key={href}
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className="rounded-sm px-3 py-2 hover:bg-lantern/10 hover:text-lantern"
+                  className="rounded-sm px-3 py-3 hover:bg-lantern/10 hover:text-lantern"
                 >
                   {label}
                 </a>
@@ -156,6 +160,20 @@ function Landing() {
             </div>
           </div>
         )}
+      </header>
+
+      {/* HERO */}
+      <section id="top" className="relative min-h-screen overflow-hidden pt-16 sm:pt-20">
+        <img
+          src={heroImg}
+          alt="A guild hall bounty board lit by lanterns, layered with commission papers depicting monsters"
+          width={1920}
+          height={1200}
+          className="absolute inset-0 h-full w-full object-cover opacity-70"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/50 to-background" />
+        <div className="absolute inset-0" style={{ backgroundImage: "var(--gradient-lantern)" }} />
+
 
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-6 pt-20 pb-32 text-center md:pt-32">
           <p className="text-display text-xs uppercase tracking-[0.5em] text-lantern/80">
