@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
   component: Landing,
   head: () => ({
     meta: [
-      { property: "og:image", content: "https://id-preview--c1f58e46-bfd6-45aa-aa60-d97a1a8e286a.lovable.app/og.jpg" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Ymy1SBDJsfYThv2zIoyFCwyrARo1/social-images/social-1783965965657-ChatGPT_Image_Jul_13,_2026,_09_41_26_AM_(1).webp" },
     ].filter(() => false), // omit until real og:image hosted; keeps root defaults
   }),
 });

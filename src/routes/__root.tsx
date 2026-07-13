@@ -77,24 +77,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Last Hit — Everyone Fights. Only One Gets Paid." },
+      { title: "Last Hit — Everyone Fights. Only One Gains Glory." },
       {
         name: "description",
         content:
           "Last Hit is a 2–6 player bounty-hunter board game of secret plans, split attention, and the killing blow. Sign up for launch updates.",
       },
-      { property: "og:title", content: "Last Hit — A Bounty Hunter Board Game" },
+      { property: "og:title", content: "Last Hit — Everyone Fights. Only One Gains Glory." },
       {
         property: "og:description",
         content:
-          "Work together just long enough to bring the monsters down — then land the final blow and claim the reward for yourself.",
+          "Last Hit is a 2–6 player bounty-hunter board game of secret plans, split attention, and the killing blow. Sign up for launch updates.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Last Hit — Everyone Fights. Only One Gains Glory." },
+      { name: "twitter:description", content: "Last Hit is a 2–6 player bounty-hunter board game of secret plans, split attention, and the killing blow. Sign up for launch updates." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Ymy1SBDJsfYThv2zIoyFCwyrARo1/social-images/social-1783965965657-ChatGPT_Image_Jul_13,_2026,_09_41_26_AM_(1).webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Ymy1SBDJsfYThv2zIoyFCwyrARo1/social-images/social-1783965965657-ChatGPT_Image_Jul_13,_2026,_09_41_26_AM_(1).webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       {
