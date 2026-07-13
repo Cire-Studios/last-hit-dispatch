@@ -175,13 +175,14 @@ function Landing() {
           </p>
 
           <div className="mt-12 flex flex-wrap justify-center gap-4">
-            <a
-              href="#signup"
+            <button
+              type="button"
+              onClick={() => openSignup("hero", ["updates"])}
               className="text-display rounded-sm px-8 py-4 text-sm uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-lantern)] transition hover:brightness-110"
               style={{ background: "var(--gradient-ember)" }}
             >
               Claim a Seat at the Table
-            </a>
+            </button>
             <a
               href="#contract"
               className="text-display rounded-sm border border-lantern/40 px-8 py-4 text-sm uppercase tracking-[0.3em] text-lantern hover:bg-lantern/10 transition"
