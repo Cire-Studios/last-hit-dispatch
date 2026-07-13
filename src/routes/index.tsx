@@ -25,7 +25,7 @@ const mechanics = [
   {
     step: "II",
     title: "Position the Lineup",
-    body: "Low commitment strikes first. High commitment strikes last — with the most information.",
+    body: "Lowest Attention places into the lineup first — blind. Highest Attention places last, slotting anywhere they want once every rival is committed.",
   },
   {
     step: "III",
@@ -184,7 +184,7 @@ function Landing() {
                 ["Recover", "Reclaim up to 2 Attention."],
                 ["Program", "Secretly pair Target + Attention."],
                 ["Reveal", "Cards flip. Attention is spent."],
-                ["Position", "Low goes first. High goes last."],
+                ["Position", "Low Attention slots first; High slots last, anywhere."],
                 ["Hunt", "Boon → Momentum → Roll → Split."],
                 ["Claim", "The last hit takes it all."],
               ].map(([name, body], i) => (
