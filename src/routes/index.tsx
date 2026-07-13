@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { Instagram, Twitter, Youtube, MessagesSquare, Menu, X } from "lucide-react";
+import { SignupModal, type SignupInterest } from "@/components/SignupModal";
 import heroImg from "@/assets/hero-guildhall.jpg";
 import trollImg from "@/assets/bounty-troll.jpg";
 import drakeImg from "@/assets/bounty-drake.jpg";
@@ -59,36 +60,16 @@ const components = [
 ];
 
 function Landing() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "success">("idle");
-  const [ptEmail, setPtEmail] = useState("");
-  const [ptStatus, setPtStatus] = useState<"idle" | "success">("idle");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalSource, setModalSource] = useState<string>("hero");
+  const [modalDefaults, setModalDefaults] = useState<SignupInterest[]>(["updates"]);
 
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    try {
-      const list = JSON.parse(localStorage.getItem("lasthit_signups") || "[]");
-      list.push({ email, ts: Date.now() });
-      localStorage.setItem("lasthit_signups", JSON.stringify(list));
-    } catch {
-      /* ignore */
-    }
-    setStatus("success");
-  };
-
-  const onPlaytest = (e: FormEvent) => {
-    e.preventDefault();
-    if (!ptEmail) return;
-    try {
-      const list = JSON.parse(localStorage.getItem("lasthit_playtesters") || "[]");
-      list.push({ email: ptEmail, ts: Date.now() });
-      localStorage.setItem("lasthit_playtesters", JSON.stringify(list));
-    } catch {
-      /* ignore */
-    }
-    setPtStatus("success");
+  const openSignup = (source: string, defaults: SignupInterest[] = ["updates"]) => {
+    setModalSource(source);
+    setModalDefaults(defaults);
+    setMenuOpen(false);
+    setModalOpen(true);
   };
 
   return (
@@ -111,12 +92,13 @@ function Landing() {
             <a href="#bounties" className="hover:text-lantern transition">Bounties</a>
             <a href="#components" className="hover:text-lantern transition">Components</a>
           </div>
-          <a
-            href="#signup"
+          <button
+            type="button"
+            onClick={() => openSignup("nav", ["updates"])}
             className="text-display hidden shrink-0 rounded-sm border border-lantern/40 bg-lantern/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-lantern transition hover:bg-lantern/20 md:inline-block"
           >
             Get Notified
-          </a>
+          </button>
           <button
             type="button"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -135,7 +117,6 @@ function Landing() {
                 ["#mechanics", "Mechanics"],
                 ["#bounties", "Bounties"],
                 ["#components", "Components"],
-                ["#signup", "Get Notified"],
               ].map(([href, label]) => (
                 <a
                   key={href}
@@ -146,6 +127,13 @@ function Landing() {
                   {label}
                 </a>
               ))}
+              <button
+                type="button"
+                onClick={() => openSignup("nav-mobile", ["updates"])}
+                className="text-display rounded-sm border border-lantern/40 bg-lantern/10 px-3 py-3 text-left uppercase tracking-widest text-lantern hover:bg-lantern/20"
+              >
+                Get Notified
+              </button>
             </div>
           </div>
         )}
@@ -187,13 +175,14 @@ function Landing() {
           </p>
 
           <div className="mt-12 flex flex-wrap justify-center gap-4">
-            <a
-              href="#signup"
+            <button
+              type="button"
+              onClick={() => openSignup("hero", ["updates"])}
               className="text-display rounded-sm px-8 py-4 text-sm uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-lantern)] transition hover:brightness-110"
               style={{ background: "var(--gradient-ember)" }}
             >
               Claim a Seat at the Table
-            </a>
+            </button>
             <a
               href="#contract"
               className="text-display rounded-sm border border-lantern/40 px-8 py-4 text-sm uppercase tracking-[0.3em] text-lantern hover:bg-lantern/10 transition"
@@ -485,35 +474,16 @@ function Landing() {
             board — no spam, no filler, only the horn call.
           </p>
 
-          {status === "success" ? (
-            <div className="parchment-panel mx-auto mt-10 max-w-md rounded-sm p-8">
-              <div className="wax-seal mx-auto mb-4 h-14 w-14 rounded-full" />
-              <p className="text-display text-lg uppercase tracking-wider text-ink">
-                Your Mark is Set
-              </p>
-              <p className="mt-3 text-sm italic text-ink/70">
-                The guild will send word by raven when the hunt begins.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={onSubmit} className="mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="hunter@guild.hall"
-                className="flex-1 rounded-sm border border-border bg-background/80 px-5 py-4 text-base text-foreground placeholder:text-muted-foreground/60 focus:border-lantern focus:outline-none focus:ring-1 focus:ring-lantern"
-              />
-              <button
-                type="submit"
-                className="text-display rounded-sm px-8 py-4 text-sm uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-lantern)] transition hover:brightness-110"
-                style={{ background: "var(--gradient-ember)" }}
-              >
-                Sign
-              </button>
-            </form>
-          )}
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => openSignup("signup-section", ["updates"])}
+              className="text-display rounded-sm px-10 py-4 text-sm uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-lantern)] transition hover:brightness-110"
+              style={{ background: "var(--gradient-ember)" }}
+            >
+              Sign the Ledger
+            </button>
+          </div>
 
           <p className="mt-6 text-xs italic text-muted-foreground/70">
             "Everyone fights. Only one gets paid."
@@ -538,29 +508,16 @@ function Landing() {
             Playtesters Wanted!
           </h2>
 
-          {ptStatus === "success" ? (
-            <p className="text-display mt-8 text-lg uppercase tracking-wider text-lantern">
-              Contract pulled — we'll be in touch.
-            </p>
-          ) : (
-            <form onSubmit={onPlaytest} className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                required
-                value={ptEmail}
-                onChange={(e) => setPtEmail(e.target.value)}
-                placeholder="tester@guild.hall"
-                className="flex-1 rounded-sm border border-border bg-background/80 px-5 py-4 text-base text-foreground placeholder:text-muted-foreground/60 focus:border-lantern focus:outline-none focus:ring-1 focus:ring-lantern"
-              />
-              <button
-                type="submit"
-                className="text-display rounded-sm px-8 py-4 text-sm uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-lantern)] transition hover:brightness-110"
-                style={{ background: "var(--gradient-ember)" }}
-              >
-                Sign Up
-              </button>
-            </form>
-          )}
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={() => openSignup("playtest-section", ["playtest", "updates"])}
+              className="text-display rounded-sm px-10 py-4 text-sm uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-lantern)] transition hover:brightness-110"
+              style={{ background: "var(--gradient-ember)" }}
+            >
+              Enlist as Playtester
+            </button>
+          </div>
 
           <p className="mt-5 text-sm italic text-muted-foreground">
             Help shape Last Hit before launch — remote or in-person sessions, print-and-play kits, and a name in the final rulebook.
@@ -585,6 +542,12 @@ function Landing() {
           </div>
         </div>
       </footer>
+      <SignupModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        source={modalSource}
+        defaultInterests={modalDefaults}
+      />
     </main>
   );
 }
