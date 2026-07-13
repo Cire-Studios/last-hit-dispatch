@@ -93,19 +93,8 @@ function Landing() {
 
   return (
     <main className="plank-bg min-h-screen overflow-x-hidden text-foreground">
-      {/* HERO */}
-      <section className="relative min-h-screen overflow-hidden">
-        <img
-          src={heroImg}
-          alt="A guild hall bounty board lit by lanterns, layered with commission papers depicting monsters"
-          width={1920}
-          height={1200}
-          className="absolute inset-0 h-full w-full object-cover opacity-70"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/50 to-background" />
-        <div className="absolute inset-0" style={{ backgroundImage: "var(--gradient-lantern)" }} />
 
-      </section>
+
 
       {/* STICKY NAV */}
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
