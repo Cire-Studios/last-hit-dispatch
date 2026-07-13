@@ -6,6 +6,9 @@ import drakeImg from "@/assets/bounty-drake.jpg";
 import golemImg from "@/assets/bounty-golem.jpg";
 import componentsImg from "@/assets/components-flatlay.jpg";
 import sigilImg from "@/assets/guild-sigil.png";
+import inspiration1 from "@/assets/inspiration-1.png";
+import inspiration2 from "@/assets/inspiration-2.png";
+import inspiration3 from "@/assets/inspiration-3.png";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -276,11 +279,6 @@ function Landing() {
                   aria-hidden="true"
                   className="iron-nail absolute -top-2 left-1/2 z-10 h-4 w-4 -translate-x-1/2 rounded-full"
                 />
-                <span
-                  aria-hidden="true"
-                  className="iron-nail absolute -top-2 right-6 z-10 h-4 w-4 rounded-full"
-                  style={{ transform: `rotate(${(i - 1) * -3}deg)` }}
-                />
                 <div className="overflow-hidden rounded-sm shadow-[var(--shadow-plank)] transition group-hover:-translate-y-1">
                   <img
                     src={b.img}
@@ -454,8 +452,11 @@ function MechanicHighlight({ title, body }: { title: string; body: string }) {
 
 function ParchmentCard({ children }: { children: React.ReactNode }) {
   return (
-    <div className="parchment-panel relative rounded-sm p-8">
-      <div className="wax-seal absolute -right-3 -top-3 h-12 w-12 rounded-full" />
+    <div className="parchment-panel relative rounded-sm p-8 pt-10">
+      <span
+        aria-hidden="true"
+        className="iron-nail absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rounded-full"
+      />
       {children}
     </div>
   );
