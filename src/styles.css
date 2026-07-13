@@ -141,6 +141,17 @@
     0 2px 6px oklch(0.08 0 0 / 0.5);
 }
 
+@utility iron-nail {
+  background:
+    radial-gradient(circle at 35% 28%, oklch(0.55 0.01 60) 0%, oklch(0.32 0.008 55) 40%, oklch(0.18 0.005 50) 75%, oklch(0.12 0.004 50) 100%);
+  border: 1px solid oklch(0.1 0.004 50);
+  box-shadow:
+    inset -1px -1px 2px oklch(0.08 0 0 / 0.7),
+    inset 1px 1px 1.5px oklch(0.72 0.01 60 / 0.55),
+    0 3px 5px oklch(0.05 0 0 / 0.75),
+    0 1px 0 oklch(0.05 0 0 / 0.9);
+}
+
 @utility plank-bg {
   background:
     linear-gradient(180deg, oklch(0.18 0.02 45) 0%, oklch(0.14 0.018 42) 100%),
