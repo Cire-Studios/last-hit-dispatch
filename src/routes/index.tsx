@@ -540,6 +540,19 @@ function Landing() {
               © {new Date().getFullYear()} · Field-Test Edition v1.4
             </p>
           </div>
+          <div className="mt-6 border-t border-border/40 pt-6 text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              A production of{" "}
+              <a
+                href="https://cirestudios.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
+              >
+                Cire Studios
+              </a>
+            </p>
+          </div>
         </div>
       </footer>
       <SignupModal
