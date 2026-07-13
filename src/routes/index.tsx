@@ -352,7 +352,7 @@ function Landing() {
 
       {/* COMPONENTS */}
       <section id="components" className="relative border-y border-border/60 py-28">
-        <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 px-6 lg:grid-cols-2 lg:items-center">
           <div className="relative overflow-hidden rounded-sm shadow-[var(--shadow-plank)]">
             <img
               src={componentsImg}
