@@ -381,17 +381,16 @@ function Landing() {
               § 5 — In Development
             </p>
             <h2 className="text-display mt-4 text-4xl text-foreground md:text-5xl">
-              Still at the Workbench
+              Still a Work in Progress
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Last Hit is deep in field-test. Every session sharpens the bounty deck, retunes the
-              Attention economy, and hands us a new pile of scribbled notes to reckon with.
+              Last Hit is actively in development. Expect things to change as we get closer to launch.
             </p>
             <ul className="mt-8 space-y-3 text-muted-foreground">
-              <li className="flex gap-3"><span className="text-lantern">◆</span> Illustrating the full bounty roster</li>
-              <li className="flex gap-3"><span className="text-lantern">◆</span> Balancing Boons across hunter counts</li>
-              <li className="flex gap-3"><span className="text-lantern">◆</span> Prototyping the Master Hunter epilogue</li>
-              <li className="flex gap-3"><span className="text-lantern">◆</span> Manufacturing quotes for the crowdfunding push</li>
+              <li className="flex gap-3"><span className="text-lantern">◆</span> Current art is placeholder and does not reflect the final look</li>
+              <li className="flex gap-3"><span className="text-lantern">◆</span> Mechanics and balance are still being tuned</li>
+              <li className="flex gap-3"><span className="text-lantern">◆</span> Additional rules and edge cases around core gameplay are being tested</li>
+              <li className="flex gap-3"><span className="text-lantern">◆</span> Component list and final bounty roster are not locked in</li>
             </ul>
           </div>
         </div>
