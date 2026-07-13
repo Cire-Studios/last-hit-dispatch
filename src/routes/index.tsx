@@ -117,7 +117,6 @@ function Landing() {
                 ["#mechanics", "Mechanics"],
                 ["#bounties", "Bounties"],
                 ["#components", "Components"],
-                ["#signup", "Get Notified"],
               ].map(([href, label]) => (
                 <a
                   key={href}
@@ -128,6 +127,13 @@ function Landing() {
                   {label}
                 </a>
               ))}
+              <button
+                type="button"
+                onClick={() => openSignup("nav-mobile", ["updates"])}
+                className="text-display rounded-sm border border-lantern/40 bg-lantern/10 px-3 py-3 text-left uppercase tracking-widest text-lantern hover:bg-lantern/20"
+              >
+                Get Notified
+              </button>
             </div>
           </div>
         )}
