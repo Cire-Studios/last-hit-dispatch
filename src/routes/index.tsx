@@ -63,6 +63,7 @@ function Landing() {
   const [status, setStatus] = useState<"idle" | "success">("idle");
   const [ptEmail, setPtEmail] = useState("");
   const [ptStatus, setPtStatus] = useState<"idle" | "success">("idle");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
