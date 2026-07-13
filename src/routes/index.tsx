@@ -283,7 +283,7 @@ function Landing() {
             ))}
           </div>
 
-          <div className="mt-16 grid gap-8 rounded-sm border border-border bg-background/40 p-8 md:grid-cols-3">
+          <div className="mt-16 grid grid-cols-1 gap-8 rounded-sm border border-border bg-background/40 p-8 md:grid-cols-3">
             <MechanicHighlight
               title="Attention is Currency"
               body="Six cubes. That's all you have. Spend them to strike, to shave a rival's damage, or to buy your position in the lineup."
