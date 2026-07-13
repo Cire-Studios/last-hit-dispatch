@@ -60,36 +60,16 @@ const components = [
 ];
 
 function Landing() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "success">("idle");
-  const [ptEmail, setPtEmail] = useState("");
-  const [ptStatus, setPtStatus] = useState<"idle" | "success">("idle");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalSource, setModalSource] = useState<string>("hero");
+  const [modalDefaults, setModalDefaults] = useState<SignupInterest[]>(["updates"]);
 
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    try {
-      const list = JSON.parse(localStorage.getItem("lasthit_signups") || "[]");
-      list.push({ email, ts: Date.now() });
-      localStorage.setItem("lasthit_signups", JSON.stringify(list));
-    } catch {
-      /* ignore */
-    }
-    setStatus("success");
-  };
-
-  const onPlaytest = (e: FormEvent) => {
-    e.preventDefault();
-    if (!ptEmail) return;
-    try {
-      const list = JSON.parse(localStorage.getItem("lasthit_playtesters") || "[]");
-      list.push({ email: ptEmail, ts: Date.now() });
-      localStorage.setItem("lasthit_playtesters", JSON.stringify(list));
-    } catch {
-      /* ignore */
-    }
-    setPtStatus("success");
+  const openSignup = (source: string, defaults: SignupInterest[] = ["updates"]) => {
+    setModalSource(source);
+    setModalDefaults(defaults);
+    setMenuOpen(false);
+    setModalOpen(true);
   };
 
   return (
