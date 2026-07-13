@@ -393,6 +393,29 @@ function Landing() {
               <li className="flex gap-3"><span className="text-lantern">◆</span> Additional rules and edge cases around core gameplay are being tested</li>
               <li className="flex gap-3"><span className="text-lantern">◆</span> Component list and final bounty roster are not locked in</li>
             </ul>
+
+            <div className="mt-10 border-t border-border pt-6">
+              <p className="text-display text-xs uppercase tracking-[0.35em] text-muted-foreground">
+                Follow Along
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {[
+                  { label: "Instagram", href: "#", Icon: Instagram },
+                  { label: "Twitter / X", href: "#", Icon: Twitter },
+                  { label: "YouTube", href: "#", Icon: Youtube },
+                  { label: "Discord", href: "#", Icon: MessagesSquare },
+                ].map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    className="group flex h-11 w-11 items-center justify-center rounded-sm border border-border bg-background/60 text-muted-foreground transition hover:border-lantern/60 hover:text-lantern"
+                  >
+                    <Icon size={18} strokeWidth={1.75} />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
