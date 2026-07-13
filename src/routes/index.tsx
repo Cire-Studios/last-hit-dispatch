@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { Instagram, Twitter, Youtube, MessagesSquare } from "lucide-react";
+import { Instagram, Twitter, Youtube, MessagesSquare, Menu, X } from "lucide-react";
 import heroImg from "@/assets/hero-guildhall.jpg";
 import trollImg from "@/assets/bounty-troll.jpg";
 import drakeImg from "@/assets/bounty-drake.jpg";
@@ -63,6 +63,7 @@ function Landing() {
   const [status, setStatus] = useState<"idle" | "success">("idle");
   const [ptEmail, setPtEmail] = useState("");
   const [ptStatus, setPtStatus] = useState<"idle" | "success">("idle");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -104,10 +105,10 @@ function Landing() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/50 to-background" />
         <div className="absolute inset-0" style={{ backgroundImage: "var(--gradient-lantern)" }} />
 
-        <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-          <div className="flex items-center gap-3">
-            <img src={sigilImg} alt="" width={40} height={40} className="h-10 w-10 opacity-90" />
-            <span className="text-display text-sm uppercase tracking-[0.35em] text-lantern">
+        <nav className="relative z-20 mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-5 sm:px-6 sm:py-6">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+            <img src={sigilImg} alt="" width={40} height={40} className="h-9 w-9 shrink-0 opacity-90 sm:h-10 sm:w-10" />
+            <span className="text-display truncate text-[0.65rem] uppercase tracking-[0.25em] text-lantern sm:text-sm sm:tracking-[0.35em]">
               Bounty Hunters' Guild
             </span>
           </div>
@@ -119,11 +120,42 @@ function Landing() {
           </div>
           <a
             href="#signup"
-            className="text-display rounded-sm border border-lantern/40 bg-lantern/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-lantern hover:bg-lantern/20 transition"
+            className="text-display hidden shrink-0 rounded-sm border border-lantern/40 bg-lantern/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-lantern transition hover:bg-lantern/20 md:inline-block"
           >
             Get Notified
           </a>
+          <button
+            type="button"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+            className="shrink-0 rounded-sm border border-lantern/40 p-2 text-lantern md:hidden"
+          >
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </nav>
+        {menuOpen && (
+          <div className="relative z-20 mx-auto max-w-7xl px-4 pb-4 md:hidden">
+            <div className="flex flex-col gap-1 rounded-sm border border-border bg-background/95 p-4 text-sm uppercase tracking-widest text-muted-foreground backdrop-blur">
+              {[
+                ["#contract", "The Contract"],
+                ["#mechanics", "Mechanics"],
+                ["#bounties", "Bounties"],
+                ["#components", "Components"],
+                ["#signup", "Get Notified"],
+              ].map(([href, label]) => (
+                <a
+                  key={href}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-sm px-3 py-2 hover:bg-lantern/10 hover:text-lantern"
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-6 pt-20 pb-32 text-center md:pt-32">
           <p className="text-display text-xs uppercase tracking-[0.5em] text-lantern/80">
@@ -166,8 +198,8 @@ function Landing() {
       </section>
 
       {/* CONTRACT / PITCH */}
-      <section id="contract" className="relative py-28">
-        <div className="mx-auto grid max-w-6xl gap-14 px-6 md:grid-cols-[1.2fr_1fr] md:items-center">
+      <section id="contract" className="relative py-20 md:py-28">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 px-6 md:grid-cols-[1.2fr_1fr] md:items-center">
           <div>
             <p className="text-display text-xs uppercase tracking-[0.5em] text-ember">
               § 1 — The Contract
@@ -186,7 +218,7 @@ function Landing() {
               your rivals' focus at exactly the right moment. First to 15 Reputation earns the
               title of <span className="text-lantern italic">Master Hunter</span>.
             </p>
-            <div className="mt-10 flex gap-8 border-t border-border pt-6 text-sm">
+            <div className="mt-10 flex flex-wrap gap-x-6 gap-y-4 border-t border-border pt-6 text-sm sm:gap-8">
               <Stat label="Hunters" value="2–6" />
               <Stat label="Playtime" value="25–60m" />
               <Stat label="Age" value="13+" />
@@ -221,7 +253,7 @@ function Landing() {
       </section>
 
       {/* MECHANICS */}
-      <section id="mechanics" className="relative border-y border-border/60 bg-card/40 py-28">
+      <section id="mechanics" className="relative border-y border-border/60 bg-card/40 py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
             <p className="text-display text-xs uppercase tracking-[0.5em] text-ember">
@@ -236,7 +268,7 @@ function Landing() {
             </p>
           </div>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {mechanics.map((m) => (
               <div
                 key={m.title}
@@ -251,7 +283,7 @@ function Landing() {
             ))}
           </div>
 
-          <div className="mt-16 grid gap-8 rounded-sm border border-border bg-background/40 p-8 md:grid-cols-3">
+          <div className="mt-16 grid grid-cols-1 gap-8 rounded-sm border border-border bg-background/40 p-8 md:grid-cols-3">
             <MechanicHighlight
               title="Attention is Currency"
               body="Six cubes. That's all you have. Spend them to strike, to shave a rival's damage, or to buy your position in the lineup."
@@ -269,7 +301,7 @@ function Landing() {
       </section>
 
       {/* BOUNTIES */}
-      <section id="bounties" className="relative py-28">
+      <section id="bounties" className="relative py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
             <p className="text-display text-xs uppercase tracking-[0.5em] text-ember">
@@ -284,7 +316,7 @@ function Landing() {
             </p>
           </div>
 
-          <div className="mt-16 grid gap-10 md:grid-cols-3">
+          <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
             {bounties.map((b, i) => (
               <figure
                 key={b.name}
@@ -319,8 +351,8 @@ function Landing() {
       </section>
 
       {/* COMPONENTS */}
-      <section id="components" className="relative border-y border-border/60 py-28">
-        <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-2 lg:items-center">
+      <section id="components" className="relative border-y border-border/60 py-20 md:py-28">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 px-6 lg:grid-cols-2 lg:items-center">
           <div className="relative overflow-hidden rounded-sm shadow-[var(--shadow-plank)]">
             <img
               src={componentsImg}
@@ -363,8 +395,8 @@ function Landing() {
       </section>
 
       {/* IN DEVELOPMENT */}
-      <section id="in-development" className="relative border-y border-border/60 py-28">
-        <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+      <section id="in-development" className="relative border-y border-border/60 py-20 md:py-28">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <figure className="relative overflow-hidden rounded-sm shadow-[var(--shadow-plank)]">
             <span
               aria-hidden="true"
@@ -421,7 +453,7 @@ function Landing() {
       </section>
 
       {/* SIGNUP */}
-      <section id="signup" className="relative overflow-hidden py-32">
+      <section id="signup" className="relative overflow-hidden py-24 md:py-32">
         <div className="absolute inset-0">
           <img
             src={inspiration1}
@@ -483,7 +515,7 @@ function Landing() {
       </section>
 
       {/* PLAYTESTERS */}
-      <section id="playtest" className="relative overflow-hidden border-t border-border/60 py-32">
+      <section id="playtest" className="relative overflow-hidden border-t border-border/60 py-24 md:py-32">
         <div className="absolute inset-0">
           <img
             src={inspiration3}
