@@ -91,7 +91,7 @@ function Landing() {
   };
 
   return (
-    <main className="plank-bg min-h-screen text-foreground">
+    <main className="plank-bg min-h-screen overflow-x-hidden text-foreground">
       {/* HERO */}
       <section className="relative min-h-screen overflow-hidden">
         <img
