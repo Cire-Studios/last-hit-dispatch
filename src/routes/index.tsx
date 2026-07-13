@@ -6,6 +6,9 @@ import drakeImg from "@/assets/bounty-drake.jpg";
 import golemImg from "@/assets/bounty-golem.jpg";
 import componentsImg from "@/assets/components-flatlay.jpg";
 import sigilImg from "@/assets/guild-sigil.png";
+import inspiration1 from "@/assets/inspiration-1.png";
+import inspiration2 from "@/assets/inspiration-2.png";
+import inspiration3 from "@/assets/inspiration-3.png";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -276,11 +279,6 @@ function Landing() {
                   aria-hidden="true"
                   className="iron-nail absolute -top-2 left-1/2 z-10 h-4 w-4 -translate-x-1/2 rounded-full"
                 />
-                <span
-                  aria-hidden="true"
-                  className="iron-nail absolute -top-2 right-6 z-10 h-4 w-4 rounded-full"
-                  style={{ transform: `rotate(${(i - 1) * -3}deg)` }}
-                />
                 <div className="overflow-hidden rounded-sm shadow-[var(--shadow-plank)] transition group-hover:-translate-y-1">
                   <img
                     src={b.img}
@@ -348,16 +346,56 @@ function Landing() {
         </div>
       </section>
 
+      {/* GUILD HALL GALLERY */}
+      <section id="guildhall" className="relative py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <p className="text-display text-xs uppercase tracking-[0.5em] text-ember">
+              § 5 — From the Guild Hall
+            </p>
+            <h2 className="text-display mt-4 text-4xl text-foreground md:text-5xl">
+              Scenes Between Contracts
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              Lantern-lit boards, half-torn commissions, and the hunters who study them before
+              the ink is dry.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {[
+              { img: inspiration2, alt: "Guild board layered with weathered bounty commissions and hunter reference sheets" },
+              { img: inspiration1, alt: "Two hunters study the bounty board by lantern light" },
+              { img: inspiration3, alt: "A hunter pins a fresh dragon bounty to the board" },
+            ].map((s, i) => (
+              <figure
+                key={i}
+                className="group relative overflow-hidden rounded-sm shadow-[var(--shadow-plank)]"
+              >
+                <span
+                  aria-hidden="true"
+                  className="iron-nail absolute top-2 left-1/2 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full"
+                />
+                <img
+                  src={s.img}
+                  alt={s.alt}
+                  loading="lazy"
+                  className="h-72 w-full object-cover transition duration-700 group-hover:scale-105"
+                />
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SIGNUP */}
       <section id="signup" className="relative overflow-hidden py-32">
-        <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0">
           <img
-            src={heroImg}
+            src={inspiration1}
             alt=""
-            width={1920}
-            height={1200}
             loading="lazy"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover opacity-40"
           />
         </div>
         <div className="absolute inset-0 bg-background/80" />
@@ -454,8 +492,11 @@ function MechanicHighlight({ title, body }: { title: string; body: string }) {
 
 function ParchmentCard({ children }: { children: React.ReactNode }) {
   return (
-    <div className="parchment-panel relative rounded-sm p-8">
-      <div className="wax-seal absolute -right-3 -top-3 h-12 w-12 rounded-full" />
+    <div className="parchment-panel relative rounded-sm p-8 pt-10">
+      <span
+        aria-hidden="true"
+        className="iron-nail absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rounded-full"
+      />
       {children}
     </div>
   );
