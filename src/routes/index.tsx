@@ -218,7 +218,7 @@ function Landing() {
               your rivals' focus at exactly the right moment. First to 15 Reputation earns the
               title of <span className="text-lantern italic">Master Hunter</span>.
             </p>
-            <div className="mt-10 flex gap-8 border-t border-border pt-6 text-sm">
+            <div className="mt-10 flex flex-wrap gap-x-6 gap-y-4 border-t border-border pt-6 text-sm sm:gap-8">
               <Stat label="Hunters" value="2–6" />
               <Stat label="Playtime" value="25–60m" />
               <Stat label="Age" value="13+" />
