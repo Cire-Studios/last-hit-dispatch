@@ -92,12 +92,13 @@ function Landing() {
             <a href="#bounties" className="hover:text-lantern transition">Bounties</a>
             <a href="#components" className="hover:text-lantern transition">Components</a>
           </div>
-          <a
-            href="#signup"
+          <button
+            type="button"
+            onClick={() => openSignup("nav", ["updates"])}
             className="text-display hidden shrink-0 rounded-sm border border-lantern/40 bg-lantern/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-lantern transition hover:bg-lantern/20 md:inline-block"
           >
             Get Notified
-          </a>
+          </button>
           <button
             type="button"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
