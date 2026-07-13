@@ -105,10 +105,10 @@ function Landing() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/50 to-background" />
         <div className="absolute inset-0" style={{ backgroundImage: "var(--gradient-lantern)" }} />
 
-        <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-          <div className="flex items-center gap-3">
-            <img src={sigilImg} alt="" width={40} height={40} className="h-10 w-10 opacity-90" />
-            <span className="text-display text-sm uppercase tracking-[0.35em] text-lantern">
+        <nav className="relative z-20 mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-5 sm:px-6 sm:py-6">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+            <img src={sigilImg} alt="" width={40} height={40} className="h-9 w-9 shrink-0 opacity-90 sm:h-10 sm:w-10" />
+            <span className="text-display truncate text-[0.65rem] uppercase tracking-[0.25em] text-lantern sm:text-sm sm:tracking-[0.35em]">
               Bounty Hunters' Guild
             </span>
           </div>
@@ -120,11 +120,42 @@ function Landing() {
           </div>
           <a
             href="#signup"
-            className="text-display rounded-sm border border-lantern/40 bg-lantern/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-lantern hover:bg-lantern/20 transition"
+            className="text-display hidden shrink-0 rounded-sm border border-lantern/40 bg-lantern/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-lantern transition hover:bg-lantern/20 md:inline-block"
           >
             Get Notified
           </a>
+          <button
+            type="button"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+            className="shrink-0 rounded-sm border border-lantern/40 p-2 text-lantern md:hidden"
+          >
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </nav>
+        {menuOpen && (
+          <div className="relative z-20 mx-auto max-w-7xl px-4 pb-4 md:hidden">
+            <div className="flex flex-col gap-1 rounded-sm border border-border bg-background/95 p-4 text-sm uppercase tracking-widest text-muted-foreground backdrop-blur">
+              {[
+                ["#contract", "The Contract"],
+                ["#mechanics", "Mechanics"],
+                ["#bounties", "Bounties"],
+                ["#components", "Components"],
+                ["#signup", "Get Notified"],
+              ].map(([href, label]) => (
+                <a
+                  key={href}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-sm px-3 py-2 hover:bg-lantern/10 hover:text-lantern"
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-6 pt-20 pb-32 text-center md:pt-32">
           <p className="text-display text-xs uppercase tracking-[0.5em] text-lantern/80">
