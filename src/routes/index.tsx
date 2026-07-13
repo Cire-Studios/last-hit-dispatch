@@ -272,7 +272,15 @@ function Landing() {
                 className="group relative"
                 style={{ transform: `rotate(${(i - 1) * 1.5}deg)` }}
               >
-                <div className="wax-seal absolute -top-3 left-1/2 z-10 h-10 w-10 -translate-x-1/2 rounded-full" />
+                <span
+                  aria-hidden="true"
+                  className="iron-nail absolute -top-2 left-1/2 z-10 h-4 w-4 -translate-x-1/2 rounded-full"
+                />
+                <span
+                  aria-hidden="true"
+                  className="iron-nail absolute -top-2 right-6 z-10 h-4 w-4 rounded-full"
+                  style={{ transform: `rotate(${(i - 1) * -3}deg)` }}
+                />
                 <div className="overflow-hidden rounded-sm shadow-[var(--shadow-plank)] transition group-hover:-translate-y-1">
                   <img
                     src={b.img}
