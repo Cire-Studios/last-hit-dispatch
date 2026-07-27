@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Instagram, Twitter, Youtube, MessagesSquare, Menu, X } from "lucide-react";
+import { Instagram, Twitter, Youtube, MessagesSquare, Menu, X, FileDown } from "lucide-react";
 import { SignupModal, type SignupInterest } from "@/components/SignupModal";
 import heroImg from "@/assets/hero-guildhall.jpg";
 import trollImg from "@/assets/bounty-troll.jpg";
@@ -9,6 +9,7 @@ import golemImg from "@/assets/bounty-golem.jpg";
 import componentsImg from "@/assets/components-flatlay.jpg";
 import sigilImg from "@/assets/guild-sigil.png";
 import inspiration1 from "@/assets/inspiration-1.png";
+import rulebookAsset from "@/assets/rulebook.pdf.asset.json";
 import inspiration2 from "@/assets/inspiration-2.png";
 import inspiration3 from "@/assets/inspiration-3.png";
 
@@ -421,6 +422,23 @@ function Landing() {
               <li className="flex gap-3"><span className="text-lantern">◆</span> Additional rules and edge cases around core gameplay are being tested</li>
               <li className="flex gap-3"><span className="text-lantern">◆</span> Component list and final bounty roster are not locked in</li>
             </ul>
+
+            <div className="mt-10 border-t border-border pt-6">
+              <p className="text-display text-xs uppercase tracking-[0.35em] text-muted-foreground">
+                Current Rulebook
+              </p>
+              <a
+                href={rulebookAsset.url}
+                download="Last-Hit-Rulebook-v1.4.pdf"
+                className="text-display mt-4 inline-flex items-center gap-3 rounded-sm border border-lantern/40 bg-lantern/10 px-5 py-3 text-xs uppercase tracking-[0.3em] text-lantern transition hover:bg-lantern/20"
+              >
+                <FileDown size={16} strokeWidth={1.75} />
+                Download Rulebook v1.4 (PDF)
+              </a>
+              <p className="mt-3 text-xs italic text-muted-foreground">
+                Draft rules — subject to change before launch.
+              </p>
+            </div>
 
             <div className="mt-10 border-t border-border pt-6">
               <p className="text-display text-xs uppercase tracking-[0.35em] text-muted-foreground">
