@@ -429,11 +429,11 @@ function Landing() {
               </p>
               <a
                 href={rulebookAsset.url}
-                download="Last-Hit-Rulebook-v1.6.pdf"
+                download="Last-Hit-Rulebook-v2.1.pdf"
                 className="text-display mt-4 inline-flex items-center gap-3 rounded-sm border border-lantern/40 bg-lantern/10 px-5 py-3 text-xs uppercase tracking-[0.3em] text-lantern transition hover:bg-lantern/20"
               >
                 <FileDown size={16} strokeWidth={1.75} />
-                Download Rulebook v1.6 (PDF)
+                Download Rulebook v2.1 (PDF)
               </a>
               <p className="mt-3 text-xs italic text-muted-foreground">
                 Draft rules — subject to change before launch.
