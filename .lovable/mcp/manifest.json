@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "sdk_version": "0.24.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "last-hit-mcp",
+      "version": "0.1.0",
+      "title": "Last Hit"
+    },
+    "tools": [
+      {
+        "name": "get_game_overview",
+        "title": "Get game overview",
+        "description": "Get the public overview of the board game Last Hit: pitch, player count, playtime, age, weight, and win condition.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_mechanics",
+        "title": "List core mechanics",
+        "description": "List the four core mechanics of Last Hit: programming in secret, positioning the attack lineup, splitting attention, and landing the last hit.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_round_sequence",
+        "title": "Get round sequence",
+        "description": "Get the ordered phases of a single round in Last Hit, from Recover through Claim.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_bounties",
+        "title": "List starter bounties",
+        "description": "List the starter bounty monsters shown on the Last Hit landing page, with their health and Reputation values.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_components",
+        "title": "List box components",
+        "description": "List what comes in the Last Hit box: cards, tokens, hunter kits, die, and board.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_development_status",
+        "title": "Get development status",
+        "description": "Get the current public development status of Last Hit, including what is still in progress and how to get involved as a playtester.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
