@@ -9,7 +9,10 @@ const CORS = {
 
 const schema = z.object({
   email: z.string().trim().email().max(255),
-  interests: z.array(z.enum(["updates", "playtest"])).min(1).max(4),
+  interests: z
+    .array(z.enum(["updates", "playtest"]))
+    .min(1)
+    .max(4),
   source: z.string().trim().max(60).optional(),
 });
 
