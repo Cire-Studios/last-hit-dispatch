@@ -7,8 +7,9 @@ export const overview = {
   studioUrl: "https://cirestudios.dev",
   site: "https://lasthit.cirestudios.dev",
   players: "2–6",
-  playtime: "25–60 minutes",
-  age: "13+",
+  playtime: "35–60 minutes",
+  age: "12+",
+
   weight: "Medium",
   winCondition: "First hunter to 15 Reputation earns the title of Master Hunter.",
   pitch:
