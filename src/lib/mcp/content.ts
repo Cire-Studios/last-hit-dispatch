@@ -52,18 +52,27 @@ export const roundSequence = [
 ];
 
 export const bounties = [
-  { name: "Moss Troll", health: 6, reputation: 4 },
-  { name: "Ember Drake", health: 9, reputation: 6 },
-  { name: "Crystal Basilisk", health: 7, reputation: 5 },
+  { name: "Feral Imp", tier: "Minor", health: 4, reputation: 2 },
+  { name: "Razorwing Harpy", tier: "Minor", health: 4, reputation: 2 },
+  { name: "Ironhide Boar", tier: "Standard", health: 5, reputation: 3 },
+  { name: "Grave Hound", tier: "Standard", health: 5, reputation: 3 },
+  { name: "Moss Troll", tier: "Premium", health: 6, reputation: 4 },
+  { name: "Gilded Manticore", tier: "Premium", health: 5, reputation: 4 },
+  { name: "Stone Golem", tier: "Premium", health: 7, reputation: 4 },
+  { name: "Crystal Basilisk", tier: "Elite", health: 7, reputation: 5 },
+  { name: "Mire Hydra", tier: "Elite", health: null, reputation: 5 },
+  { name: "Ember Drake", tier: "Legendary", health: 9, reputation: 6 },
 ];
 
 export const components = [
-  { quantity: "20", label: "Bounty Cards", note: "Feral imps to ember drakes" },
-  { quantity: "30", label: "Boon Tokens", note: "Second Chance, Off Guard, Exposed, Refresh" },
-  { quantity: "6", label: "Hunter Kits", note: "Meeple, Attention cubes, Momentum, cards" },
+  { quantity: "20", label: "Bounty Cards", note: "Feral imps to legendary ember drakes" },
+  { quantity: "6", label: "Hunter Player Boards", note: "Attention tracks and card slots" },
+  { quantity: "1", label: "Central Board", note: "Three bounty lanes + reputation track" },
+  { quantity: "54", label: "Target & Attention Cards", note: "A/B/C lanes and 1–6 focus" },
+  { quantity: "30", label: "Boon Tokens", note: "Reroll, Extra Die, +1 Damage, Refresh" },
   { quantity: "1", label: "Attack Die", note: "d6 — the killing blow lives here" },
-  { quantity: "1", label: "Central Board", note: "Bounty slots and attack lineups" },
 ];
+
 
 export const developmentStatus = {
   stage: "In development",
