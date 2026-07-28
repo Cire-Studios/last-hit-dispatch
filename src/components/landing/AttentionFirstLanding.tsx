@@ -2,10 +2,10 @@ import { ArrowDown, ArrowRight, BookOpen, RotateCcw, Shield, Sparkles, Users } f
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
 import { SignupForm } from "@/components/SignupForm";
+import rulebookAsset from "@/assets/rulebook.pdf.asset.json";
 
 const ASSET_ROOT = "/last-hit";
-const RULEBOOK_URL =
-  "https://drive.google.com/file/d/1z2Q2fGJ30iFkJTON8dI18gMhFb-FBfJf/view?usp=drivesdk";
+const RULEBOOK_URL = rulebookAsset.url;
 
 const playerSets = [
   { number: 1, color: "red", label: "Red", accent: "#9d2f2b" },
