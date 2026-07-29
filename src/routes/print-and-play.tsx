@@ -54,18 +54,19 @@ export const Route = createFileRoute("/print-and-play")({
 
 function PrintAndPlayPage() {
   return (
-    <main className="relative min-h-screen overflow-x-clip">
+    <main className="relative isolate min-h-screen overflow-x-clip">
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+        className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${pnpBg.url})` }}
       />
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-background/75"
+        className="pointer-events-none fixed inset-0 z-0 bg-background/75"
       />
 
-      <section className="section relative">
+
+      <section className="section relative z-10">
         <div className="mx-auto max-w-4xl px-5 py-16 lg:px-10 lg:py-24">
 
           <p className="eyebrow">Playtester materials · Unlisted</p>
