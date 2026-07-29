@@ -25,7 +25,8 @@ const files = [
 ];
 
 const driveUrl = (id: string) => `https://drive.google.com/file/d/${id}/view`;
-const downloadUrl = (id: string) => `https://drive.google.com/uc?export=download&id=${id}`;
+const downloadUrl = (id: string) =>
+  `https://drive.usercontent.google.com/download?id=${id}&export=download&confirm=t`;
 
 export const Route = createFileRoute("/print-and-play")({
   component: PrintAndPlayPage,
