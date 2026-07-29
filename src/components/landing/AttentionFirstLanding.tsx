@@ -585,7 +585,7 @@ function HuntPressures() {
       id: "bounties",
       eyebrow: "Choose where to compete",
       title: "Several Bounties are in play.",
-      body: "Hunt beside your rivals, or target a different monster.",
+      body: "Commit in secret and guess where your rivals will strike — crowd the same monster, or slip off to another.",
       images: ["moss-troll-bounty", "sandworm-bounty", "hill-ogre-bounty"],
     },
     {
