@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Download, FileText } from "lucide-react";
+import pnpBg from "@/assets/pnp-bg.png.asset.json";
+
 
 const ASSET_ROOT = "/last-hit";
 
