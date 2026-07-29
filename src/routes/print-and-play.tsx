@@ -66,7 +66,7 @@ function PrintAndPlayPage() {
       />
 
 
-      <section className="section relative">
+      <section className="section relative z-10">
         <div className="mx-auto max-w-4xl px-5 py-16 lg:px-10 lg:py-24">
 
           <p className="eyebrow">Playtester materials · Unlisted</p>
