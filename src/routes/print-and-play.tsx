@@ -52,9 +52,19 @@ export const Route = createFileRoute("/print-and-play")({
 
 function PrintAndPlayPage() {
   return (
-    <main className="site-shell attention-first-site min-h-screen">
-      <section className="section">
+    <main className="site-shell attention-first-site relative min-h-screen">
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${pnpBg.url})` }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 -z-10 bg-background/80"
+      />
+      <section className="section relative">
         <div className="mx-auto max-w-4xl px-5 py-16 lg:px-10 lg:py-24">
+
           <p className="eyebrow">Playtester materials · Unlisted</p>
           <h1 className="section-title">
             Last Hit Print &amp; Play
