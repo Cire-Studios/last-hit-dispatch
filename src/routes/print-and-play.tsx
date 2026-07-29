@@ -84,7 +84,7 @@ function PrintAndPlayPage() {
                     className="button button-gold"
                     href={downloadUrl(file.id)}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noreferrer noopener"
                   >
                     <Download size={18} />
                     Download
@@ -93,7 +93,7 @@ function PrintAndPlayPage() {
                     className="text-sm text-muted-foreground underline-offset-4 hover:underline"
                     href={driveUrl(file.id)}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noreferrer noopener"
                   >
                     Preview
                   </a>
