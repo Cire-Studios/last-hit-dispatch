@@ -54,7 +54,7 @@ export const Route = createFileRoute("/print-and-play")({
 
 function PrintAndPlayPage() {
   return (
-    <main className="attention-first-site relative min-h-screen overflow-x-clip bg-transparent">
+    <main className="relative min-h-screen overflow-x-clip">
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
