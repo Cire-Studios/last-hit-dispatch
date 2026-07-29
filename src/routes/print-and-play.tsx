@@ -25,7 +25,8 @@ const files = [
 ];
 
 const driveUrl = (id: string) => `https://drive.google.com/file/d/${id}/view`;
-const downloadUrl = (id: string) => `https://drive.google.com/uc?export=download&id=${id}`;
+const downloadUrl = (id: string) =>
+  `https://drive.usercontent.google.com/download?id=${id}&export=download&confirm=t`;
 
 export const Route = createFileRoute("/print-and-play")({
   component: PrintAndPlayPage,
@@ -83,7 +84,7 @@ function PrintAndPlayPage() {
                     className="button button-gold"
                     href={downloadUrl(file.id)}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noreferrer noopener"
                   >
                     <Download size={18} />
                     Download
@@ -92,7 +93,7 @@ function PrintAndPlayPage() {
                     className="text-sm text-muted-foreground underline-offset-4 hover:underline"
                     href={driveUrl(file.id)}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noreferrer noopener"
                   >
                     Preview
                   </a>
