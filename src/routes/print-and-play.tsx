@@ -54,7 +54,7 @@ export const Route = createFileRoute("/print-and-play")({
 
 function PrintAndPlayPage() {
   return (
-    <main className="site-shell attention-first-site relative min-h-screen">
+    <main className="attention-first-site relative min-h-screen overflow-x-clip bg-transparent">
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
@@ -62,8 +62,9 @@ function PrintAndPlayPage() {
       />
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-background/80"
+        className="pointer-events-none fixed inset-0 -z-10 bg-background/75"
       />
+
       <section className="section relative">
         <div className="mx-auto max-w-4xl px-5 py-16 lg:px-10 lg:py-24">
 
