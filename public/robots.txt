@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lasthit.cirestudios.dev/sitemap.xml

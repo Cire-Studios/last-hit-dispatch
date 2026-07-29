@@ -77,38 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Last Hit — A Competitive Monster-Hunting Board Game" },
-      {
-        name: "description",
-        content:
-          "Last Hit is a competitive monster-hunting board game for 2–6 players. Choose Bounties in secret, build Attack Lineups, defeat monsters, and earn Reputation.",
-      },
-      {
-        property: "og:title",
-        content: "Last Hit — A Competitive Monster-Hunting Board Game",
-      },
-      {
-        property: "og:description",
-        content:
-          "Choose Bounties in secret, control your place in the Attack Lineup, and defeat monsters to earn Reputation.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: "/last-hit/og-last-hit.jpg" },
-      { name: "twitter:card", content: "summary_large_image" },
-      {
-        name: "twitter:title",
-        content: "Last Hit — A Competitive Monster-Hunting Board Game",
-      },
-      {
-        name: "twitter:description",
-        content:
-          "Choose Bounties in secret, control your place in the Attack Lineup, and defeat monsters to earn Reputation.",
-      },
-      { name: "twitter:image", content: "/last-hit/og-last-hit.jpg" },
+      { name: "theme-color", content: "#0b0806" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "icon", href: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { rel: "icon", href: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       {
