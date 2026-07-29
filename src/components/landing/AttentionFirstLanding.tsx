@@ -187,13 +187,13 @@ function Hero() {
         </div>
 
         <div className="hero-art" data-reveal>
-          <div className="game-box-wrap" aria-label="Last Hit game cover">
+          <div className="game-box-wrap" aria-label="Last Hit board game box">
             <div className="game-box">
               <img
-                src={`${ASSET_ROOT}/cover.webp`}
-                alt="Last Hit board game cover"
-                width={1080}
-                height={1350}
+                src={`${ASSET_ROOT}/game-box.webp`}
+                alt="Last Hit competitive monster-hunting board game box"
+                width={1254}
+                height={1254}
                 fetchPriority="high"
               />
             </div>
@@ -765,11 +765,22 @@ function ComponentLadder() {
   return (
     <section id="box" className="component-ladder scroll-mt-20">
       <header className="component-ladder-heading mx-auto max-w-[90rem] px-5 lg:px-10" data-reveal>
-        <p className="eyebrow">Inside Last Hit</p>
-        <h2 className="section-title">
-          See every component
-          <span>in the core box.</span>
-        </h2>
+        <div className="component-ladder-heading-copy">
+          <p className="eyebrow">Inside Last Hit</p>
+          <h2 className="section-title">
+            See every component
+            <span>in the core box.</span>
+          </h2>
+        </div>
+        <div className="component-ladder-box-art">
+          <img
+            src={`${ASSET_ROOT}/game-box.webp`}
+            alt="Last Hit board game box"
+            width="1254"
+            height="1254"
+            loading="lazy"
+          />
+        </div>
       </header>
       <PlayerComponents />
       <HunterMats />
@@ -855,8 +866,10 @@ function PlayerComponents() {
           loading="lazy"
         />
       </div>
-      <ComponentCopy eyebrow="Six player sets" title="Your color follows every hidden choice.">
-        <p className="component-punch-line">Two complete decks. Eleven cards. Both backs.</p>
+      <ComponentCopy eyebrow="Six player sets" title="Choose a Bounty. Commit Attention.">
+        <p className="component-punch-line">
+          Each player set includes a Target deck, Attention deck, pawn, and Reputation cube.
+        </p>
         <div className="player-set-selector" role="radiogroup" aria-label="Choose a player set">
           {playerSets.map((set) => (
             <button
@@ -885,7 +898,11 @@ function HunterMats() {
 
   return (
     <ComponentRow className="hunter-mats-row" visualSide="right">
-      <ComponentCopy eyebrow="12 Hunter Mats" title="Plan in secret. Track what remains.">
+      <ComponentCopy eyebrow="12 Hunter Mats" title="Plan cards. Attention. Cooldowns.">
+        <p className="component-punch-line">
+          Each mat has spaces for your Target and Attention cards, Available and Spent Attention,
+          and PRE cooldown.
+        </p>
         <CycleControl
           label="Cycle Hunter Mats"
           itemName={mats[index].label}
@@ -932,10 +949,11 @@ function AttentionCubes() {
           </span>
         </div>
       </div>
-      <ComponentCopy
-        eyebrow="45 Attention Cubes"
-        title="Spend for Priority. Save for Split Attention."
-      />
+      <ComponentCopy eyebrow="45 Attention Cubes" title="Manage your Attention each round.">
+        <p className="component-punch-line">
+          Move cubes between Available and Spent on your Hunter Mat.
+        </p>
+      </ComponentCopy>
     </ComponentRow>
   );
 }
@@ -946,7 +964,10 @@ function BountyBoard() {
 
   return (
     <ComponentRow className="bounty-board-row" visualSide="right">
-      <ComponentCopy eyebrow="1 Bounty Board" title="Three hunts share one board.">
+      <ComponentCopy
+        eyebrow="1 Bounty Board"
+        title="Track Bounties, lineups, Boons, and Reputation."
+      >
         <div className="board-hotspot-legend" aria-label="Bounty Board areas">
           {boardHotspots.map((hotspot) => (
             <button
@@ -1010,7 +1031,10 @@ function BountyCards() {
   return (
     <ComponentRow className="bounty-cards-row" visualSide="left">
       <OffsetStack items={visible} cycling={cycling} kind="bounties" />
-      <ComponentCopy eyebrow="30 Monster Bounties" title="Every Bounty changes the timing.">
+      <ComponentCopy eyebrow="30 Monster Bounties" title="Stats, Reputation, and Monster Behavior.">
+        <p className="component-punch-line">
+          If the monster survives the round, resolve the Behavior printed on its card.
+        </p>
         <CycleControl
           label="Cycle Bounty cards"
           itemName={bounties[index].label}
@@ -1092,9 +1116,10 @@ function Boons() {
           ))}
         </div>
       </div>
-      <ComponentCopy eyebrow="45 Boon Tokens" title="Face-down rewards. Six possible faces.">
+      <ComponentCopy eyebrow="45 Boon Tokens" title="Six possible Boon effects.">
         <p className="component-punch-line">
-          Neglected Bounties collect Boons. Hunters draw them as that Attack Lineup resolves.
+          Neglected Bounties collect face-down Boons. Hunters draw them as that Attack Lineup
+          resolves.
         </p>
       </ComponentCopy>
     </ComponentRow>
@@ -1170,10 +1195,12 @@ function GuildRoles() {
 function Achievements() {
   return (
     <ComponentRow className="achievements-row" visualSide="right">
-      <ComponentCopy
-        eyebrow="13 Achievements"
-        title="One shared objective. One hunter claims it."
-      />
+      <ComponentCopy eyebrow="13 Achievements" title="Bonus objectives reward extra Reputation.">
+        <p className="component-punch-line">
+          Achievements add decisions beyond claiming Bounties. Only the hunter who fulfills the last
+          requirement earns the reward.
+        </p>
+      </ComponentCopy>
       <div className="ladder-card-fan achievement-card-fan">
         {[
           ["attention", "Dying for Attention Achievement"],
