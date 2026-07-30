@@ -123,7 +123,14 @@ function SiteNavigation() {
     <header className="site-nav">
       <nav className="mx-auto flex max-w-[90rem] items-center justify-between gap-5 px-5 py-3 lg:px-10">
         <a href="#top" className="brand-mark" aria-label="Last Hit home">
-          <img src={`${ASSET_ROOT}/crest.webp`} alt="" width={36} height={36} />
+          <img
+            src={`${ASSET_ROOT}/crest.webp`}
+            alt=""
+            width={36}
+            height={36}
+            fetchPriority="high"
+            decoding="async"
+          />
           <span>Last Hit</span>
         </a>
         <div className="hidden items-center gap-7 lg:flex">
