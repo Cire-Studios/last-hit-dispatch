@@ -123,7 +123,14 @@ function SiteNavigation() {
     <header className="site-nav">
       <nav className="mx-auto flex max-w-[90rem] items-center justify-between gap-5 px-5 py-3 lg:px-10">
         <a href="#top" className="brand-mark" aria-label="Last Hit home">
-          <img src={`${ASSET_ROOT}/crest.webp`} alt="" width={36} height={36} />
+          <img
+            src={`${ASSET_ROOT}/crest.webp`}
+            alt=""
+            width={36}
+            height={36}
+            fetchPriority="high"
+            decoding="async"
+          />
           <span>Last Hit</span>
         </a>
         <div className="hidden items-center gap-7 lg:flex">
@@ -1426,7 +1433,14 @@ function SiteFooter() {
     <footer className="site-footer">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-5 py-9 text-center sm:flex-row sm:text-left lg:px-10">
         <a href="#top" className="brand-mark">
-          <img src={`${ASSET_ROOT}/crest.webp`} alt="" width={34} height={34} />
+          <img
+            src={`${ASSET_ROOT}/crest.webp`}
+            alt=""
+            width={34}
+            height={34}
+            loading="lazy"
+            decoding="async"
+          />
           <span>Last Hit</span>
         </a>
         <p>Designed by Eric Jones · © {new Date().getFullYear()} Cire Studios LLC</p>

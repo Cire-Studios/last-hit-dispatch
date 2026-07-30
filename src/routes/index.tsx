@@ -81,7 +81,21 @@ export const Route = createFileRoute("/")({
         content: "Last Hit board game box in a lantern-lit guild hall",
       },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    links: [
+      { rel: "canonical", href: `${SITE_URL}/` },
+      {
+        rel: "preload",
+        as: "image",
+        href: `${ASSET_ROOT}/crest.webp`,
+        fetchpriority: "high",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        href: `${ASSET_ROOT}/guild-hall.webp`,
+        fetchpriority: "high",
+      },
+    ],
     scripts: [
       {
         type: "application/ld+json",
