@@ -1433,7 +1433,14 @@ function SiteFooter() {
     <footer className="site-footer">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-5 py-9 text-center sm:flex-row sm:text-left lg:px-10">
         <a href="#top" className="brand-mark">
-          <img src={`${ASSET_ROOT}/crest.webp`} alt="" width={34} height={34} />
+          <img
+            src={`${ASSET_ROOT}/crest.webp`}
+            alt=""
+            width={34}
+            height={34}
+            loading="lazy"
+            decoding="async"
+          />
           <span>Last Hit</span>
         </a>
         <p>Designed by Eric Jones · © {new Date().getFullYear()} Cire Studios LLC</p>
