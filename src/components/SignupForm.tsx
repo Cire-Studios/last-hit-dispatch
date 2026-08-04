@@ -1,23 +1,108 @@
-import { Check, Mail } from "lucide-react";
-import { useId, useState, type FormEvent } from "react";
+import { Check, FlaskConical, Mail, Megaphone } from "lucide-react";
+import { useCallback, useEffect, useId, useState, type FormEvent, type ReactNode } from "react";
 
-export type SignupInterest = "updates" | "playtest";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  SignupContext,
+  type OpenSignupOptions,
+  type SignupInterest,
+} from "@/components/signup-context";
 
-interface SignupFormProps {
-  interests: SignupInterest[];
-  source: string;
-  buttonLabel: string;
-  stacked?: boolean;
+export function SignupProvider({ children }: { children: ReactNode }) {
+  const [dialogState, setDialogState] = useState<{
+    open: boolean;
+    source: string;
+    preset: SignupInterest;
+  }>({ open: false, source: "unknown", preset: "updates" });
+
+  const openSignup = useCallback(({ source, preset = "updates" }: OpenSignupOptions) => {
+    setDialogState({ open: true, source, preset });
+  }, []);
+
+  return (
+    <SignupContext.Provider value={{ openSignup }}>
+      {children}
+      <SignupDialog
+        open={dialogState.open}
+        source={dialogState.source}
+        preset={dialogState.preset}
+        onOpenChange={(open) => setDialogState((current) => ({ ...current, open }))}
+      />
+    </SignupContext.Provider>
+  );
 }
 
-export function SignupForm({ interests, source, buttonLabel, stacked = false }: SignupFormProps) {
-  const inputId = useId();
+interface SignupDialogProps {
+  open: boolean;
+  source: string;
+  preset: SignupInterest;
+  onOpenChange: (open: boolean) => void;
+}
+
+const choices: Array<{
+  interest: SignupInterest;
+  title: string;
+  description: string;
+  icon: typeof Megaphone;
+}> = [
+  {
+    interest: "updates",
+    title: "Announcements",
+    description: "Launch news, new artwork, and major milestones.",
+    icon: Megaphone,
+  },
+  {
+    interest: "playtest",
+    title: "Playtesting",
+    description: "Invitations to play and opportunities to share feedback.",
+    icon: FlaskConical,
+  },
+];
+
+function SignupDialog({ open, source, preset, onOpenChange }: SignupDialogProps) {
+  const emailId = useId();
+  const selectionErrorId = useId();
+  const responseMessageId = useId();
   const [email, setEmail] = useState("");
+  const [interests, setInterests] = useState<SignupInterest[]>([preset]);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
+  useEffect(() => {
+    if (!open) return;
+    setEmail("");
+    setInterests([preset]);
+    setStatus("idle");
+    setMessage("");
+  }, [open, preset]);
+
+  const toggleInterest = (interest: SignupInterest) => {
+    setInterests((current) =>
+      current.includes(interest)
+        ? current.filter((currentInterest) => currentInterest !== interest)
+        : [...current, interest],
+    );
+    if (status === "error") {
+      setStatus("idle");
+      setMessage("");
+    }
+  };
+
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (interests.length === 0) {
+      setStatus("error");
+      setMessage("Choose at least one kind of news.");
+      return;
+    }
+
     setStatus("loading");
     setMessage("");
 
@@ -35,67 +120,140 @@ export function SignupForm({ interests, source, buttonLabel, stacked = false }: 
       }
 
       setStatus("success");
-      setEmail("");
-      setMessage(
-        interests.includes("playtest")
-          ? "Your name is on the playtest list. We’ll send word when a seat opens."
-          : "You’re on the list. We’ll send word when the next contract is ready.",
-      );
+      setMessage(getSuccessMessage(interests));
     } catch {
       setStatus("error");
       setMessage("The message didn’t make it through. Check your connection and try again.");
     }
   };
 
-  if (status === "success") {
-    return (
-      <div className="signup-success" role="status">
-        <Check size={19} />
-        <span>{message}</span>
-      </div>
-    );
-  }
-
   return (
-    <form className={`signup-form ${stacked ? "signup-form-stacked" : ""}`} onSubmit={submit}>
-      <label className="sr-only" htmlFor={inputId}>
-        Email address
-      </label>
-      <div className="signup-input-wrap">
-        <Mail size={17} aria-hidden="true" />
-        <input
-          id={inputId}
-          type="email"
-          name="email"
-          autoComplete="email"
-          required
-          maxLength={255}
-          placeholder="Your email address"
-          value={email}
-          onChange={(event) => {
-            setEmail(event.target.value);
-            if (status === "error") {
-              setStatus("idle");
-              setMessage("");
-            }
-          }}
-          aria-describedby={message ? `${inputId}-message` : undefined}
-        />
-      </div>
-      <button className="button button-gold" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Setting your mark…" : buttonLabel}
-        {status !== "loading" && <ArrowMark />}
-      </button>
-      <p className="signup-trust">Only meaningful updates. Leave the list whenever you like.</p>
-      {message && (
-        <p id={`${inputId}-message`} className="signup-error" role="alert">
-          {message}
-        </p>
-      )}
-    </form>
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="signup-dialog">
+        {status === "success" ? (
+          <div className="signup-confirmation" role="status">
+            <span className="signup-confirmation-mark" aria-hidden="true">
+              <Check />
+            </span>
+            <p className="eyebrow">Your mark is set</p>
+            <DialogTitle>You’re in.</DialogTitle>
+            <DialogDescription id={responseMessageId}>{message}</DialogDescription>
+            <div className="signup-confirmation-tags" aria-label="Your selections">
+              {choices
+                .filter(({ interest }) => interests.includes(interest))
+                .map(({ interest, title }) => (
+                  <span key={interest}>
+                    <Check aria-hidden="true" /> {title}
+                  </span>
+                ))}
+            </div>
+            <DialogClose asChild>
+              <button className="button button-gold" type="button">
+                Done
+              </button>
+            </DialogClose>
+          </div>
+        ) : (
+          <>
+            <div className="signup-dialog-heading">
+              <p className="eyebrow">Stay in the hunt</p>
+              <DialogTitle>Follow Last Hit</DialogTitle>
+              <DialogDescription>
+                Choose one or both, then tell us where to reach you.
+              </DialogDescription>
+            </div>
+
+            <form className="signup-dialog-form" onSubmit={submit}>
+              <fieldset
+                className="signup-choices"
+                aria-describedby={interests.length === 0 ? selectionErrorId : undefined}
+              >
+                <legend className="sr-only">Choose what you want to hear about</legend>
+                {choices.map(({ interest, title, description, icon: Icon }) => {
+                  const selected = interests.includes(interest);
+                  return (
+                    <label className="signup-choice" data-selected={selected} key={interest}>
+                      <input
+                        type="checkbox"
+                        name="interests"
+                        value={interest}
+                        checked={selected}
+                        onChange={() => toggleInterest(interest)}
+                      />
+                      <span className="signup-choice-check" aria-hidden="true">
+                        {selected && <Check />}
+                      </span>
+                      <span className="signup-choice-icon" aria-hidden="true">
+                        <Icon />
+                      </span>
+                      <span className="signup-choice-copy">
+                        <strong>{title}</strong>
+                        <small>{description}</small>
+                      </span>
+                    </label>
+                  );
+                })}
+              </fieldset>
+
+              <div className="signup-dialog-email">
+                <label htmlFor={emailId}>Email address</label>
+                <div className="signup-input-wrap">
+                  <Mail aria-hidden="true" />
+                  <input
+                    id={emailId}
+                    type="email"
+                    name="email"
+                    autoComplete="email"
+                    required
+                    maxLength={255}
+                    placeholder="you@example.com"
+                    value={email}
+                    onChange={(event) => {
+                      setEmail(event.target.value);
+                      if (status === "error") {
+                        setStatus("idle");
+                        setMessage("");
+                      }
+                    }}
+                    aria-describedby={message ? responseMessageId : undefined}
+                  />
+                </div>
+              </div>
+
+              {message && (
+                <p
+                  id={interests.length === 0 ? selectionErrorId : responseMessageId}
+                  className="signup-error"
+                  role="alert"
+                >
+                  {message}
+                </p>
+              )}
+
+              <button
+                className="button button-gold signup-dialog-submit"
+                type="submit"
+                disabled={status === "loading"}
+              >
+                {status === "loading" ? "Joining…" : "Keep me posted"}
+                {status !== "loading" && <span aria-hidden="true">→</span>}
+              </button>
+              <p className="signup-trust">
+                Only the updates you choose. Leave either list whenever you like.
+              </p>
+            </form>
+          </>
+        )}
+      </DialogContent>
+    </Dialog>
   );
 }
 
-function ArrowMark() {
-  return <span aria-hidden="true">→</span>;
+function getSuccessMessage(interests: SignupInterest[]) {
+  if (interests.length === 2) {
+    return "We’ll send announcements and playtesting invitations your way.";
+  }
+  return interests.includes("playtest")
+    ? "We’ll let you know when playtesting opportunities open."
+    : "We’ll send Last Hit announcements your way.";
 }

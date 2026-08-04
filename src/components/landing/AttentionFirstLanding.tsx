@@ -1,8 +1,10 @@
 import { ArrowDown, ArrowRight, BookOpen, RotateCcw, Shield, Sparkles, Users } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
-import { SignupForm } from "@/components/SignupForm";
 import rulebookAsset from "@/assets/rulebook.pdf.asset.json";
+import { MobileNavigation } from "@/components/MobileNavigation";
+import { useSignup } from "@/components/signup-context";
+import { monsters } from "@/lib/monsters";
 
 const ASSET_ROOT = "/last-hit";
 const RULEBOOK_URL = rulebookAsset.url;
@@ -16,42 +18,16 @@ const playerSets = [
   { number: 6, color: "orange", label: "Orange", accent: "#c66f2a" },
 ];
 
-const mats = [
-  ["grave-hound", "Grave Hound"],
-  ["crystal-basilisk", "Crystal Basilisk"],
-  ["ironhide-boar", "Ironhide Boar"],
-  ["feral-imp", "Feral Imp"],
-  ["gilded-manticore", "Gilded Manticore"],
-  ["razorwing-harpy", "Razorwing Harpy"],
-  ["hill-ogre", "Hill Ogre"],
-  ["moss-troll", "Moss Troll"],
-  ["sandworm", "Sandworm"],
-  ["stone-golem", "Stone Golem"],
-  ["mire-hydra", "Mire Hydra"],
-  ["ember-drake", "Ember Drake"],
-].map(([slug, label]) => ({
-  src: `${ASSET_ROOT}/mats/${slug}.webp`,
-  alt: `${label} Hunter Mat`,
-  label,
+const mats = monsters.map((monster) => ({
+  src: `${ASSET_ROOT}/mats/${monster.slug}.webp`,
+  alt: `${monster.name} Hunter Mat`,
+  label: monster.name,
 }));
 
-const bounties = [
-  ["feral-imp-bounty", "Feral Imp"],
-  ["razorwing-harpy-bounty", "Razorwing Harpy"],
-  ["hill-ogre-bounty", "Hill Ogre"],
-  ["grave-hound-bounty", "Grave Hound"],
-  ["ironhide-boar-bounty", "Ironhide Boar"],
-  ["stone-golem-bounty", "Stone Golem"],
-  ["moss-troll-bounty", "Moss Troll"],
-  ["gilded-manticore-bounty", "Gilded Manticore"],
-  ["sandworm-bounty", "Sandworm"],
-  ["crystal-basilisk-bounty", "Crystal Basilisk"],
-  ["mire-hydra-bounty", "Mire Hydra"],
-  ["ember-drake-bounty", "Ember Drake"],
-].map(([slug, label]) => ({
-  src: `${ASSET_ROOT}/components/${slug}.webp`,
-  alt: `${label} Bounty card`,
-  label,
+const bounties = monsters.map((monster) => ({
+  src: monster.bountyImage,
+  alt: `${monster.name} Bounty card`,
+  label: monster.name,
 }));
 
 const boardHotspots = [
@@ -109,6 +85,7 @@ export function AttentionFirstLanding() {
       <GameOverview />
       <AttentionHook />
       <HuntPressures />
+      <BestiaryTeaser />
       <Rulebook />
       <ComponentLadder />
       <Playtest />
@@ -119,6 +96,8 @@ export function AttentionFirstLanding() {
 }
 
 function SiteNavigation() {
+  const { openSignup } = useSignup();
+
   return (
     <header className="site-nav">
       <nav className="mx-auto flex max-w-[90rem] items-center justify-between gap-5 px-5 py-3 lg:px-10">
@@ -129,6 +108,7 @@ function SiteNavigation() {
         <div className="hidden items-center gap-7 lg:flex">
           {[
             ["#hunt", "How It Plays"],
+            ["/bestiary", "Bestiary"],
             ["#rulebook", "Rulebook"],
             ["#box", "Inside the Box"],
             ["#playtest", "Playtest"],
@@ -138,15 +118,70 @@ function SiteNavigation() {
             </a>
           ))}
         </div>
-        <a className="button button-small button-gold" href="#join">
-          Get launch updates
-        </a>
+        <button
+          className="button button-small button-gold desktop-nav-follow"
+          type="button"
+          onClick={() => openSignup({ source: "header", preset: "updates" })}
+        >
+          Follow Last Hit
+        </button>
+        <MobileNavigation
+          signupSource="mobile-header"
+          links={[
+            { href: "#hunt", label: "How It Plays" },
+            { href: "/bestiary", label: "Bestiary" },
+            { href: "#rulebook", label: "Rulebook" },
+            { href: "#box", label: "Inside the Box" },
+            { href: "#playtest", label: "Playtest" },
+          ]}
+        />
       </nav>
     </header>
   );
 }
 
+function BestiaryTeaser() {
+  const featured = ["moss-troll", "crystal-basilisk", "mire-hydra", "ember-drake"]
+    .map((slug) => monsters.find((monster) => monster.slug === slug))
+    .filter((monster): monster is (typeof monsters)[number] => Boolean(monster));
+
+  return (
+    <section className="section home-bestiary-section">
+      <div className="mx-auto max-w-[90rem] px-5 lg:px-10">
+        <header data-reveal>
+          <div>
+            <p className="eyebrow">The Guild's field guide</p>
+            <h2 className="section-title">
+              Meet the monsters.<span>Know your quarry.</span>
+            </h2>
+          </div>
+          <div>
+            <p>
+              Every Bounty leaves a trail. Learn its habits, recognize the warning signs, and enter
+              the hunt knowing what may be waiting.
+            </p>
+            <a className="button button-gold" href="/bestiary">
+              Open the bestiary <ArrowRight size={16} />
+            </a>
+          </div>
+        </header>
+        <div className="home-bestiary-grid" data-reveal>
+          {featured.map((monster) => (
+            <a href={`/bestiary/${monster.slug}`} className="home-monster-card" key={monster.slug}>
+              <img src={monster.backgroundImage} alt={monster.imageAlt} loading="lazy" />
+              <span>{monster.tier} Bounty</span>
+              <strong>{monster.name}</strong>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Hero() {
+  const { openSignup } = useSignup();
+
   return (
     <section className="hero-section">
       <img
@@ -178,11 +213,23 @@ function Hero() {
             <Stat icon={<Sparkles />} value="35–60" label="Minutes" />
           </div>
           <div id="join" className="hero-signup scroll-mt-28">
-            <p className="signup-heading">Be first to hear when Last Hit launches.</p>
-            <SignupForm interests={["updates"]} source="hero" buttonLabel="Get launch updates" />
-            <a href="#playtest" className="quiet-link">
-              Join the playtest list <ArrowDown size={14} />
-            </a>
+            <p className="signup-heading">Get the news you want from the Guild.</p>
+            <div className="hero-signup-actions">
+              <button
+                className="button button-gold"
+                type="button"
+                onClick={() => openSignup({ source: "hero", preset: "updates" })}
+              >
+                Follow Last Hit <ArrowRight size={16} />
+              </button>
+              <button
+                className="quiet-link quiet-link-button"
+                type="button"
+                onClick={() => openSignup({ source: "hero-playtest", preset: "playtest" })}
+              >
+                Interested in playtesting? <ArrowRight size={14} />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -1368,6 +1415,8 @@ function getVisibleItems<T>(items: T[], start: number) {
 }
 
 function Playtest() {
+  const { openSignup } = useSignup();
+
   return (
     <section id="playtest" className="section playtest-section scroll-mt-20">
       <div className="playtest-art" aria-hidden="true">
@@ -1387,13 +1436,16 @@ function Playtest() {
         </div>
         <div className="playtest-form-card" data-reveal>
           <h3>Request a seat at the table</h3>
-          <p>We&apos;ll contact you about upcoming playtests and launch progress.</p>
-          <SignupForm
-            interests={["playtest", "updates"]}
-            source="playtest"
-            buttonLabel="Join the playtest list"
-            stacked
-          />
+          <p>
+            Choose Playtesting to hear when new sessions open. Add Announcements if you want both.
+          </p>
+          <button
+            className="button button-gold playtest-signup-button"
+            type="button"
+            onClick={() => openSignup({ source: "playtest", preset: "playtest" })}
+          >
+            Follow Last Hit <ArrowRight size={16} />
+          </button>
         </div>
       </div>
     </section>
@@ -1401,6 +1453,8 @@ function Playtest() {
 }
 
 function FinalCallToAction() {
+  const { openSignup } = useSignup();
+
   return (
     <section className="final-cta section">
       <div className="final-crest" aria-hidden="true">
@@ -1412,9 +1466,15 @@ function FinalCallToAction() {
           Follow
           <span>Last Hit.</span>
         </h2>
-        <p>Get launch news, finished-art updates, and future playtest announcements by email.</p>
+        <p>Choose announcements, playtesting invitations, or both.</p>
         <div className="final-signup">
-          <SignupForm interests={["updates"]} source="final-cta" buttonLabel="Get launch updates" />
+          <button
+            className="button button-gold"
+            type="button"
+            onClick={() => openSignup({ source: "final-cta", preset: "updates" })}
+          >
+            Follow Last Hit <ArrowRight size={16} />
+          </button>
         </div>
       </div>
     </section>
@@ -1425,7 +1485,7 @@ function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-5 py-9 text-center sm:flex-row sm:text-left lg:px-10">
-        <a href="#top" className="brand-mark">
+        <a href="/" className="brand-mark">
           <img src={`${ASSET_ROOT}/crest.webp`} alt="" width={34} height={34} />
           <span>Last Hit</span>
         </a>

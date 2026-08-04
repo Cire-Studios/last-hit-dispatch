@@ -11,7 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PrintAndPlayRouteImport } from './routes/print-and-play'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as BestiaryRouteImport } from './routes/bestiary'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BestiaryIndexRouteImport } from './routes/bestiary.index'
+import { Route as BestiaryMonsterRouteImport } from './routes/bestiary.$monster'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as ApiPublicSignupRouteImport } from './routes/api/public/signup'
@@ -27,10 +30,25 @@ const McpRoute = McpRouteImport.update({
   path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BestiaryRoute = BestiaryRouteImport.update({
+  id: '/bestiary',
+  path: '/bestiary',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const BestiaryIndexRoute = BestiaryIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BestiaryRoute,
+} as any)
+const BestiaryMonsterRoute = BestiaryMonsterRouteImport.update({
+  id: '/$monster',
+  path: '/$monster',
+  getParentRoute: () => BestiaryRoute,
 } as any)
 const Char91DotwellKnownChar93OauthProtectedResourceRoute =
   Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
@@ -58,10 +76,13 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bestiary': typeof BestiaryRouteWithChildren
   '/mcp': typeof McpRoute
   '/print-and-play': typeof PrintAndPlayRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/bestiary/$monster': typeof BestiaryMonsterRoute
+  '/bestiary/': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
 }
@@ -71,16 +92,21 @@ export interface FileRoutesByTo {
   '/print-and-play': typeof PrintAndPlayRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/bestiary/$monster': typeof BestiaryMonsterRoute
+  '/bestiary': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bestiary': typeof BestiaryRouteWithChildren
   '/mcp': typeof McpRoute
   '/print-and-play': typeof PrintAndPlayRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/bestiary/$monster': typeof BestiaryMonsterRoute
+  '/bestiary/': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
 }
@@ -88,10 +114,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/bestiary'
     | '/mcp'
     | '/print-and-play'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/bestiary/$monster'
+    | '/bestiary/'
     | '/.mcp/invoke-tool/$tool'
     | '/api/public/signup'
   fileRoutesByTo: FileRoutesByTo
@@ -101,21 +130,27 @@ export interface FileRouteTypes {
     | '/print-and-play'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/bestiary/$monster'
+    | '/bestiary'
     | '/.mcp/invoke-tool/$tool'
     | '/api/public/signup'
   id:
     | '__root__'
     | '/'
+    | '/bestiary'
     | '/mcp'
     | '/print-and-play'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/bestiary/$monster'
+    | '/bestiary/'
     | '/.mcp/invoke-tool/$tool'
     | '/api/public/signup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BestiaryRoute: typeof BestiaryRouteWithChildren
   McpRoute: typeof McpRoute
   PrintAndPlayRoute: typeof PrintAndPlayRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
@@ -140,12 +175,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bestiary': {
+      id: '/bestiary'
+      path: '/bestiary'
+      fullPath: '/bestiary'
+      preLoaderRoute: typeof BestiaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/bestiary/': {
+      id: '/bestiary/'
+      path: '/'
+      fullPath: '/bestiary/'
+      preLoaderRoute: typeof BestiaryIndexRouteImport
+      parentRoute: typeof BestiaryRoute
+    }
+    '/bestiary/$monster': {
+      id: '/bestiary/$monster'
+      path: '/$monster'
+      fullPath: '/bestiary/$monster'
+      preLoaderRoute: typeof BestiaryMonsterRouteImport
+      parentRoute: typeof BestiaryRoute
     }
     '/.well-known/oauth-protected-resource': {
       id: '/.well-known/oauth-protected-resource'
@@ -178,8 +234,23 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface BestiaryRouteChildren {
+  BestiaryMonsterRoute: typeof BestiaryMonsterRoute
+  BestiaryIndexRoute: typeof BestiaryIndexRoute
+}
+
+const BestiaryRouteChildren: BestiaryRouteChildren = {
+  BestiaryMonsterRoute: BestiaryMonsterRoute,
+  BestiaryIndexRoute: BestiaryIndexRoute,
+}
+
+const BestiaryRouteWithChildren = BestiaryRoute._addFileChildren(
+  BestiaryRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BestiaryRoute: BestiaryRouteWithChildren,
   McpRoute: McpRoute,
   PrintAndPlayRoute: PrintAndPlayRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,

@@ -5,4 +5,21 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://lasthit.cirestudios.dev/bestiary</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/feral-imp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/razorwing-harpy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/hill-ogre</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/grave-hound</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/ironhide-boar</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/stone-golem</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/moss-troll</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/gilded-manticore</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/sandworm</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/crystal-basilisk</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/mire-hydra</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lasthit.cirestudios.dev/bestiary/ember-drake</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

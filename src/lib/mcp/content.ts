@@ -1,5 +1,7 @@
 // Public marketing content for the Last Hit landing page, shared by MCP tools.
 
+import { monsters } from "@/lib/monsters";
+
 export const overview = {
   title: "Last Hit",
   tagline: "Everyone Fights. Only One Gains Glory.",
@@ -65,18 +67,12 @@ export const roundSequence = [
   { phase: "Reset & Refill", detail: "Clear the round, refill the board, and pass First Hunter." },
 ];
 
-export const bounties = [
-  { name: "Feral Imp", tier: "Minor", health: 4, reputation: 2 },
-  { name: "Razorwing Harpy", tier: "Minor", health: 4, reputation: 2 },
-  { name: "Ironhide Boar", tier: "Standard", health: 5, reputation: 3 },
-  { name: "Grave Hound", tier: "Standard", health: 5, reputation: 3 },
-  { name: "Moss Troll", tier: "Premium", health: 6, reputation: 4 },
-  { name: "Gilded Manticore", tier: "Premium", health: 5, reputation: 4 },
-  { name: "Stone Golem", tier: "Premium", health: 7, reputation: 4 },
-  { name: "Crystal Basilisk", tier: "Elite", health: 7, reputation: 5 },
-  { name: "Mire Hydra", tier: "Elite", health: null, reputation: 5 },
-  { name: "Ember Drake", tier: "Legendary", health: 9, reputation: 6 },
-];
+export const bounties = monsters.map(({ name, tier, health, reputation }) => ({
+  name,
+  tier,
+  health,
+  reputation,
+}));
 
 export const components = [
   { quantity: "1", label: "Rulebook", note: "Complete rules and examples" },
