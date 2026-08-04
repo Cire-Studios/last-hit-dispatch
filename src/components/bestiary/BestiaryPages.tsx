@@ -28,6 +28,9 @@ export function BestiaryHeader() {
           <Link to="/" hash="rulebook" className="nav-link">
             Rulebook
           </Link>
+          <Link to="/feedback" className="nav-link">
+            Feedback
+          </Link>
         </div>
         <button
           className="button button-small button-gold desktop-nav-follow"
@@ -44,6 +47,7 @@ export function BestiaryHeader() {
             { href: "/bestiary", label: "Bestiary" },
             { href: "/#rulebook", label: "Rulebook" },
             { href: "/#playtest", label: "Playtest" },
+            { href: "/feedback", label: "Feedback" },
           ]}
         />
       </nav>
@@ -60,9 +64,12 @@ export function BestiaryFooter() {
           <span>Last Hit</span>
         </Link>
         <p>Designed by Eric Jones · © {new Date().getFullYear()} Cire Studios LLC</p>
-        <a href="https://cirestudios.dev" target="_blank" rel="noreferrer">
-          Cire Studios <ArrowRight size={14} />
-        </a>
+        <nav className="site-footer-links" aria-label="Footer navigation">
+          <Link to="/feedback">Send feedback</Link>
+          <a href="https://cirestudios.dev" target="_blank" rel="noreferrer">
+            Cire Studios <ArrowRight size={14} />
+          </a>
+        </nav>
       </div>
     </footer>
   );

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PrintAndPlayRouteImport } from './routes/print-and-play'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as BestiaryRouteImport } from './routes/bestiary'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BestiaryIndexRouteImport } from './routes/bestiary.index'
@@ -18,6 +19,7 @@ import { Route as BestiaryMonsterRouteImport } from './routes/bestiary.$monster'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as ApiPublicSignupRouteImport } from './routes/api/public/signup'
+import { Route as ApiPublicFeedbackRouteImport } from './routes/api/public/feedback'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const PrintAndPlayRoute = PrintAndPlayRouteImport.update({
@@ -28,6 +30,11 @@ const PrintAndPlayRoute = PrintAndPlayRouteImport.update({
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BestiaryRoute = BestiaryRouteImport.update({
@@ -67,6 +74,11 @@ const ApiPublicSignupRoute = ApiPublicSignupRouteImport.update({
   path: '/api/public/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicFeedbackRoute = ApiPublicFeedbackRouteImport.update({
+  id: '/api/public/feedback',
+  path: '/api/public/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
     id: '/.mcp/invoke-tool/$tool',
@@ -77,6 +89,7 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bestiary': typeof BestiaryRouteWithChildren
+  '/feedback': typeof FeedbackRoute
   '/mcp': typeof McpRoute
   '/print-and-play': typeof PrintAndPlayRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -84,10 +97,12 @@ export interface FileRoutesByFullPath {
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary/': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/public/feedback': typeof ApiPublicFeedbackRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/feedback': typeof FeedbackRoute
   '/mcp': typeof McpRoute
   '/print-and-play': typeof PrintAndPlayRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -95,12 +110,14 @@ export interface FileRoutesByTo {
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/public/feedback': typeof ApiPublicFeedbackRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/bestiary': typeof BestiaryRouteWithChildren
+  '/feedback': typeof FeedbackRoute
   '/mcp': typeof McpRoute
   '/print-and-play': typeof PrintAndPlayRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -108,6 +125,7 @@ export interface FileRoutesById {
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary/': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/public/feedback': typeof ApiPublicFeedbackRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
 }
 export interface FileRouteTypes {
@@ -115,6 +133,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/bestiary'
+    | '/feedback'
     | '/mcp'
     | '/print-and-play'
     | '/.mcp/list-tools'
@@ -122,10 +141,12 @@ export interface FileRouteTypes {
     | '/bestiary/$monster'
     | '/bestiary/'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/public/feedback'
     | '/api/public/signup'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/feedback'
     | '/mcp'
     | '/print-and-play'
     | '/.mcp/list-tools'
@@ -133,11 +154,13 @@ export interface FileRouteTypes {
     | '/bestiary/$monster'
     | '/bestiary'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/public/feedback'
     | '/api/public/signup'
   id:
     | '__root__'
     | '/'
     | '/bestiary'
+    | '/feedback'
     | '/mcp'
     | '/print-and-play'
     | '/.mcp/list-tools'
@@ -145,17 +168,20 @@ export interface FileRouteTypes {
     | '/bestiary/$monster'
     | '/bestiary/'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/public/feedback'
     | '/api/public/signup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BestiaryRoute: typeof BestiaryRouteWithChildren
+  FeedbackRoute: typeof FeedbackRoute
   McpRoute: typeof McpRoute
   PrintAndPlayRoute: typeof PrintAndPlayRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  ApiPublicFeedbackRoute: typeof ApiPublicFeedbackRoute
   ApiPublicSignupRoute: typeof ApiPublicSignupRoute
 }
 
@@ -173,6 +199,13 @@ declare module '@tanstack/react-router' {
       path: '/mcp'
       fullPath: '/mcp'
       preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bestiary': {
@@ -224,6 +257,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicSignupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/feedback': {
+      id: '/api/public/feedback'
+      path: '/api/public/feedback'
+      fullPath: '/api/public/feedback'
+      preLoaderRoute: typeof ApiPublicFeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.mcp/invoke-tool/$tool': {
       id: '/.mcp/invoke-tool/$tool'
       path: '/.mcp/invoke-tool/$tool'
@@ -251,12 +291,14 @@ const BestiaryRouteWithChildren = BestiaryRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BestiaryRoute: BestiaryRouteWithChildren,
+  FeedbackRoute: FeedbackRoute,
   McpRoute: McpRoute,
   PrintAndPlayRoute: PrintAndPlayRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  ApiPublicFeedbackRoute: ApiPublicFeedbackRoute,
   ApiPublicSignupRoute: ApiPublicSignupRoute,
 }
 export const routeTree = rootRouteImport

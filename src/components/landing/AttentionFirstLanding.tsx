@@ -1,4 +1,13 @@
-import { ArrowDown, ArrowRight, BookOpen, RotateCcw, Shield, Sparkles, Users } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowRight,
+  BookOpen,
+  MessageSquareText,
+  RotateCcw,
+  Shield,
+  Sparkles,
+  Users,
+} from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
 import rulebookAsset from "@/assets/rulebook.pdf.asset.json";
@@ -119,6 +128,7 @@ function SiteNavigation() {
             ["#rulebook", "Rulebook"],
             ["#box", "Inside the Box"],
             ["#playtest", "Playtest"],
+            ["/feedback", "Feedback"],
           ].map(([href, label]) => (
             <a className="nav-link" href={href} key={href}>
               {label}
@@ -140,6 +150,7 @@ function SiteNavigation() {
             { href: "#rulebook", label: "Rulebook" },
             { href: "#box", label: "Inside the Box" },
             { href: "#playtest", label: "Playtest" },
+            { href: "/feedback", label: "Feedback" },
           ]}
         />
       </nav>
@@ -1446,13 +1457,18 @@ function Playtest() {
           <p>
             Choose Playtesting to hear when new sessions open. Add Announcements if you want both.
           </p>
-          <button
-            className="button button-gold playtest-signup-button"
-            type="button"
-            onClick={() => openSignup({ source: "playtest", preset: "playtest" })}
-          >
-            Follow Last Hit <ArrowRight size={16} />
-          </button>
+          <div className="playtest-actions">
+            <button
+              className="button button-gold playtest-signup-button"
+              type="button"
+              onClick={() => openSignup({ source: "playtest", preset: "playtest" })}
+            >
+              Follow Last Hit <ArrowRight size={16} />
+            </button>
+            <a className="button playtest-feedback-button" href="/feedback">
+              Send playtest feedback <MessageSquareText size={16} />
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -1504,9 +1520,12 @@ function SiteFooter() {
           <span>Last Hit</span>
         </a>
         <p>Designed by Eric Jones · © {new Date().getFullYear()} Cire Studios LLC</p>
-        <a href="https://cirestudios.dev" target="_blank" rel="noreferrer">
-          Cire Studios <ArrowRight size={14} />
-        </a>
+        <nav className="site-footer-links" aria-label="Footer navigation">
+          <a href="/feedback">Send feedback</a>
+          <a href="https://cirestudios.dev" target="_blank" rel="noreferrer">
+            Cire Studios <ArrowRight size={14} />
+          </a>
+        </nav>
       </div>
     </footer>
   );
