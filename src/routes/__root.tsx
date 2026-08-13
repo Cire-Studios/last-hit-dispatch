@@ -4,52 +4,15 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import { CookieConsentProvider } from "@/components/CookieConsent";
 import { SignupProvider } from "@/components/SignupForm";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-
-const META_PIXEL_ID = "1057491636682428";
-const META_PIXEL_BASE_SCRIPT = `
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-if (!window.__lastHitMetaPixelInitialized) {
-  fbq('init', '${META_PIXEL_ID}');
-  window.__lastHitMetaPixelInitialized = true;
-}
-`;
-
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void;
-    __lastHitMetaPixelInitialized?: boolean;
-    __lastHitMetaPixelLastPage?: string;
-  }
-}
-
-function MetaPixelPageViews() {
-  const href = useLocation({ select: (location) => location.href });
-
-  useEffect(() => {
-    if (!window.fbq || window.__lastHitMetaPixelLastPage === href) return;
-
-    window.fbq("track", "PageView");
-    window.__lastHitMetaPixelLastPage = href;
-  }, [href]);
-
-  return null;
-}
 
 function NotFoundComponent() {
   return (
@@ -144,18 +107,8 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        <script id="meta-pixel-base" dangerouslySetInnerHTML={{ __html: META_PIXEL_BASE_SCRIPT }} />
       </head>
       <body>
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
-            alt=""
-          />
-        </noscript>
         {children}
         <Scripts />
       </body>
@@ -168,11 +121,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SignupProvider>
-        <MetaPixelPageViews />
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-      </SignupProvider>
+      <CookieConsentProvider>
+        <SignupProvider>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </SignupProvider>
+      </CookieConsentProvider>
     </QueryClientProvider>
   );
 }

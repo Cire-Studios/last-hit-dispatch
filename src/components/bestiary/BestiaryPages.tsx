@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight, BookOpen, Heart, Shield, Sparkles } from "lucide
 import { Link } from "@tanstack/react-router";
 
 import { MobileNavigation } from "@/components/MobileNavigation";
+import { useCookieConsent } from "@/components/cookie-consent-context";
 import { useSignup } from "@/components/signup-context";
 import type { Monster } from "@/lib/monsters";
 import { getMonsterNeighbors, monsters, monsterTiers } from "@/lib/monsters";
@@ -56,6 +57,8 @@ export function BestiaryHeader() {
 }
 
 export function BestiaryFooter() {
+  const { openCookieSettings } = useCookieConsent();
+
   return (
     <footer className="site-footer">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-5 py-9 text-center sm:flex-row sm:text-left lg:px-10">
@@ -66,6 +69,10 @@ export function BestiaryFooter() {
         <p>Designed by Eric Jones · © {new Date().getFullYear()} Cire Studios LLC</p>
         <nav className="site-footer-links" aria-label="Footer navigation">
           <Link to="/feedback">Send feedback</Link>
+          <Link to="/privacy">Privacy Policy</Link>
+          <button type="button" onClick={openCookieSettings}>
+            Cookie Settings
+          </button>
           <a href="https://cirestudios.dev" target="_blank" rel="noreferrer">
             Cire Studios <ArrowRight size={14} />
           </a>

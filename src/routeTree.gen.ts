@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PrintAndPlayRouteImport } from './routes/print-and-play'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as FeedbackRouteImport } from './routes/feedback'
@@ -22,6 +23,11 @@ import { Route as ApiPublicSignupRouteImport } from './routes/api/public/signup'
 import { Route as ApiPublicFeedbackRouteImport } from './routes/api/public/feedback'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrintAndPlayRoute = PrintAndPlayRouteImport.update({
   id: '/print-and-play',
   path: '/print-and-play',
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/feedback': typeof FeedbackRoute
   '/mcp': typeof McpRoute
   '/print-and-play': typeof PrintAndPlayRoute
+  '/privacy': typeof PrivacyRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/bestiary/$monster': typeof BestiaryMonsterRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/feedback': typeof FeedbackRoute
   '/mcp': typeof McpRoute
   '/print-and-play': typeof PrintAndPlayRoute
+  '/privacy': typeof PrivacyRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/bestiary/$monster': typeof BestiaryMonsterRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/feedback': typeof FeedbackRoute
   '/mcp': typeof McpRoute
   '/print-and-play': typeof PrintAndPlayRoute
+  '/privacy': typeof PrivacyRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/bestiary/$monster': typeof BestiaryMonsterRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/feedback'
     | '/mcp'
     | '/print-and-play'
+    | '/privacy'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/bestiary/$monster'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/feedback'
     | '/mcp'
     | '/print-and-play'
+    | '/privacy'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/bestiary/$monster'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/feedback'
     | '/mcp'
     | '/print-and-play'
+    | '/privacy'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/bestiary/$monster'
@@ -178,6 +190,7 @@ export interface RootRouteChildren {
   FeedbackRoute: typeof FeedbackRoute
   McpRoute: typeof McpRoute
   PrintAndPlayRoute: typeof PrintAndPlayRoute
+  PrivacyRoute: typeof PrivacyRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -187,6 +200,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/print-and-play': {
       id: '/print-and-play'
       path: '/print-and-play'
@@ -294,6 +314,7 @@ const rootRouteChildren: RootRouteChildren = {
   FeedbackRoute: FeedbackRoute,
   McpRoute: McpRoute,
   PrintAndPlayRoute: PrintAndPlayRoute,
+  PrivacyRoute: PrivacyRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,

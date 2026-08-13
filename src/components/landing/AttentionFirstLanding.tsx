@@ -12,6 +12,7 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 
 import rulebookAsset from "@/assets/rulebook.pdf.asset.json";
 import { MobileNavigation } from "@/components/MobileNavigation";
+import { useCookieConsent } from "@/components/cookie-consent-context";
 import { useSignup } from "@/components/signup-context";
 import { monsters } from "@/lib/monsters";
 
@@ -1505,6 +1506,8 @@ function FinalCallToAction() {
 }
 
 function SiteFooter() {
+  const { openCookieSettings } = useCookieConsent();
+
   return (
     <footer className="site-footer">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-5 py-9 text-center sm:flex-row sm:text-left lg:px-10">
@@ -1522,6 +1525,10 @@ function SiteFooter() {
         <p>Designed by Eric Jones · © {new Date().getFullYear()} Cire Studios LLC</p>
         <nav className="site-footer-links" aria-label="Footer navigation">
           <a href="/feedback">Send feedback</a>
+          <a href="/privacy">Privacy Policy</a>
+          <button type="button" onClick={openCookieSettings}>
+            Cookie Settings
+          </button>
           <a href="https://cirestudios.dev" target="_blank" rel="noreferrer">
             Cire Studios <ArrowRight size={14} />
           </a>

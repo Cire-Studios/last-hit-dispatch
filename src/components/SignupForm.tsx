@@ -16,6 +16,7 @@ import {
   DialogDescription,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useCookieConsent } from "@/components/cookie-consent-context";
 import {
   SignupContext,
   type OpenSignupOptions,
@@ -76,6 +77,7 @@ const choices: Array<{
 ];
 
 function SignupDialog({ open, source, preset, onOpenChange }: SignupDialogProps) {
+  const { consent: metaPixelConsent } = useCookieConsent();
   const emailId = useId();
   const selectionErrorId = useId();
   const responseMessageId = useId();
@@ -139,6 +141,7 @@ function SignupDialog({ open, source, preset, onOpenChange }: SignupDialogProps)
       setMessage(getSuccessMessage(submittedInterests));
 
       if (
+        metaPixelConsent === "accepted" &&
         typeof window !== "undefined" &&
         typeof window.fbq === "function" &&
         trackedLeadSubmissionIdRef.current !== submissionId
@@ -148,6 +151,12 @@ function SignupDialog({ open, source, preset, onOpenChange }: SignupDialogProps)
           content_name: "Last Hit Follow Signup",
           subscription_type: subscriptionType,
         });
+
+        if (submittedInterests.includes("playtest")) {
+          window.fbq("trackCustom", "PlaytestingSignup", {
+            content_name: "Last Hit Playtesting Signup",
+          });
+        }
       }
     } catch {
       setStatus("error");
