@@ -1,5 +1,13 @@
 import { Check, FlaskConical, Mail, Megaphone } from "lucide-react";
-import { useCallback, useEffect, useId, useState, type FormEvent, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 
 import {
   Dialog,
@@ -45,6 +53,8 @@ interface SignupDialogProps {
   onOpenChange: (open: boolean) => void;
 }
 
+type SubscriptionType = "announcements" | "playtesting" | "both";
+
 const choices: Array<{
   interest: SignupInterest;
   title: string;
@@ -69,6 +79,8 @@ function SignupDialog({ open, source, preset, onOpenChange }: SignupDialogProps)
   const emailId = useId();
   const selectionErrorId = useId();
   const responseMessageId = useId();
+  const submissionIdRef = useRef(0);
+  const trackedLeadSubmissionIdRef = useRef<number | null>(null);
   const [email, setEmail] = useState("");
   const [interests, setInterests] = useState<SignupInterest[]>([preset]);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -103,6 +115,10 @@ function SignupDialog({ open, source, preset, onOpenChange }: SignupDialogProps)
       return;
     }
 
+    const submissionId = ++submissionIdRef.current;
+    const submittedInterests = [...interests];
+    const subscriptionType = getSubscriptionType(submittedInterests);
+
     setStatus("loading");
     setMessage("");
 
@@ -110,7 +126,7 @@ function SignupDialog({ open, source, preset, onOpenChange }: SignupDialogProps)
       const response = await fetch("/api/public/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, interests, source }),
+        body: JSON.stringify({ email, interests: submittedInterests, source }),
       });
 
       if (!response.ok) {
@@ -120,7 +136,19 @@ function SignupDialog({ open, source, preset, onOpenChange }: SignupDialogProps)
       }
 
       setStatus("success");
-      setMessage(getSuccessMessage(interests));
+      setMessage(getSuccessMessage(submittedInterests));
+
+      if (
+        typeof window !== "undefined" &&
+        typeof window.fbq === "function" &&
+        trackedLeadSubmissionIdRef.current !== submissionId
+      ) {
+        trackedLeadSubmissionIdRef.current = submissionId;
+        window.fbq("track", "Lead", {
+          content_name: "Last Hit Follow Signup",
+          subscription_type: subscriptionType,
+        });
+      }
     } catch {
       setStatus("error");
       setMessage("The message didn’t make it through. Check your connection and try again.");
@@ -247,6 +275,11 @@ function SignupDialog({ open, source, preset, onOpenChange }: SignupDialogProps)
       </DialogContent>
     </Dialog>
   );
+}
+
+function getSubscriptionType(interests: SignupInterest[]): SubscriptionType {
+  if (interests.length === 2) return "both";
+  return interests.includes("playtest") ? "playtesting" : "announcements";
 }
 
 function getSuccessMessage(interests: SignupInterest[]) {
