@@ -6,7 +6,7 @@ export default defineTool({
   name: "list_bounties",
   title: "List starter bounties",
   description:
-    "List the starter bounty monsters shown on the Last Hit landing page, with their health and Reputation values.",
+    "List the starter bounty monsters shown on the Last Hit landing page, with links to their current cards for Health, Reputation, and behavior.",
   inputSchema: {},
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => ({

@@ -1,0 +1,213 @@
+{
+  "updated": "2026-10-07",
+  "note": "Current Drive assets only. Folders named old excluded. WebP derivatives sized for web; Hunter Mats rotated for reading.",
+  "assets": [
+    {
+      "file": "board.webp",
+      "source": "https://drive.google.com/file/d/1mC2Jdve7TtkzykxzXaqtoYOtEEz1UFNU/view"
+    },
+    {
+      "file": "lineup.webp",
+      "source": "https://drive.google.com/file/d/1kRGj0fnPqAfzIwWpsRMc6TMs04FKVXnH/view"
+    },
+    {
+      "file": "mat-moss-troll.webp",
+      "source": "https://drive.google.com/file/d/1n6AyVjop5KKiftKlqVRdEplC5AetCOiD/view"
+    },
+    {
+      "file": "mat-hill-ogre.webp",
+      "source": "https://drive.google.com/file/d/1kFc7lkdHnOLNETpsoB9qxRT1SD80lJ4W/view"
+    },
+    {
+      "file": "mat-ember-drake.webp",
+      "source": "https://drive.google.com/file/d/1TGW3mJNOR2njG39MeEQvGp3P6KI0gD-L/view"
+    },
+    {
+      "file": "mat-grave-hound.webp",
+      "source": "https://drive.google.com/file/d/1XSOojPG8MQLzaHF5X3MU_JqH5Cp4q1v4/view"
+    },
+    {
+      "file": "berserker.webp",
+      "source": "https://drive.google.com/file/d/1VLY-yvuoKCPSS81sfgtE-ydmUk_OKpDi/view"
+    },
+    {
+      "file": "veteran.webp",
+      "source": "https://drive.google.com/file/d/1Ttz2QN1rwHGJ_1zmIks7LBF-BwV1EW56/view"
+    },
+    {
+      "file": "tactician.webp",
+      "source": "https://drive.google.com/file/d/10zwunosLfye6WquucjDhAh4GdUu-Ec3Z/view"
+    },
+    {
+      "file": "bounty-sandworm.webp",
+      "source": "https://drive.google.com/file/d/1OfkK72NkWdZ28s8mEkDjOgZPYwHYrGGp/view?usp=drivesdk"
+    },
+    {
+      "file": "bounty-feral-imp.webp",
+      "source": "https://drive.google.com/file/d/1AqmLlWyF4z4jztvy12X2UIKJBsfVnulB/view?usp=drivesdk"
+    },
+    {
+      "file": "bounty-crystal-basilisk.webp",
+      "source": "https://drive.google.com/file/d/1WgvOhQh95gZrxtxi0-0wFaFDZlx05JaR/view?usp=drivesdk"
+    },
+    {
+      "file": "bounty-ember-drake.webp",
+      "source": "https://drive.google.com/file/d/1pGouaLSC76BjtpvdiwaZeTuBJ53LWsqV/view?usp=drivesdk"
+    },
+    {
+      "file": "bounty-gilded-manticore.webp",
+      "source": "https://drive.google.com/file/d/1pfh19FTE8YRUgHP6VALlvTVPDyxf_rxt/view?usp=drivesdk"
+    },
+    {
+      "file": "bounty-grave-hound.webp",
+      "source": "https://drive.google.com/file/d/1zzZVQ8DmnQtIR9kgDRdlWnVDhXc2MaW_/view?usp=drivesdk"
+    },
+    {
+      "file": "bounty-hill-ogre.webp",
+      "source": "https://drive.google.com/file/d/1Rw1K7oj3Eh5Xf0owuT0JY5LdmU8GCteo/view?usp=drivesdk"
+    },
+    {
+      "file": "bounty-ironhide-boar.webp",
+      "source": "https://drive.google.com/file/d/1wNJy6FBfKEq6SmErW4V-vDdFQKSTPKuo/view?usp=drivesdk"
+    },
+    {
+      "file": "bounty-mire-hydra.webp",
+      "source": "https://drive.google.com/file/d/1VnBcflXfqZSSC5h1-QHCktuffsuDySOJ/view?usp=drivesdk"
+    },
+    {
+      "file": "bounty-moss-troll.webp",
+      "source": "https://drive.google.com/file/d/1P0dIUvvxe3kyijYEGe7S7ciqsSdrOU2_/view?usp=drivesdk"
+    },
+    {
+      "file": "bounty-razorwing-harpy.webp",
+      "source": "https://drive.google.com/file/d/1Y5fOfmT26YhpsSHemSe5g6VDmn8edaL8/view?usp=drivesdk"
+    },
+    {
+      "file": "bounty-stone-golem.webp",
+      "source": "https://drive.google.com/file/d/14wK37ew9TVKs5YIjrH0DllKmSNVNySy3/view?usp=drivesdk"
+    },
+    {
+      "file": "attack-die.webp",
+      "source": "https://drive.google.com/file/d/1P7d4izRhuHeYkE0301wqa5y4cTALFvwx/view"
+    },
+    {
+      "file": "disc-red.webp",
+      "source": "https://drive.google.com/file/d/18K7AQrycL62ZP3vHyuFC0UaudihyNH8g/view?usp=drivesdk"
+    },
+    {
+      "file": "disc-blue.webp",
+      "source": "https://drive.google.com/file/d/19ReYE2cutui4N6HOAVrD2rQ1GhLdpZhU/view?usp=drivesdk"
+    },
+    {
+      "file": "disc-purple.webp",
+      "source": "https://drive.google.com/file/d/1VjtXQpADM7JPjOwMIts3dZVml_M_ABqI/view?usp=drivesdk"
+    },
+    {
+      "file": "disc-orange.webp",
+      "source": "https://drive.google.com/file/d/1apyRhhYjfWl3pNxX44zxlvp_o3ujljRO/view?usp=drivesdk"
+    },
+    {
+      "file": "disc-white.webp",
+      "source": "https://drive.google.com/file/d/1G6jnuRLZXnn2SB10xeHv9jVqh1VP57Qm/view?usp=drivesdk"
+    },
+    {
+      "file": "disc-green.webp",
+      "source": "https://drive.google.com/file/d/1lppj0oisvoxg7YMcSqgQwFbbgK37PdqP/view?usp=drivesdk"
+    },
+    {
+      "file": "attack-die-v2.webp",
+      "source": "https://drive.google.com/file/d/1INOgmDLkgNotaXqxY_gUGlvynxt0wd87/view",
+      "modified": "2026-10-07T17:34:40.313Z"
+    },
+    {
+      "file": "shield.webp",
+      "source": "https://drive.google.com/file/d/1OraoRSpMGmbjp-_D2eldfW3rqZqFTSIX/view?usp=drivesdk",
+      "refreshed": "2026-10-07",
+      "sourceName": "shield.png"
+    },
+    {
+      "file": "minus-one.webp",
+      "source": "https://drive.google.com/file/d/183pzz2jTBR0QTekNW2KqJMcdB_yafoDp/view?usp=drivesdk",
+      "refreshed": "2026-10-07",
+      "sourceName": "break.png"
+    },
+    {
+      "file": "plus-one.webp",
+      "source": "https://drive.google.com/file/d/16NIhdBg2747A3HBkhXNp946N951l3szL/view?usp=drivesdk",
+      "refreshed": "2026-10-07",
+      "sourceName": "1-damage.png"
+    },
+    {
+      "file": "reroll.webp",
+      "source": "https://drive.google.com/file/d/1gcgdkt_pyS1lCgol01MVRPJ6qowvksrq/view?usp=drivesdk",
+      "refreshed": "2026-10-07",
+      "sourceName": "re-roll.png"
+    },
+    {
+      "file": "boost.webp",
+      "source": "https://drive.google.com/file/d/1qJxsk-K8OjP-CyHAiwlAWVYoymT90ECn/view?usp=drivesdk",
+      "refreshed": "2026-10-07",
+      "sourceName": "2-extra-attention.png"
+    },
+    {
+      "file": "extra-die.webp",
+      "source": "https://drive.google.com/file/d/1halXLCtrG_yvfaJ-7r7ZrCG0GNyWzskg/view?usp=drivesdk",
+      "refreshed": "2026-10-07",
+      "sourceName": "extra-dice.png"
+    },
+    {
+      "file": "boon-back.webp",
+      "source": "https://drive.google.com/file/d/16KZ2Fpp2R-akmdFGfrC5DcFVQYID9N5D/view?usp=drivesdk",
+      "refreshed": "2026-10-07",
+      "sourceName": "back.png"
+    },
+    {
+      "file": "gold.webp",
+      "source": "https://drive.google.com/file/d/1kpCcMRj6_i4Z70FyVY-8Aal4ZNPcL9-q/view",
+      "refreshed": "2026-10-07"
+    },
+    {
+      "file": "attention-cube.webp",
+      "source": "https://drive.google.com/file/d/1amtVNzfUMwRbQtDzNKja7xv4yqkOtoAj/view",
+      "refreshed": "2026-10-07"
+    },
+    {
+      "file": "standard-market.webp",
+      "source": "https://drive.google.com/file/d/1e0O-o0wuEWIJH-E3B0aLXoVlf-mNkbQB/view",
+      "refreshed": "2026-10-07",
+      "note": "Updated landscape artwork from Drive."
+    },
+    {
+      "file": "wandering-merchant.webp",
+      "source": "https://drive.google.com/file/d/1PPn9A4GZb840HKhKxG5ptDRoGDrM7_T4/view",
+      "refreshed": "2026-10-07",
+      "note": "Updated landscape artwork from Drive."
+    },
+    {
+      "file": "full-bounty-board.webp",
+      "source": "/Users/ericjones/LastHit/website-assets/full-bounty-board.png",
+      "refreshed": "2026-10-07",
+      "note": "Complete staged board supplied by the designer; resized to 2400 px wide for the website."
+    },
+    {
+      "file": "bag.webp",
+      "source": "https://drive.google.com/file/d/1Ki2okWI-Ttbo8L0qN6uXSb5eBdz-ArSZ/view",
+      "refreshed": "2026-10-07"
+    },
+    {
+      "file": "ability-marksman.webp",
+      "source": "https://drive.google.com/file/d/1laXj3l4PdYwu_SfA5qm8kdt39Y0mUi6e/view?usp=drivesdk",
+      "refreshed": "2026-10-07"
+    },
+    {
+      "file": "ability-pickpocket.webp",
+      "source": "https://drive.google.com/file/d/1xZDLPIY7q_cBWYy68BvXTF8gFASnMLwL/view?usp=drivesdk",
+      "refreshed": "2026-10-07"
+    },
+    {
+      "file": "ability-tactician.webp",
+      "source": "https://drive.google.com/file/d/10zwunosLfye6WquucjDhAh4GdUu-Ec3Z/view?usp=drivesdk",
+      "refreshed": "2026-10-07"
+    }
+  ]
+}

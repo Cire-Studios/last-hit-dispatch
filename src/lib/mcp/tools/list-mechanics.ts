@@ -6,7 +6,7 @@ export default defineTool({
   name: "list_mechanics",
   title: "List core mechanics",
   description:
-    "List the four core mechanics of Last Hit: programming in secret, positioning the attack lineup, splitting attention, and landing the last hit.",
+    "List the core mechanics of Last Hit: secret planning, lineup positioning, dice and Boons, Reputation and Gold, and Market purchases and recovery.",
   inputSchema: {},
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => ({

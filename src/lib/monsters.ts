@@ -1,9 +1,6 @@
-export type MonsterTier = "Minor" | "Standard" | "Premium" | "Elite" | "Legendary";
-
 export type Monster = {
   slug: string;
   name: string;
-  tier: MonsterTier;
   health: number | null;
   reputation: number;
   hook: string;
@@ -22,7 +19,7 @@ const assetRoot = "/last-hit";
 
 function art(slug: string) {
   return {
-    bountyImage: `${assetRoot}/components/${slug}-bounty.webp`,
+    bountyImage: `${assetRoot}/current/bounty-${slug}.webp`,
     backgroundImage: `${assetRoot}/monsters/backgrounds/${slug}.webp`,
   };
 }
@@ -31,7 +28,6 @@ export const monsters: Monster[] = [
   {
     slug: "feral-imp",
     name: "Feral Imp",
-    tier: "Minor",
     health: 4,
     reputation: 2,
     hook: "Small claws, quick feet, and a talent for turning confidence into confusion.",
@@ -52,10 +48,10 @@ export const monsters: Monster[] = [
       "Save a little certainty for the moment it finally stands still.",
     ],
     behavior: {
-      name: "Skittish",
+      name: "Monster Behavior",
       summary:
-        "After an attack, if exactly 1 Health remains, the Feral Imp escapes. Discard all Damage and Boons, place it at the bottom of the Bounty Deck, and leave its slot empty until Reset & Refill. Cancel all remaining attacks against it.",
-      verified: true,
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("feral-imp"),
     imageAlt: "Feral Imp crouched among scraps and stolen trinkets",
@@ -63,7 +59,6 @@ export const monsters: Monster[] = [
   {
     slug: "razorwing-harpy",
     name: "Razorwing Harpy",
-    tier: "Minor",
     health: 4,
     reputation: 2,
     hook: "The shadow arrives first. The talons are never far behind.",
@@ -84,10 +79,10 @@ export const monsters: Monster[] = [
       "Strike when it commits to a descent, not while it circles.",
     ],
     behavior: {
-      name: "Swap",
+      name: "Monster Behavior",
       summary:
-        "After an attack, if fewer than 3 Health remain and the Harpy is not defeated, discard its staged Boons and set it aside. Draw the next Bounty into its slot, then return the Harpy to the top of the Bounty Deck with its accumulated Damage.",
-      verified: true,
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("razorwing-harpy"),
     imageAlt: "Razorwing Harpy descending with bladed wings spread wide",
@@ -95,7 +90,6 @@ export const monsters: Monster[] = [
   {
     slug: "hill-ogre",
     name: "Hill Ogre",
-    tier: "Standard",
     health: 6,
     reputation: 3,
     hook: "It came down from the hills hungry. The Guild supplied a price.",
@@ -117,10 +111,10 @@ export const monsters: Monster[] = [
       "Its intentions are plain—use that certainty before it uses its strength.",
     ],
     behavior: {
-      name: "No special behavior",
-      summary: "It came down from the hills hungry. The Guild supplied a price.",
-      verified: true,
-      flavor: true,
+      name: "Monster Behavior",
+      summary:
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("hill-ogre"),
     imageAlt: "Massive Hill Ogre carrying a crude club",
@@ -128,7 +122,6 @@ export const monsters: Monster[] = [
   {
     slug: "grave-hound",
     name: "Grave Hound",
-    tier: "Standard",
     health: 5,
     reputation: 3,
     hook: "A patient tracker that remembers every trail leading home.",
@@ -149,10 +142,10 @@ export const monsters: Monster[] = [
       "Make the decisive strike before the trail turns back toward you.",
     ],
     behavior: {
-      name: "Always on Guard",
+      name: "Monster Behavior",
       summary:
-        "Never stage Boons beneath this Bounty. If an effect would cause the Grave Hound to gain a Boon, ignore that effect.",
-      verified: true,
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("grave-hound"),
     imageAlt: "Grave Hound stalking through a mist-covered burial ground",
@@ -160,7 +153,6 @@ export const monsters: Monster[] = [
   {
     slug: "ironhide-boar",
     name: "Ironhide Boar",
-    tier: "Standard",
     health: 5,
     reputation: 3,
     hook: "A living battering ram protected by plates of scarred hide.",
@@ -181,10 +173,10 @@ export const monsters: Monster[] = [
       "A straight charge is predictable; surviving it is the difficult part.",
     ],
     behavior: {
-      name: "Breakable Hide",
+      name: "Monster Behavior",
       summary:
-        "While more than 3 Health remains, reduce the Final Damage of each attack by 1, to a minimum of 0. At 3 or fewer Health, the hide no longer reduces Damage.",
-      verified: true,
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("ironhide-boar"),
     imageAlt: "Ironhide Boar armored in thick overlapping plates",
@@ -192,7 +184,6 @@ export const monsters: Monster[] = [
   {
     slug: "stone-golem",
     name: "Stone Golem",
-    tier: "Premium",
     health: 7,
     reputation: 4,
     hook: "It does not rage. It advances, one ruinous step at a time.",
@@ -213,10 +204,10 @@ export const monsters: Monster[] = [
       "Do not confuse slowness with hesitation.",
     ],
     behavior: {
-      name: "Stone Cycle",
+      name: "Monster Behavior",
       summary:
-        "During Monster Effects, alternate between Normal and Hardened states. While Hardened, reduce Final Damage by 1, to a minimum of 0. The Stone Golem begins Normal.",
-      verified: true,
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("stone-golem"),
     imageAlt: "Ancient Stone Golem striding from ruined masonry",
@@ -224,7 +215,6 @@ export const monsters: Monster[] = [
   {
     slug: "moss-troll",
     name: "Moss Troll",
-    tier: "Premium",
     health: 6,
     reputation: 4,
     hook: "The forest keeps what falls within it—and sometimes teaches it to rise again.",
@@ -245,10 +235,10 @@ export const monsters: Monster[] = [
       "Bring enough force to finish what you start.",
     ],
     behavior: {
-      name: "Regeneration",
+      name: "Monster Behavior",
       summary:
-        "During Monster Effects, remove 1 Damage from this Bounty. If it has no Damage, nothing happens.",
-      verified: true,
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("moss-troll"),
     imageAlt: "Moss Troll rising from a rain-darkened forest",
@@ -256,7 +246,6 @@ export const monsters: Monster[] = [
   {
     slug: "gilded-manticore",
     name: "Gilded Manticore",
-    tier: "Premium",
     health: 5,
     reputation: 4,
     hook: "Its golden hide has inspired far more greed than caution.",
@@ -277,10 +266,10 @@ export const monsters: Monster[] = [
       "Agree on nothing you are unwilling to defend once the bounty is near.",
     ],
     behavior: {
-      name: "No special behavior",
-      summary: "Its golden hide has inspired far more greed than caution.",
-      verified: true,
-      flavor: true,
+      name: "Monster Behavior",
+      summary:
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("gilded-manticore"),
     imageAlt: "Gilded Manticore guarding trophies in a ruined lair",
@@ -288,7 +277,6 @@ export const monsters: Monster[] = [
   {
     slug: "sandworm",
     name: "Sandworm",
-    tier: "Elite",
     health: 7,
     reputation: 4,
     hook: "The desert hunts in silence. Feel the earth tremble, then move.",
@@ -309,10 +297,10 @@ export const monsters: Monster[] = [
       "Time your commitment around the moments it surfaces.",
     ],
     behavior: {
-      name: "Burrow",
+      name: "Monster Behavior",
       summary:
-        "During Monster Effects, alternate between Surfaced and Burrowed. The Sandworm begins Surfaced. It cannot be targeted and gains no Neglect Boon while Burrowed.",
-      verified: true,
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("sandworm"),
     imageAlt: "Sandworm erupting from a desert dune",
@@ -320,7 +308,6 @@ export const monsters: Monster[] = [
   {
     slug: "crystal-basilisk",
     name: "Crystal Basilisk",
-    tier: "Elite",
     health: 7,
     reputation: 5,
     hook: "Break the gaze. Shatter the crystal hide. Strike true—or be stone.",
@@ -341,10 +328,10 @@ export const monsters: Monster[] = [
       "Respect the gaze even when another hunter appears more threatening.",
     ],
     behavior: {
-      name: "Petrifying Gaze",
+      name: "Monster Behavior",
       summary:
-        "After a hunter deals 0 Final Damage, move all of that hunter's Available Attention to Spent. Petrifying Gaze does not resolve if the attack is canceled.",
-      verified: true,
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("crystal-basilisk"),
     imageAlt: "Crystal Basilisk coiled in a glittering cavern",
@@ -352,7 +339,6 @@ export const monsters: Monster[] = [
   {
     slug: "mire-hydra",
     name: "Mire Hydra",
-    tier: "Elite",
     health: null,
     reputation: 5,
     hook: "Many heads. Endless hunger. One monster that refuses simple answers.",
@@ -373,10 +359,10 @@ export const monsters: Monster[] = [
       "Leave room for the bounty's unusual endurance.",
     ],
     behavior: {
-      name: "Many-Headed",
+      name: "Monster Behavior",
       summary:
-        "Defeat the Mire Hydra by covering all six numbered heads, not by dealing Damage. Each die covers its matching head. Momentum adds 1 and Split Attention subtracts 1 from each die; Off Guard adjusts one die by 1. The hunter who covers the last head claims the Bounty.",
-      verified: true,
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("mire-hydra"),
     imageAlt: "Many-headed Mire Hydra emerging from a moonlit swamp",
@@ -384,7 +370,6 @@ export const monsters: Monster[] = [
   {
     slug: "ember-drake",
     name: "Ember Drake",
-    tier: "Legendary",
     health: 9,
     reputation: 6,
     hook: "When the sky burns orange, find cover before you seek glory.",
@@ -405,17 +390,15 @@ export const monsters: Monster[] = [
       "Legendary glory demands a lineup that can survive the answer.",
     ],
     behavior: {
-      name: "Fire Sweep",
+      name: "Monster Behavior",
       summary:
-        "After Attack Lineups are finalized and before attacks, roll one die. On 1–4, remove the hunter in that lineup position and cancel their attack; their Attention remains Spent. On 5–6, or if that position is empty, nothing happens.",
-      verified: true,
+        "Follow the current Bounty card for this monster’s behavior, timing, and exceptions.",
+      verified: false,
     },
     ...art("ember-drake"),
     imageAlt: "Ember Drake sweeping over a burning mountain stronghold",
   },
 ];
-
-export const monsterTiers: MonsterTier[] = ["Minor", "Standard", "Premium", "Elite", "Legendary"];
 
 export function getMonster(slug: string) {
   return monsters.find((monster) => monster.slug === slug);

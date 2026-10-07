@@ -1,0 +1,40 @@
+.bestiary-mysteries {
+  margin-top: clamp(5rem, 10vw, 8rem);
+  scroll-margin-top: 100px;
+}
+.bestiary-mysteries header {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgb(211 163 77 / 0.22);
+}
+.bestiary-mysteries h2 {
+  margin: 0;
+  color: #ead6ad;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 600;
+}
+.bestiary-mysteries header p {
+  margin-top: 0.75rem;
+  color: #b8a98d;
+}
+.bestiary-mystery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 2.5rem);
+  margin-top: 2rem;
+}
+.bestiary-mystery-grid figure {
+  margin: 0;
+  min-width: 0;
+}
+.bestiary-mystery-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgb(0 0 0 / 0.3);
+}
+@media (max-width: 650px) {
+  .bestiary-mystery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

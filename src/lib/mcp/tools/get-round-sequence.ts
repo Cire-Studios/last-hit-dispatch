@@ -6,7 +6,7 @@ export default defineTool({
   name: "get_round_sequence",
   title: "Get round sequence",
   description:
-    "Get the ten ordered phases of a single round in Last Hit, from Recover through Reset & Refill.",
+    "Get the eight ordered phases of a single round in Last Hit, from Plan through Refresh Attention.",
   inputSchema: {},
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => ({

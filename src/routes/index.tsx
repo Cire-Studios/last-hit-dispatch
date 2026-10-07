@@ -6,9 +6,9 @@ const ASSET_ROOT = "/last-hit";
 const SITE_URL = "https://lasthit.cirestudios.dev";
 const PAGE_TITLE = "Last Hit | Competitive Monster-Hunting Board Game";
 const PAGE_DESCRIPTION =
-  "Last Hit is a competitive monster-hunting board game for 2–6 players. Choose a Bounty in secret, manage Attention, build Attack Lineups, and earn Reputation.";
+  "Last Hit is a competitive monster-hunting board game for 2–6 players. Plan in secret, position your hunter, and land the last hit for Reputation. Earn Gold from damage and buy Boons for your next hunt.";
 const SOCIAL_DESCRIPTION =
-  "Choose Bounties in secret, manage Attention, build Attack Lineups, and earn Reputation in this competitive board game for 2–6 players.";
+  "Hunt together, compete for the last hit. Secret plans, tactical Boons, and a race for Reputation for 2–6 hunters.";
 const SOCIAL_IMAGE = `${SITE_URL}${ASSET_ROOT}/og-last-hit-v2.jpg`;
 
 const productSchema = {
@@ -87,13 +87,13 @@ export const Route = createFileRoute("/")({
         rel: "preload",
         as: "image",
         href: `${ASSET_ROOT}/crest.webp`,
-        fetchpriority: "high",
+        fetchPriority: "high",
       },
       {
         rel: "preload",
         as: "image",
         href: `${ASSET_ROOT}/guild-hall.webp`,
-        fetchpriority: "high",
+        fetchPriority: "high",
       },
     ],
     scripts: [

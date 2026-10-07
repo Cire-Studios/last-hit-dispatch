@@ -1,34 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Download, FileText } from "lucide-react";
+import { ArrowUpRight, BookOpen, FileText } from "lucide-react";
+import { RULEBOOK_URL } from "@/lib/game-rules";
+import { printAndPlayGroups } from "@/lib/print-and-play";
 import pnpBg from "@/assets/pnp-bg.png.asset.json";
-
+import { BestiaryFooter } from "@/components/bestiary/BestiaryPages";
 
 const ASSET_ROOT = "/last-hit";
-
-const files = [
-  {
-    id: "1mQTuauSXV5FlXbRRqDd2gpq1BoEUqSwd",
-    title: "Bounty Board",
-    detail: "8x16 tiled on US Letter · 4.6 MB",
-    note: "Print single-sided, trim the margins, and tile together.",
-  },
-  {
-    id: "1jFyF9Kz95eHrP7Lj-VwbGe0PpdU5ztRS",
-    title: "Cards & Player Mats",
-    detail: "Full print set · large file (~512 MB)",
-    note: "High-resolution. Download over Wi‑Fi — it may take a while.",
-  },
-  {
-    id: "1mpi7k0AAj7cUv7aAEajQhGvOe65quCI5",
-    title: "Tokens",
-    detail: "Duplex, flip on long edge · 3.7 MB",
-    note: "Print double-sided (long-edge binding) so backs line up.",
-  },
-];
-
-const driveUrl = (id: string) => `https://drive.google.com/file/d/${id}/view`;
-const downloadUrl = (id: string) =>
-  `https://drive.usercontent.google.com/download?id=${id}&export=download&confirm=t`;
 
 export const Route = createFileRoute("/print-and-play")({
   component: PrintAndPlayPage,
@@ -38,7 +15,7 @@ export const Route = createFileRoute("/print-and-play")({
       {
         name: "description",
         content:
-          "Private print-and-play download page for Last Hit playtesters: bounty board, cards and mats, and tokens.",
+          "Last Hit playtester materials: current rulebook and individual print-and-play PDFs by component and sheet.",
       },
       { name: "robots", content: "noindex, nofollow, noarchive" },
       { property: "og:title", content: "Print & Play — Last Hit" },
@@ -60,69 +37,103 @@ function PrintAndPlayPage() {
         className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${pnpBg.url})` }}
       />
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-0 bg-background/75"
-      />
-
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0 bg-background/75" />
 
       <section className="section relative z-10">
         <div className="mx-auto max-w-4xl px-5 py-16 lg:px-10 lg:py-24">
-
           <p className="eyebrow">Playtester materials · Unlisted</p>
           <h1 className="section-title">
             Last Hit Print &amp; Play
-            <span>Three files. One table-ready prototype.</span>
+            <span>Individual print files.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-            Art and balance are still in progress — these files reflect the current build, not the
-            final production version. Please don&apos;t reshare this page publicly.
+            Print files are available separately by component and sheet. Open a PDF to preview or
+            download it, or open a group to browse its files. Please don&apos;t reshare this page
+            publicly.
           </p>
 
-          <div className="mt-12 grid gap-5">
-            {files.map((file) => (
-              <article
-                key={file.id}
-                className="rounded-md border border-border bg-card/70 p-6 sm:flex sm:items-center sm:justify-between sm:gap-8"
-              >
-                <div className="min-w-0">
-                  <div className="flex items-center gap-3">
-                    <FileText size={18} className="shrink-0 text-primary" />
-                    <h2 className="text-xl font-semibold text-foreground">{file.title}</h2>
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground">{file.detail}</p>
-                  <p className="mt-1 text-sm text-muted-foreground/80">{file.note}</p>
-                </div>
-                <div className="mt-5 flex shrink-0 flex-wrap items-center gap-3 sm:mt-0">
-                  <a
-                    className="button button-gold"
-                    href={downloadUrl(file.id)}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    <Download size={18} />
-                    Download
-                  </a>
-                  <a
-                    className="text-sm text-muted-foreground underline-offset-4 hover:underline"
-                    href={driveUrl(file.id)}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    Preview
-                  </a>
-                </div>
-              </article>
-            ))}
+          <div className="mt-12 rounded-md border border-border bg-card/70 p-6">
+            <h2 className="text-xl font-semibold">Current rulebook</h2>
+            <p className="mt-2 mb-5 text-muted-foreground">
+              Learn the latest setup, hunt, Market, and recovery rules.
+            </p>
+            <a
+              className="button button-gold"
+              href={RULEBOOK_URL}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <BookOpen size={18} /> Read the rulebook
+            </a>
           </div>
 
-          <div className="mt-12 rounded-md border border-border/60 bg-secondary/40 p-6">
-            <h2 className="text-lg font-semibold text-foreground">Printing tips</h2>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li>Print at 100% scale — no &quot;fit to page&quot; or shrink-to-margins.</li>
-              <li>Cards and mats look best on heavier cardstock; sleeve the cards if you can.</li>
-              <li>Tokens must be duplex, flipped on the long edge.</li>
-            </ul>
+          <nav aria-label="Print file groups" className="mt-10 flex flex-wrap gap-2">
+            {printAndPlayGroups.map((group) => (
+              <a
+                key={group.id}
+                href={`#print-${group.id}`}
+                className="rounded-full border border-border bg-card/70 px-4 py-2 text-sm transition-colors hover:bg-card focus-visible:outline-2 focus-visible:outline-offset-4"
+              >
+                {group.name}
+              </a>
+            ))}
+          </nav>
+
+          <div className="mt-8 space-y-6">
+            {printAndPlayGroups.map((group) => (
+              <section
+                key={group.id}
+                id={`print-${group.id}`}
+                aria-labelledby={`print-title-${group.id}`}
+                className="scroll-mt-8 rounded-md border border-border bg-card/80 p-5 sm:p-6"
+              >
+                <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <h2 id={`print-title-${group.id}`} className="text-xl font-semibold">
+                      {group.name}
+                    </h2>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {group.files.length} {group.files.length === 1 ? "PDF" : "PDFs"}
+                    </p>
+                  </div>
+                  <a
+                    href={group.url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={`Open ${group.name} group`}
+                    className="inline-flex items-center gap-2 text-sm underline underline-offset-4"
+                  >
+                    Open group <ArrowUpRight size={16} aria-hidden />
+                  </a>
+                </div>
+                <ul className="grid gap-3 sm:grid-cols-2">
+                  {group.files.map((file) => (
+                    <li key={file.url}>
+                      <a
+                        href={file.url}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="flex h-full items-center gap-3 rounded border border-border p-4 transition-colors hover:bg-background/60 focus-visible:outline-2 focus-visible:outline-offset-4"
+                        aria-label={`Open ${group.name}: ${file.name} PDF`}
+                      >
+                        <FileText
+                          size={20}
+                          className="shrink-0 text-muted-foreground"
+                          aria-hidden
+                        />
+                        <span className="min-w-0 flex-1">
+                          <span className="block font-medium">{file.name}</span>
+                          <span className="mt-1 block text-xs text-muted-foreground">
+                            PDF · {file.sizeMB} MB
+                          </span>
+                        </span>
+                        <ArrowUpRight size={16} className="shrink-0" aria-hidden />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
           </div>
 
           <div className="mt-10 flex items-center gap-4">
@@ -133,6 +144,9 @@ function PrintAndPlayPage() {
           </div>
         </div>
       </section>
+      <div className="relative z-10">
+        <BestiaryFooter />
+      </div>
     </main>
   );
 }

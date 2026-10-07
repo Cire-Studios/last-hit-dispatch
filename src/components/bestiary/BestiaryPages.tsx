@@ -1,11 +1,12 @@
-import { ArrowLeft, ArrowRight, BookOpen, Heart, Shield, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Sparkles } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import { MobileNavigation } from "@/components/MobileNavigation";
 import { useCookieConsent } from "@/components/cookie-consent-context";
 import { useSignup } from "@/components/signup-context";
 import type { Monster } from "@/lib/monsters";
-import { getMonsterNeighbors, monsters, monsterTiers } from "@/lib/monsters";
+import { getMonsterNeighbors, monsters } from "@/lib/monsters";
+import "./mystery-bounties.css";
 
 const ASSET_ROOT = "/last-hit";
 
@@ -107,29 +108,34 @@ export function BestiaryIndexPage() {
       </section>
 
       <section id="monster-roster" className="bestiary-roster mx-auto max-w-[90rem] px-5 lg:px-10">
-        {monsterTiers.map((tier) => {
-          const tierMonsters = monsters.filter((monster) => monster.tier === tier);
-          return (
-            <section
-              className="bestiary-tier"
-              key={tier}
-              aria-labelledby={`tier-${tier.toLowerCase()}`}
-            >
-              <header>
-                <p className="eyebrow">Guild classification</p>
-                <h2 id={`tier-${tier.toLowerCase()}`}>{tier} Bounties</h2>
-                <span>
-                  {tierMonsters.length} {tierMonsters.length === 1 ? "quarry" : "quarries"}
-                </span>
-              </header>
-              <div className="bestiary-grid">
-                {tierMonsters.map((monster) => (
-                  <MonsterCard monster={monster} key={monster.slug} />
-                ))}
-              </div>
-            </section>
-          );
-        })}
+        <div className="bestiary-grid">
+          {monsters.map((monster) => (
+            <MonsterCard monster={monster} key={monster.slug} />
+          ))}
+        </div>
+        <section
+          className="bestiary-mysteries"
+          aria-labelledby="mystery-title"
+          id="mystery-bounties"
+        >
+          <header>
+            <h2 id="mystery-title">Mystery Bounties</h2>
+            <p>Nine more monsters await. Their secrets stay at the table.</p>
+          </header>
+          <div className="bestiary-mystery-grid">
+            {Array.from({ length: 9 }, (_, i) => (
+              <figure key={i}>
+                <img
+                  src={`${ASSET_ROOT}/mystery/mystery-${i + 1}.webp`}
+                  alt={`Unrevealed Bounty ${i + 1}: a monster silhouette on a concealed Bounty card`}
+                  width={600}
+                  height={1000}
+                  loading="lazy"
+                />
+              </figure>
+            ))}
+          </div>
+        </section>
       </section>
       <BestiaryFooter />
     </main>
@@ -154,7 +160,6 @@ export function MonsterCard({ monster }: { monster: Monster }) {
         />
       </div>
       <div className="monster-card-copy">
-        <span>{monster.tier} Bounty</span>
         <h3>{monster.name}</h3>
         <p>{monster.hook}</p>
         <strong>
@@ -185,7 +190,6 @@ export function MonsterProfilePage({ monster }: { monster: Monster }) {
             <Link to="/bestiary" className="monster-back-link">
               <ArrowLeft size={16} /> The bestiary
             </Link>
-            <p className="eyebrow">{monster.tier} Bounty</p>
             <h1>{monster.name}</h1>
             <p>{monster.hook}</p>
           </div>
@@ -223,35 +227,13 @@ export function MonsterProfilePage({ monster }: { monster: Monster }) {
             <div>
               <p className="eyebrow">Bounty record</p>
               <h2>What the Guild knows</h2>
-              <div className="monster-stats">
-                <span>
-                  <Shield size={18} />
-                  <strong>{monster.tier}</strong>
-                  <small>Tier</small>
-                </span>
-                <span>
-                  <Heart size={18} />
-                  <strong>{monster.health ?? "Varies"}</strong>
-                  <small>Health</small>
-                </span>
-                <span>
-                  <Sparkles size={18} />
-                  <strong>{monster.reputation}</strong>
-                  <small>Reputation</small>
-                </span>
-              </div>
-              <div
-                className={`monster-behavior ${monster.behavior.verified ? "is-verified" : ""} ${monster.behavior.flavor ? "is-flavor" : ""}`}
-              >
-                <span>
-                  {monster.behavior.flavor
-                    ? "Bounty flavor text"
-                    : monster.behavior.verified
-                      ? "Verified behavior"
-                      : "Guild record incomplete"}
-                </span>
-                <h3>{monster.behavior.name}</h3>
-                <p>{monster.behavior.summary}</p>
+              <div className="monster-behavior">
+                <span>Hunt instructions</span>
+                <h3>Every Bounty has its own rules.</h3>
+                <p>
+                  Use the current card shown here for Health, Reputation, behavior, and timing.
+                  Specific card instructions override the general rules.
+                </p>
               </div>
               <Link to="/" hash="rulebook" className="quiet-link">
                 <BookOpen size={15} /> Read the current rulebook

@@ -1,0 +1,369 @@
+.kit-inventory {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 32px;
+  margin: 40px 0 75px;
+}
+.kit-item {
+  margin: 0;
+  min-width: 0;
+  padding: 30px 0;
+  border-top: 1px solid #78694340;
+}
+.kit-art {
+  height: 250px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  isolation: isolate;
+}
+.kit-art img {
+  object-fit: contain;
+  filter: drop-shadow(0 8px 7px #30241438);
+}
+.kit-item h3 {
+  font: 26px var(--font-display);
+  margin-bottom: 10px;
+}
+.kit-item p {
+  font: 14px/1.75 var(--font-sans);
+  max-width: 330px;
+}
+.kit-cards .kit-art img {
+  position: absolute;
+  height: 185px;
+  width: auto;
+  left: calc(50% + (var(--i) - 1.5) * 37px);
+  top: 25px;
+  transform: translateX(-50%) rotate(calc((var(--i) - 1.5) * 12deg));
+  transform-origin: center 120%;
+}
+.kit-board img {
+  width: 100%;
+}
+.kit-bag img {
+  width: min(190px, 75%);
+  max-height: 90%;
+}
+.kit-mats .kit-art img {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: calc(20px + var(--i) * 32px);
+  transform: rotate(calc((var(--i) - 1) * 9deg));
+}
+.kit-dice img {
+  position: absolute;
+  width: 125px;
+  left: 50%;
+  top: 50%;
+  transform: translate(calc(-80% + var(--i) * 60%), calc(-65% + var(--i) * 30%))
+    rotate(calc(-12deg + var(--i) * 24deg));
+}
+.kit-tokens .kit-art {
+  display: grid;
+  grid-template-columns: repeat(3, 82px);
+  gap: 5px;
+  align-content: center;
+  justify-content: center;
+}
+.kit-tokens img {
+  width: 82px;
+  transform: rotate(calc((var(--i) - 2.5) * 5deg));
+}
+.kit-cubes .kit-art {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px 5px;
+  align-content: center;
+  padding: 20px 8px;
+}
+.kit-cubes img {
+  width: 100%;
+  transform: translateY(calc(mod(var(--i), 2) * 12px));
+}
+.kit-attention .kit-art {
+  display: grid;
+  grid-template-columns: repeat(3, 65px);
+  gap: 10px;
+  align-content: center;
+}
+.kit-attention img {
+  width: 65px;
+}
+.kit-pawns .kit-art {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 65px));
+  gap: 12px 20px;
+  align-content: center;
+  justify-items: center;
+}
+.kit-pawns img {
+  width: 100%;
+  height: 100px;
+  max-height: none;
+  transform: none;
+}
+.kit-discs .kit-art {
+  display: grid;
+  grid-template-columns: repeat(3, 75px);
+  gap: 15px;
+  align-content: center;
+}
+.kit-discs img {
+  width: 75px;
+  transform: rotate(calc(var(--i) * 12deg));
+}
+.kit-gold {
+  grid-column: auto;
+}
+.kit-gold .kit-art {
+  margin-bottom: 25px;
+}
+.kit-gold img {
+  position: absolute;
+  width: 130px;
+  left: calc(50% + (var(--i) - 2) * 30px);
+  top: calc(55px + var(--i) * 5px);
+  transform: translateX(-50%) rotate(calc((var(--i) - 2) * 17deg));
+}
+@media (max-width: 1050px) and (min-width: 801px) {
+  .kit-cards .kit-art img {
+    height: 160px;
+    left: calc(50% + (var(--i) - 1.5) * 27px);
+  }
+  .kit-tokens .kit-art {
+    grid-template-columns: repeat(3, 65px);
+  }
+  .kit-tokens img {
+    width: 65px;
+  }
+  .kit-discs .kit-art {
+    grid-template-columns: repeat(3, 60px);
+  }
+  .kit-discs img {
+    width: 60px;
+  }
+}
+@media (max-width: 800px) {
+  .kit-inventory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 22px;
+  }
+  .kit-art {
+    height: 200px;
+  }
+  .kit-cards .kit-art img {
+    height: 130px;
+    left: calc(50% + (var(--i) - 1.5) * 22px);
+    top: 30px;
+  }
+  .kit-tokens .kit-art {
+    grid-template-columns: repeat(3, 48px);
+    gap: 2px;
+  }
+  .kit-tokens img {
+    width: 48px;
+  }
+  .kit-mats .kit-art img {
+    top: calc(40px + var(--i) * 22px);
+    width: 90%;
+    left: 5%;
+  }
+  .kit-dice img {
+    width: 95px;
+  }
+  .kit-attention .kit-art {
+    grid-template-columns: repeat(3, 40px);
+    gap: 6px;
+  }
+  .kit-attention img {
+    width: 40px;
+  }
+  .kit-cubes .kit-art {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0;
+    gap: 10px 5px;
+  }
+  .kit-discs .kit-art {
+    grid-template-columns: repeat(3, 42px);
+    gap: 8px;
+  }
+  .kit-discs img {
+    width: 42px;
+  }
+  .kit-pawns .kit-art {
+    grid-template-columns: repeat(3, minmax(0, 55px));
+    gap: 10px;
+  }
+  .kit-pawns img {
+    width: 100%;
+    height: 100px;
+    max-height: none;
+    transform: none;
+  }
+  .kit-item h3 {
+    font-size: 21px;
+  }
+  .kit-item p {
+    font-size: 12px;
+  }
+  .kit-gold {
+    grid-column: auto;
+    display: block;
+  }
+  .kit-gold img {
+    width: 85px;
+    left: calc(50% + (var(--i) - 2) * 15px);
+  }
+  .kit-gold .kit-art {
+    margin-bottom: 25px;
+  }
+}
+@media (max-width: 430px) {
+  .kit-inventory {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .kit-art {
+    height: 235px;
+  }
+  .kit-cards .kit-art img {
+    height: 175px;
+    left: calc(50% + (var(--i) - 1.5) * 34px);
+    top: 20px;
+  }
+  .kit-tokens .kit-art {
+    grid-template-columns: repeat(3, 80px);
+    gap: 6px;
+  }
+  .kit-tokens img {
+    width: 80px;
+  }
+  .kit-mats .kit-art img {
+    width: 75%;
+    left: 12.5%;
+    top: calc(20px + var(--i) * 27px);
+  }
+  .kit-cubes .kit-art {
+    grid-template-columns: repeat(6, 42px);
+    gap: 14px 8px;
+  }
+  .kit-attention .kit-art {
+    grid-template-columns: repeat(3, 60px);
+    gap: 10px;
+  }
+  .kit-attention img {
+    width: 60px;
+  }
+  .kit-pawns .kit-art {
+    grid-template-columns: repeat(3, minmax(0, 55px));
+    gap: 10px;
+  }
+  .kit-pawns img {
+    width: 100%;
+    height: 100px;
+    max-height: none;
+    transform: none;
+  }
+  .kit-discs .kit-art {
+    grid-template-columns: repeat(3, 70px);
+    gap: 15px;
+  }
+  .kit-discs img {
+    width: 70px;
+  }
+  .kit-gold img {
+    width: 120px;
+    left: calc(50% + (var(--i) - 2) * 27px);
+  }
+  .kit-item p {
+    font-size: 14px;
+  }
+  .kit-item h3 {
+    font-size: 25px;
+  }
+}
+.kit-inventory,
+.kit-item {
+  scroll-margin-top: 100px;
+}
+
+@media (min-width: 431px) and (max-width: 800px) {
+  .kit-pawns img {
+    height: 85px;
+  }
+}
+.kit-market {
+  grid-column: 1/-1;
+  padding: 35px 0 45px;
+  border-top: 1px solid #78694340;
+  scroll-margin-top: 100px;
+}
+.kit-market header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+.kit-market h3 {
+  font: 32px var(--font-display);
+}
+.kit-market header p {
+  max-width: 420px;
+  font: 14px/1.75 var(--font-sans);
+}
+.kit-market-sides {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+.kit-market-sides figure {
+  margin: 0;
+}
+.kit-market-sides img {
+  display: block;
+  width: 100%;
+  filter: drop-shadow(0 8px 6px #30241430);
+}
+.kit-market-sides figcaption {
+  padding-top: 20px;
+  font: 18px var(--font-display);
+  color: #534226;
+  text-align: center;
+}
+@media (max-width: 650px) {
+  .kit-market header {
+    display: block;
+  }
+  .kit-market header p {
+    margin-top: 15px;
+  }
+  .kit-market-sides {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .kit-market h3 {
+    font-size: 26px;
+  }
+}
+
+.kit-abilities .kit-art img {
+  position: absolute;
+  width: 112px;
+  height: 190px;
+  left: calc(50% + (var(--i) - 1) * 50px);
+  top: 22px;
+  transform: translateX(-50%) rotate(calc((var(--i) - 1) * 13deg));
+  transform-origin: center 120%;
+}
+@media (min-width: 431px) and (max-width: 800px) {
+  .kit-abilities .kit-art img {
+    width: 82px;
+    height: 140px;
+    left: calc(50% + (var(--i) - 1) * 32px);
+  }
+}
