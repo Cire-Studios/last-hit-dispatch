@@ -44,12 +44,12 @@ function PrintAndPlayPage() {
           <p className="eyebrow">Playtester materials · Unlisted</p>
           <h1 className="section-title">
             Last Hit Print &amp; Play
-            <span>Individual print files.</span>
+            <span>Print files by component.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-            Print files are available separately by component and sheet. Open a PDF to preview or
-            download it, or open a group to browse its files. Please don&apos;t reshare this page
-            publicly.
+            Choose individual sheets or the combined Player Cards and Boons &amp; Gold PDFs. Open a
+            PDF to preview or download it, or open a group to browse its files. Please don&apos;t
+            reshare this page publicly.
           </p>
 
           <div className="mt-12 rounded-md border border-border bg-card/70 p-6">

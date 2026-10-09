@@ -62,6 +62,11 @@ export const printAndPlayGroups = [
     url: "https://drive.google.com/drive/folders/15Vz9hx2EJF9q-9DyvMcis9FkAXPJ0J7_",
     files: [
       {
+        name: "All Player Cards · Combined PDF",
+        url: "https://drive.google.com/file/d/1buPWwkE55t63I7umBK9kGOskdXYw5jr0/view?usp=drivesdk",
+        sizeMB: "52.8",
+      },
+      {
         name: "Set 1 · Attention",
         url: "https://drive.google.com/file/d/18pWQvlysKHjatdt5d-kwJq3EcyxgOPe8/view?usp=drivesdk",
         sizeMB: "5.3",
@@ -225,6 +230,11 @@ export const printAndPlayGroups = [
     name: "Boons & Gold",
     url: "https://drive.google.com/drive/folders/1SfBHufJoVaJL8QC4dlKNQr8xbjkxTmqT",
     files: [
+      {
+        name: "Boons & Gold · Combined Sheet",
+        url: "https://drive.google.com/file/d/1KBj6tNpxWNGXv5nNsR_8t0Nh9s6xUUzI/view?usp=drivesdk",
+        sizeMB: "1.1",
+      },
       {
         name: "Boons",
         url: "https://drive.google.com/file/d/1o5CYHc4H0A0fJB3ytwhqOqnNjNisxz0V/view?usp=drivesdk",
