@@ -15,7 +15,7 @@ function json(status: number, body: unknown) {
   });
 }
 
-export const Route = createFileRoute("/api/cron/playtest-reminders")({
+export const Route = createFileRoute("/api/public/cron/playtest-reminders")({
   server: {
     handlers: {
       POST: async ({ request }) => {
