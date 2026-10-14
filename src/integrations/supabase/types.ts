@@ -14,13 +14,229 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      playtest_reservations: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          marketing_opt_in: boolean
+          name: string
+          reminder_24h_sent_at: string | null
+          reminder_2h_sent_at: string | null
+          reservation_code: string
+          seats: number
+          session_id: string
+          source: string
+          status: string
+          table_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          marketing_opt_in?: boolean
+          name: string
+          reminder_24h_sent_at?: string | null
+          reminder_2h_sent_at?: string | null
+          reservation_code: string
+          seats?: number
+          session_id: string
+          source?: string
+          status?: string
+          table_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          marketing_opt_in?: boolean
+          name?: string
+          reminder_24h_sent_at?: string | null
+          reminder_2h_sent_at?: string | null
+          reservation_code?: string
+          seats?: number
+          session_id?: string
+          source?: string
+          status?: string
+          table_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "playtest_reservations_session_id_playtest_sessions_id_fk"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "playtest_sessions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playtest_reservations_table_id_playtest_tables_id_fk"
+            columns: ["table_id"]
+            isOneToOne: false
+            referencedRelation: "playtest_table_availability"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playtest_reservations_table_id_playtest_tables_id_fk"
+            columns: ["table_id"]
+            isOneToOne: false
+            referencedRelation: "playtest_tables"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      playtest_sessions: {
+        Row: {
+          address_line: string
+          city: string
+          created_at: string
+          ends_at: string
+          id: string
+          is_active: boolean
+          notes: string | null
+          region: string
+          starts_at: string
+          timezone: string
+          updated_at: string
+          venue_name: string
+        }
+        Insert: {
+          address_line: string
+          city: string
+          created_at?: string
+          ends_at: string
+          id?: string
+          is_active?: boolean
+          notes?: string | null
+          region?: string
+          starts_at: string
+          timezone?: string
+          updated_at?: string
+          venue_name: string
+        }
+        Update: {
+          address_line?: string
+          city?: string
+          created_at?: string
+          ends_at?: string
+          id?: string
+          is_active?: boolean
+          notes?: string | null
+          region?: string
+          starts_at?: string
+          timezone?: string
+          updated_at?: string
+          venue_name?: string
+        }
+        Relationships: []
+      }
+      playtest_tables: {
+        Row: {
+          capacity: number
+          created_at: string
+          id: string
+          is_active: boolean
+          label: string
+          session_id: string
+          sort_order: number
+        }
+        Insert: {
+          capacity?: number
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          label: string
+          session_id: string
+          sort_order?: number
+        }
+        Update: {
+          capacity?: number
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          label?: string
+          session_id?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "playtest_tables_session_id_playtest_sessions_id_fk"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "playtest_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
-      [_ in never]: never
+      playtest_reminder_queue: {
+        Row: {
+          address_line: string | null
+          city: string | null
+          email: string | null
+          ends_at: string | null
+          name: string | null
+          region: string | null
+          reminder_24h_sent_at: string | null
+          reminder_2h_sent_at: string | null
+          reservation_code: string | null
+          reservation_id: string | null
+          seats: number | null
+          starts_at: string | null
+          table_label: string | null
+          timezone: string | null
+          venue_name: string | null
+        }
+        Relationships: []
+      }
+      playtest_table_availability: {
+        Row: {
+          capacity: number | null
+          id: string | null
+          is_active: boolean | null
+          label: string | null
+          seats_remaining: number | null
+          seats_reserved: number | null
+          session_id: string | null
+          sort_order: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "playtest_tables_session_id_playtest_sessions_id_fk"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "playtest_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Functions: {
-      [_ in never]: never
+      reserve_playtest_seats: {
+        Args: {
+          p_email: string
+          p_marketing_opt_in?: boolean
+          p_name: string
+          p_seats: number
+          p_source?: string
+          p_table_id: string
+        }
+        Returns: {
+          address_line: string
+          city: string
+          ends_at: string
+          region: string
+          reservation_code: string
+          reservation_id: string
+          starts_at: string
+          table_label: string
+          timezone: string
+          venue_name: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
