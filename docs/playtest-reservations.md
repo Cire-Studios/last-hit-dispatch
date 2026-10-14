@@ -55,4 +55,4 @@ where reservation_code = 'LH-EXAMPLE';
 - `PLAYTEST_DEMO_MODE=true` shows interactive sample dates without writing data. Keep it disabled in production.
 - Existing MailerLite settings add guests to the playtesting list only when they opt in.
 
-Create a Lovable Cloud Job that sends a `POST` request to `/api/public/cron/playtest-reminders` every 30 minutes. The endpoint authenticates with Lovable's managed cron secret and sends reminders about 24 hours and 2 hours before each reservation. Review runs under **More → Cloud → Jobs**.
+Create a Lovable Cloud Job that sends a `POST` request to `/api/cron/playtest-reminders` every 30 minutes. The endpoint authenticates with Lovable's managed cron secret and sends reminders about 24 hours and 2 hours before each reservation. Review runs under **More → Cloud → Jobs**.
