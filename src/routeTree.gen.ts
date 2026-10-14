@@ -9,38 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as PrintAndPlayRouteImport } from './routes/print-and-play'
-import { Route as McpRouteImport } from './routes/mcp'
-import { Route as FeedbackRouteImport } from './routes/feedback'
-import { Route as BestiaryRouteImport } from './routes/bestiary'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BestiaryRouteImport } from './routes/bestiary'
+import { Route as FeedbackRouteImport } from './routes/feedback'
+import { Route as McpRouteImport } from './routes/mcp'
+import { Route as PrintAndPlayRouteImport } from './routes/print-and-play'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as BestiaryIndexRouteImport } from './routes/bestiary.index'
 import { Route as BestiaryMonsterRouteImport } from './routes/bestiary.$monster'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
-import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
-import { Route as ApiPublicSignupRouteImport } from './routes/api/public/signup'
-import { Route as ApiPublicFeedbackRouteImport } from './routes/api/public/feedback'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as ApiPublicFeedbackRouteImport } from './routes/api/public/feedback'
+import { Route as ApiPublicSignupRouteImport } from './routes/api/public/signup'
 
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrintAndPlayRoute = PrintAndPlayRouteImport.update({
-  id: '/print-and-play',
-  path: '/print-and-play',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FeedbackRoute = FeedbackRouteImport.update({
-  id: '/feedback',
-  path: '/feedback',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BestiaryRoute = BestiaryRouteImport.update({
@@ -48,11 +33,38 @@ const BestiaryRoute = BestiaryRouteImport.update({
   path: '/bestiary',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
   getParentRoute: () => rootRouteImport,
 } as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrintAndPlayRoute = PrintAndPlayRouteImport.update({
+  id: '/print-and-play',
+  path: '/print-and-play',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const BestiaryIndexRoute = BestiaryIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -63,34 +75,22 @@ const BestiaryMonsterRoute = BestiaryMonsterRouteImport.update({
   path: '/$monster',
   getParentRoute: () => BestiaryRoute,
 } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ApiPublicSignupRoute = ApiPublicSignupRouteImport.update({
-  id: '/api/public/signup',
-  path: '/api/public/signup',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiPublicFeedbackRoute = ApiPublicFeedbackRouteImport.update({
-  id: '/api/public/feedback',
-  path: '/api/public/feedback',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
     id: '/.mcp/invoke-tool/$tool',
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicFeedbackRoute = ApiPublicFeedbackRouteImport.update({
+  id: '/api/public/feedback',
+  path: '/api/public/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicSignupRoute = ApiPublicSignupRouteImport.update({
+  id: '/api/public/signup',
+  path: '/api/public/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -200,32 +200,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/print-and-play': {
-      id: '/print-and-play'
-      path: '/print-and-play'
-      fullPath: '/print-and-play'
-      preLoaderRoute: typeof PrintAndPlayRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/feedback': {
-      id: '/feedback'
-      path: '/feedback'
-      fullPath: '/feedback'
-      preLoaderRoute: typeof FeedbackRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bestiary': {
@@ -235,11 +214,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BestiaryRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/print-and-play': {
+      id: '/print-and-play'
+      path: '/print-and-play'
+      fullPath: '/print-and-play'
+      preLoaderRoute: typeof PrintAndPlayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bestiary/': {
@@ -256,25 +270,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BestiaryMonsterRouteImport
       parentRoute: typeof BestiaryRoute
     }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/list-tools': {
-      id: '/.mcp/list-tools'
-      path: '/.mcp/list-tools'
-      fullPath: '/.mcp/list-tools'
-      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/signup': {
-      id: '/api/public/signup'
-      path: '/api/public/signup'
-      fullPath: '/api/public/signup'
-      preLoaderRoute: typeof ApiPublicSignupRouteImport
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/feedback': {
@@ -284,11 +284,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicFeedbackRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.mcp/invoke-tool/$tool': {
-      id: '/.mcp/invoke-tool/$tool'
-      path: '/.mcp/invoke-tool/$tool'
-      fullPath: '/.mcp/invoke-tool/$tool'
-      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+    '/api/public/signup': {
+      id: '/api/public/signup'
+      path: '/api/public/signup'
+      fullPath: '/api/public/signup'
+      preLoaderRoute: typeof ApiPublicSignupRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
