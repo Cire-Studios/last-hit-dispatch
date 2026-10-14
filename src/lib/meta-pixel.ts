@@ -66,6 +66,13 @@ export function trackMetaPixelPageView(href: string) {
   window.__lastHitMetaPixelLastPage = href;
 }
 
+export function trackMetaPixelEvent(eventName: string, parameters?: Record<string, unknown>) {
+  if (typeof window === "undefined" || !window.__lastHitMetaPixelInitialized || !window.fbq) {
+    return;
+  }
+  window.fbq("track", eventName, parameters ?? {});
+}
+
 export function disableMetaPixel() {
   if (typeof window === "undefined" || typeof document === "undefined") return;
 

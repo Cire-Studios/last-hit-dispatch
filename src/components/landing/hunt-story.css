@@ -1,0 +1,724 @@
+.lh-landing .lh-journey-story {
+  padding: 110px 0 0;
+  background: #141711;
+  position: relative;
+}
+.lh-journey-intro {
+  padding-bottom: 80px;
+}
+.lh-journey-intro h2 {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 1.03;
+  color: #f0e4c9;
+  margin: 20px 0;
+}
+.lh-journey-intro > p:not(.lh-kicker) {
+  color: #b5aa95;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.lh-journey-intro > svg {
+  color: #d3ad6b;
+}
+.lh-journey-story-grid {
+  display: grid;
+  grid-template-columns: 170px minmax(230px, 0.85fr) minmax(380px, 1.4fr);
+  gap: 35px;
+  max-width: 1500px;
+  padding: 0 40px;
+  margin: auto;
+  align-items: start;
+}
+.lh-journey-rail {
+  position: sticky;
+  top: 140px;
+  padding-top: 35px;
+}
+.lh-journey-rail > p {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #d3ad6b;
+  margin-bottom: 22px;
+}
+.lh-journey-rail a {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 12px;
+  color: #929783;
+  border-left: 1px solid #404637;
+  padding-left: 15px;
+  transition:
+    color 0.25s,
+    border-color 0.25s;
+}
+.lh-journey-rail a span {
+  font-size: 9px;
+  opacity: 0.6;
+}
+.lh-journey-rail a[aria-current] {
+  color: #f0e4c9;
+  border-left: 2px solid #d3ad6b;
+  background: linear-gradient(90deg, #d3ad6b12, transparent);
+}
+.lh-journey-beat {
+  min-height: 88svh;
+  display: flex;
+  align-items: center;
+  padding: 65px 0;
+  scroll-margin-top: 0;
+}
+.lh-journey-beat h3 {
+  font-family: var(--font-display, Georgia, serif);
+  color: #f0e4c9;
+  font-size: clamp(2rem, 3.2vw, 3.3rem);
+  line-height: 1.12;
+  margin: 20px 0;
+}
+.lh-journey-beat > div > p:last-child {
+  color: #b5aa95;
+  line-height: 1.8;
+  font-size: 16px;
+  max-width: 360px;
+}
+.lh-journey-stage-shell {
+  position: sticky;
+  top: 110px;
+  height: calc(100svh - 145px);
+  min-height: 480px;
+  max-height: 760px;
+  padding: 20px 0;
+}
+.lh-journey-stage {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 45%, #363c284f, transparent 72%), #1b1e17;
+  border: 1px solid #414535;
+  border-radius: 3px;
+}
+.lh-journey-stage-caption,
+.lh-journey-stage-foot {
+  position: absolute;
+  left: 25px;
+  right: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #d3ad6b;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  z-index: 3;
+}
+.lh-journey-stage-caption {
+  top: 24px;
+}
+.lh-journey-stage-foot {
+  bottom: 22px;
+  color: #949882;
+  font-size: 9px;
+}
+.lh-journey-planning {
+  position: absolute;
+  inset: 65px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.lh-journey-planning figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 0;
+  animation: lh-journey-reveal 0.65s both;
+  animation-delay: var(--arrival);
+}
+.lh-journey-card-pair {
+  display: flex;
+  height: clamp(85px, 15svh, 150px);
+  perspective: 800px;
+}
+.lh-journey-card-pair img {
+  width: auto;
+  height: 100%;
+  filter: drop-shadow(0 8px 8px #0007);
+  transform: rotate(-7deg);
+}
+.lh-journey-card-pair img + img {
+  margin-left: -15px;
+  transform: rotate(7deg);
+}
+.lh-journey-planning figcaption {
+  width: 140px;
+  color: #f0e4c9;
+  font-size: 17px;
+}
+.lh-journey-planning figcaption small {
+  display: block;
+  font-size: 10px;
+  color: #b5aa95;
+  margin-top: 8px;
+}
+.hunter-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+.hunter-dot.green {
+  background: #69a17d;
+}
+.hunter-dot.purple {
+  background: #ad80d0;
+}
+.hunter-dot.orange {
+  background: #e88d43;
+}
+.lh-journey-lineup-reveal {
+  position: absolute;
+  height: 77%;
+  aspect-ratio: 700/1033;
+  top: 11%;
+  left: 15%;
+}
+.lh-journey-lineup-art {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.lh-journey-lineup-hunter {
+  position: absolute;
+  left: 50%;
+  width: 23%;
+  transform: translate(-50%, -50%);
+  animation: lh-journey-pawn 0.8s both;
+  animation-delay: var(--arrival);
+}
+.lh-journey-lineup-hunter > img {
+  width: 100%;
+  filter: drop-shadow(0 7px 5px #0008);
+}
+.lh-journey-lineup-hunter > span {
+  position: absolute;
+  left: 135%;
+  top: 35%;
+  color: #f0e4c9;
+  font-size: 15px;
+  white-space: nowrap;
+}
+.lh-journey-lineup-hunter small {
+  display: block;
+  font-size: 9px;
+  margin-top: 5px;
+  color: #b5aa95;
+}
+.lh-journey-attack-scene {
+  position: absolute;
+  inset: 70px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+.lh-journey-bounty {
+  position: relative;
+  width: 59%;
+  max-width: 310px;
+  filter: drop-shadow(0 12px 16px #0007);
+}
+.lh-journey-bounty-art {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+.lh-journey-damage-cube {
+  position: absolute;
+  left: 12.2%;
+  width: 13%;
+  transform: translateY(-50%);
+  filter: drop-shadow(1px 2px 1px #0008);
+}
+.lh-journey-damage-cube.new-damage {
+  animation: lh-journey-cube 0.7s both;
+  animation-delay: var(--arrival);
+}
+.lh-journey-attack-detail {
+  width: 30%;
+  text-align: center;
+}
+.lh-journey-attacker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #f0e4c9;
+  font-size: 18px;
+}
+.lh-journey-attacker img {
+  height: 55px;
+}
+.lh-journey-attacker small {
+  display: block;
+  font-size: 10px;
+  color: #b5aa95;
+  margin-top: 5px;
+}
+.lh-journey-rolling-die {
+  width: 95px;
+  margin: 22px auto 0;
+  animation: lh-journey-roll 1s both;
+}
+.lh-journey-roll-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: lh-journey-reveal 0.4s 0.85s both;
+  color: #f0e4c9;
+}
+.lh-journey-roll-result strong,
+.lh-journey-health-left strong {
+  font:
+    64px Georgia,
+    serif;
+}
+.lh-journey-roll-result span {
+  display: flex;
+  gap: 2px;
+  color: #d3ad6b;
+}
+.lh-journey-health-left {
+  padding: 30px 0;
+  color: #f0e4c9;
+}
+.lh-journey-health-left span {
+  display: block;
+  font-size: 11px;
+  color: #b5aa95;
+}
+.lh-journey-turn-order {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+  border-top: 1px solid #414535;
+  padding-top: 15px;
+}
+.lh-journey-turn-order img {
+  height: 30px;
+  opacity: 0.25;
+}
+.lh-journey-turn-order img.current {
+  opacity: 1;
+}
+.lh-journey-claimed {
+  position: absolute;
+  bottom: 15%;
+  left: -5%;
+  width: 110%;
+  padding: 13px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #231b10;
+  background: #d3ad6b;
+  transform: rotate(-7deg);
+  animation: lh-journey-reveal 0.5s both;
+}
+.lh-journey-rewards {
+  text-align: center;
+  color: #f0e4c9;
+  width: 34%;
+  animation: lh-journey-reveal 0.7s both;
+}
+.lh-journey-rewards > img {
+  width: 65px;
+  margin: auto;
+}
+.lh-journey-rewards > strong {
+  display: block;
+  font:
+    64px Georgia,
+    serif;
+  margin-top: 10px;
+}
+.lh-journey-rewards > span {
+  color: #d3ad6b;
+  font-size: 11px;
+}
+.lh-journey-rewards > div {
+  margin-top: 35px;
+  padding-top: 15px;
+  border-top: 1px solid #414535;
+}
+.lh-journey-rewards p {
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 12px 0;
+}
+.lh-journey-rewards b {
+  margin-left: auto;
+  color: #d3ad6b;
+}
+.lh-journey-mobile-nav {
+  display: none;
+}
+@keyframes lh-journey-cube {
+  from {
+    opacity: 0;
+    transform: translateY(-160px) rotate(40deg) scale(1.4);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(-35%) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+@keyframes lh-journey-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) rotateY(-15deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes lh-journey-pawn {
+  from {
+    opacity: 0;
+    transform: translate(100%, -80%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes lh-journey-roll {
+  from {
+    transform: translateY(-45px) rotate(-150deg);
+  }
+  60% {
+    transform: translateY(6px) rotate(25deg);
+  }
+  to {
+    transform: none;
+  }
+}
+@media (max-width: 1100px) {
+  .lh-journey-story-grid {
+    grid-template-columns: 135px minmax(200px, 0.8fr) minmax(310px, 1.2fr);
+    gap: 20px;
+    padding: 0 25px;
+  }
+  .lh-journey-rail a {
+    font-size: 10px;
+    padding-left: 9px;
+    gap: 7px;
+  }
+  .lh-journey-attack-scene {
+    gap: 15px;
+    inset-inline: 15px;
+  }
+  .lh-journey-lineup-reveal {
+    left: 0;
+  }
+  .lh-journey-stage-caption {
+    font-size: 8px;
+  }
+}
+@media (max-width: 800px) {
+  .lh-landing .lh-journey-story {
+    padding-top: 65px;
+  }
+  .lh-journey-intro {
+    padding-bottom: 40px;
+  }
+  .lh-journey-intro h2 {
+    font-size: 45px;
+  }
+  .lh-journey-intro > p:not(.lh-kicker) {
+    font-size: 15px;
+  }
+  .lh-journey-story-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 20px;
+    position: relative;
+  }
+  .lh-journey-rail {
+    display: none;
+  }
+  .lh-journey-stage-shell {
+    grid-row: 1;
+    grid-column: 1;
+    top: 76px;
+    height: var(--journey-height, 49svh);
+    min-height: 270px;
+    max-height: 430px;
+    padding: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .lh-journey-beats {
+    grid-row: 1;
+    grid-column: 1;
+    padding-top: var(--journey-height, 49svh);
+  }
+  .lh-journey-beat {
+    min-height: 92svh;
+    align-items: flex-start;
+    padding: 35px 8px 0;
+  }
+  .lh-journey-beat > div {
+    position: sticky;
+    top: calc(var(--journey-height, 49svh) + 105px);
+  }
+  .lh-journey-beat h3 {
+    font-size: 28px;
+    margin: 12px 0;
+    max-width: 330px;
+  }
+  .lh-journey-beat > div > p:last-child {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .lh-journey-beat .lh-kicker {
+    font-size: 10px;
+  }
+  .lh-journey-stage-caption {
+    top: 14px;
+    left: 15px;
+    right: 15px;
+    font-size: 8px;
+  }
+  .lh-journey-stage-foot {
+    bottom: 13px;
+    left: 15px;
+    right: 15px;
+    font-size: 7px;
+  }
+  .lh-journey-planning {
+    inset: 43px 12px;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+  .lh-journey-planning figure {
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+    flex: 1;
+  }
+  .lh-journey-card-pair {
+    height: auto;
+    width: 85%;
+  }
+  .lh-journey-card-pair img {
+    width: 62%;
+    height: auto;
+  }
+  .lh-journey-card-pair img + img {
+    margin-left: -20%;
+  }
+  .lh-journey-planning figcaption {
+    font-size: 12px;
+    width: auto;
+    text-align: center;
+  }
+  .lh-journey-planning figcaption small {
+    font-size: 8px;
+  }
+  .lh-journey-lineup-reveal {
+    left: 16%;
+    height: 78%;
+  }
+  .lh-journey-lineup-hunter > span {
+    font-size: 12px;
+  }
+  .lh-journey-lineup-hunter small {
+    font-size: 8px;
+  }
+  .lh-journey-attack-scene {
+    inset: 38px 20px;
+    gap: 30px;
+  }
+  .lh-journey-bounty {
+    width: auto;
+    height: 100%;
+    aspect-ratio: 700/1167;
+    flex-shrink: 0;
+  }
+  .lh-journey-bounty-art {
+    height: 100%;
+    width: auto;
+  }
+  .lh-journey-attack-detail {
+    width: 35%;
+  }
+  .lh-journey-attacker {
+    flex-direction: row;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .lh-journey-attacker img {
+    height: 32px;
+  }
+  .lh-journey-attacker small {
+    font-size: 8px;
+  }
+  .lh-journey-rolling-die {
+    width: 63px;
+    margin-top: 12px;
+  }
+  .lh-journey-roll-result strong,
+  .lh-journey-health-left strong,
+  .lh-journey-rewards > strong {
+    font-size: 42px;
+  }
+  .lh-journey-roll-result svg {
+    width: 17px;
+  }
+  .lh-journey-turn-order {
+    margin-top: 12px;
+    padding-top: 10px;
+  }
+  .lh-journey-turn-order img {
+    height: 22px;
+  }
+  .lh-journey-health-left {
+    padding: 25px 0;
+  }
+  .lh-journey-health-left span {
+    font-size: 9px;
+  }
+  .lh-journey-rewards > img {
+    width: 44px;
+  }
+  .lh-journey-rewards > span {
+    font-size: 9px;
+  }
+  .lh-journey-rewards > div {
+    margin-top: 14px;
+    padding-top: 5px;
+  }
+  .lh-journey-rewards p {
+    font-size: 9px;
+  }
+  .lh-journey-claimed {
+    font-size: 8px;
+    padding: 10px 0;
+  }
+  .lh-journey-mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 45;
+    background: #1b1e17f5;
+    backdrop-filter: blur(16px);
+    border-top: 1px solid #626146;
+    padding: 10px 18px calc(10px + env(safe-area-inset-bottom));
+    align-items: center;
+    justify-content: space-between;
+    transform: translateY(110%);
+    transition: transform 0.25s;
+  }
+  .lh-journey-mobile-nav.is-visible {
+    transform: translateY(0);
+  }
+  .lh-journey-mobile-nav button {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #626146;
+    color: #e6d5b0;
+    border-radius: 50%;
+  }
+  .lh-journey-mobile-nav button:disabled {
+    opacity: 0.25;
+  }
+  .lh-journey-mobile-nav > span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 13px;
+    color: #f0e4c9;
+  }
+  .lh-journey-mobile-nav small {
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    color: #d3ad6b;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lh-journey-story *,
+  .lh-journey-story *::before {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 800px) and (max-height: 740px) {
+  .lh-journey-story {
+    --journey-height: 40svh;
+  }
+  .lh-journey-stage-shell {
+    min-height: 230px;
+  }
+  .lh-journey-beat h3 {
+    font-size: 24px;
+  }
+  .lh-journey-beat > div > p:last-child {
+    font-size: 13px;
+  }
+  .lh-journey-beat {
+    padding-top: 22px;
+  }
+  .lh-journey-beat > div {
+    top: calc(var(--journey-height) + 95px);
+  }
+}
+@media (max-width: 800px) and (max-height: 740px) {
+  .lh-journey-attacker {
+    font-size: 12px;
+  }
+  .lh-journey-attacker img {
+    height: 23px;
+  }
+  .lh-journey-rolling-die {
+    width: 46px;
+    margin-top: 8px;
+  }
+  .lh-journey-roll-result strong {
+    font-size: 30px;
+  }
+  .lh-journey-roll-result svg {
+    width: 14px;
+    height: 18px;
+  }
+  .lh-journey-turn-order {
+    margin-top: 7px;
+    padding-top: 7px;
+  }
+  .lh-journey-turn-order img {
+    height: 18px;
+  }
+}

@@ -33,6 +33,9 @@ export function BestiaryHeader() {
           <Link to="/feedback" className="nav-link">
             Feedback
           </Link>
+          <Link to="/utah-playtest" className="nav-link">
+            Utah Playtests
+          </Link>
         </div>
         <button
           className="button button-small button-gold desktop-nav-follow"
@@ -49,6 +52,7 @@ export function BestiaryHeader() {
             { href: "/bestiary", label: "Bestiary" },
             { href: "/#rulebook", label: "Rulebook" },
             { href: "/#playtest", label: "Playtest" },
+            { href: "/utah-playtest", label: "Reserve a Utah seat" },
             { href: "/feedback", label: "Feedback" },
           ]}
         />

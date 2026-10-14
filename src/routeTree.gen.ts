@@ -15,12 +15,16 @@ import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PrintAndPlayRouteImport } from './routes/print-and-play'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as UtahPlaytestRouteImport } from './routes/utah-playtest'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as BestiaryIndexRouteImport } from './routes/bestiary.index'
 import { Route as BestiaryMonsterRouteImport } from './routes/bestiary.$monster'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as ApiCronPlaytestRemindersRouteImport } from './routes/api/cron/playtest-reminders'
 import { Route as ApiPublicFeedbackRouteImport } from './routes/api/public/feedback'
+import { Route as ApiPublicPlaytestReservationsRouteImport } from './routes/api/public/playtest-reservations'
+import { Route as ApiPublicPlaytestSessionsRouteImport } from './routes/api/public/playtest-sessions'
 import { Route as ApiPublicSignupRouteImport } from './routes/api/public/signup'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +57,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UtahPlaytestRoute = UtahPlaytestRouteImport.update({
+  id: '/utah-playtest',
+  path: '/utah-playtest',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char91DotmcpChar93ListToolsRoute =
   Char91DotmcpChar93ListToolsRouteImport.update({
     id: '/.mcp/list-tools',
@@ -81,11 +90,29 @@ const Char91DotmcpChar93InvokeToolToolRoute =
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiCronPlaytestRemindersRoute =
+  ApiCronPlaytestRemindersRouteImport.update({
+    id: '/api/cron/playtest-reminders',
+    path: '/api/cron/playtest-reminders',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicFeedbackRoute = ApiPublicFeedbackRouteImport.update({
   id: '/api/public/feedback',
   path: '/api/public/feedback',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicPlaytestReservationsRoute =
+  ApiPublicPlaytestReservationsRouteImport.update({
+    id: '/api/public/playtest-reservations',
+    path: '/api/public/playtest-reservations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicPlaytestSessionsRoute =
+  ApiPublicPlaytestSessionsRouteImport.update({
+    id: '/api/public/playtest-sessions',
+    path: '/api/public/playtest-sessions',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicSignupRoute = ApiPublicSignupRouteImport.update({
   id: '/api/public/signup',
   path: '/api/public/signup',
@@ -99,12 +126,16 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/print-and-play': typeof PrintAndPlayRoute
   '/privacy': typeof PrivacyRoute
+  '/utah-playtest': typeof UtahPlaytestRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary/': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/cron/playtest-reminders': typeof ApiCronPlaytestRemindersRoute
   '/api/public/feedback': typeof ApiPublicFeedbackRoute
+  '/api/public/playtest-reservations': typeof ApiPublicPlaytestReservationsRoute
+  '/api/public/playtest-sessions': typeof ApiPublicPlaytestSessionsRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
 }
 export interface FileRoutesByTo {
@@ -113,12 +144,16 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/print-and-play': typeof PrintAndPlayRoute
   '/privacy': typeof PrivacyRoute
+  '/utah-playtest': typeof UtahPlaytestRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/cron/playtest-reminders': typeof ApiCronPlaytestRemindersRoute
   '/api/public/feedback': typeof ApiPublicFeedbackRoute
+  '/api/public/playtest-reservations': typeof ApiPublicPlaytestReservationsRoute
+  '/api/public/playtest-sessions': typeof ApiPublicPlaytestSessionsRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
 }
 export interface FileRoutesById {
@@ -129,12 +164,16 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/print-and-play': typeof PrintAndPlayRoute
   '/privacy': typeof PrivacyRoute
+  '/utah-playtest': typeof UtahPlaytestRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary/': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/cron/playtest-reminders': typeof ApiCronPlaytestRemindersRoute
   '/api/public/feedback': typeof ApiPublicFeedbackRoute
+  '/api/public/playtest-reservations': typeof ApiPublicPlaytestReservationsRoute
+  '/api/public/playtest-sessions': typeof ApiPublicPlaytestSessionsRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
 }
 export interface FileRouteTypes {
@@ -146,12 +185,16 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/print-and-play'
     | '/privacy'
+    | '/utah-playtest'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/bestiary/$monster'
     | '/bestiary/'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/cron/playtest-reminders'
     | '/api/public/feedback'
+    | '/api/public/playtest-reservations'
+    | '/api/public/playtest-sessions'
     | '/api/public/signup'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -160,12 +203,16 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/print-and-play'
     | '/privacy'
+    | '/utah-playtest'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/bestiary/$monster'
     | '/bestiary'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/cron/playtest-reminders'
     | '/api/public/feedback'
+    | '/api/public/playtest-reservations'
+    | '/api/public/playtest-sessions'
     | '/api/public/signup'
   id:
     | '__root__'
@@ -175,12 +222,16 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/print-and-play'
     | '/privacy'
+    | '/utah-playtest'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/bestiary/$monster'
     | '/bestiary/'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/cron/playtest-reminders'
     | '/api/public/feedback'
+    | '/api/public/playtest-reservations'
+    | '/api/public/playtest-sessions'
     | '/api/public/signup'
   fileRoutesById: FileRoutesById
 }
@@ -191,10 +242,14 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   PrintAndPlayRoute: typeof PrintAndPlayRoute
   PrivacyRoute: typeof PrivacyRoute
+  UtahPlaytestRoute: typeof UtahPlaytestRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  ApiCronPlaytestRemindersRoute: typeof ApiCronPlaytestRemindersRoute
   ApiPublicFeedbackRoute: typeof ApiPublicFeedbackRoute
+  ApiPublicPlaytestReservationsRoute: typeof ApiPublicPlaytestReservationsRoute
+  ApiPublicPlaytestSessionsRoute: typeof ApiPublicPlaytestSessionsRoute
   ApiPublicSignupRoute: typeof ApiPublicSignupRoute
 }
 
@@ -242,6 +297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/utah-playtest': {
+      id: '/utah-playtest'
+      path: '/utah-playtest'
+      fullPath: '/utah-playtest'
+      preLoaderRoute: typeof UtahPlaytestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.mcp/list-tools': {
       id: '/.mcp/list-tools'
       path: '/.mcp/list-tools'
@@ -277,11 +339,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/cron/playtest-reminders': {
+      id: '/api/cron/playtest-reminders'
+      path: '/api/cron/playtest-reminders'
+      fullPath: '/api/cron/playtest-reminders'
+      preLoaderRoute: typeof ApiCronPlaytestRemindersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/feedback': {
       id: '/api/public/feedback'
       path: '/api/public/feedback'
       fullPath: '/api/public/feedback'
       preLoaderRoute: typeof ApiPublicFeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/playtest-reservations': {
+      id: '/api/public/playtest-reservations'
+      path: '/api/public/playtest-reservations'
+      fullPath: '/api/public/playtest-reservations'
+      preLoaderRoute: typeof ApiPublicPlaytestReservationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/playtest-sessions': {
+      id: '/api/public/playtest-sessions'
+      path: '/api/public/playtest-sessions'
+      fullPath: '/api/public/playtest-sessions'
+      preLoaderRoute: typeof ApiPublicPlaytestSessionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/signup': {
@@ -315,11 +398,15 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   PrintAndPlayRoute: PrintAndPlayRoute,
   PrivacyRoute: PrivacyRoute,
+  UtahPlaytestRoute: UtahPlaytestRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  ApiCronPlaytestRemindersRoute: ApiCronPlaytestRemindersRoute,
   ApiPublicFeedbackRoute: ApiPublicFeedbackRoute,
+  ApiPublicPlaytestReservationsRoute: ApiPublicPlaytestReservationsRoute,
+  ApiPublicPlaytestSessionsRoute: ApiPublicPlaytestSessionsRoute,
   ApiPublicSignupRoute: ApiPublicSignupRoute,
 }
 export const routeTree = rootRouteImport

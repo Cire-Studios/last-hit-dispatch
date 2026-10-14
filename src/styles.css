@@ -4560,6 +4560,16 @@
   line-height: 1.75;
 }
 
+.privacy-page code {
+  border: 1px solid rgb(213 167 83 / 0.2);
+  border-radius: 3px;
+  padding: 0.1em 0.3em;
+  color: var(--parchment);
+  background: rgb(37 24 16 / 0.72);
+  font-size: 0.86em;
+  overflow-wrap: anywhere;
+}
+
 .privacy-page header > p:last-child {
   max-width: 42rem;
   margin: 1rem 0 0;
@@ -4581,7 +4591,27 @@
   margin: 0.7rem 0 0;
 }
 
-.privacy-page section a {
+.privacy-page section ul {
+  margin: 0.85rem 0 0;
+  padding-left: 1.25rem;
+  color: rgb(231 217 189 / 0.72);
+}
+
+.privacy-page section li {
+  margin-top: 0.55rem;
+  padding-left: 0.25rem;
+  line-height: 1.65;
+}
+
+.privacy-page section li::marker {
+  color: var(--gold);
+}
+
+.privacy-page section strong {
+  color: var(--foreground);
+}
+
+.privacy-page a {
   color: var(--gold-light);
   text-underline-offset: 4px;
 }

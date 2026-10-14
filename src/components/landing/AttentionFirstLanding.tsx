@@ -164,8 +164,8 @@ function GuildInvitation() {
         <p className="lh-kicker">From the Guild</p>
         <h2>Follow Last Hit.</h2>
         <p>
-          Last Hit is in playtesting. Sign up for launch news, or join the playtest list and help
-          shape the game before it reaches the table.
+          Last Hit is in playtesting. Sign up for launch news, or reserve a Utah playtest seat and
+          help shape the game before it reaches the table.
         </p>
         <div className="lh-invitation-actions">
           <button
@@ -174,12 +174,9 @@ function GuildInvitation() {
           >
             Get launch updates <ArrowRight size={17} />
           </button>
-          <button
-            className="button"
-            onClick={() => openSignup({ source: "playtest", preset: "playtest" })}
-          >
-            Join the playtest list
-          </button>
+          <a className="button" href="/utah-playtest">
+            Reserve a Utah seat
+          </a>
         </div>
         <a className="lh-feedback-link" href="/feedback">
           Already played? Send your feedback <ArrowRight size={14} />
@@ -212,6 +209,7 @@ function SiteNavigation() {
             ["/bestiary", "Bestiary"],
             ["#rulebook", "Rulebook"],
             ["#box", "On the Table"],
+            ["/utah-playtest", "Utah Playtests"],
           ].map(([href, label]) => (
             <a className="nav-link" href={href} key={href}>
               {label}
@@ -233,6 +231,7 @@ function SiteNavigation() {
             { href: "#rulebook", label: "Rulebook" },
             { href: "#box", label: "On the Table" },
             { href: "#playtest", label: "Playtest" },
+            { href: "/utah-playtest", label: "Reserve a Utah seat" },
             { href: "/feedback", label: "Feedback" },
           ]}
         />
