@@ -21,11 +21,11 @@ import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } fr
 import { Route as BestiaryIndexRouteImport } from './routes/bestiary.index'
 import { Route as BestiaryMonsterRouteImport } from './routes/bestiary.$monster'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as ApiCronPlaytestRemindersRouteImport } from './routes/api/cron/playtest-reminders'
 import { Route as ApiPublicFeedbackRouteImport } from './routes/api/public/feedback'
 import { Route as ApiPublicPlaytestReservationsRouteImport } from './routes/api/public/playtest-reservations'
 import { Route as ApiPublicPlaytestSessionsRouteImport } from './routes/api/public/playtest-sessions'
 import { Route as ApiPublicSignupRouteImport } from './routes/api/public/signup'
-import { Route as ApiPublicCronPlaytestRemindersRouteImport } from './routes/api/public/cron/playtest-reminders'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -90,6 +90,12 @@ const Char91DotmcpChar93InvokeToolToolRoute =
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiCronPlaytestRemindersRoute =
+  ApiCronPlaytestRemindersRouteImport.update({
+    id: '/api/cron/playtest-reminders',
+    path: '/api/cron/playtest-reminders',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicFeedbackRoute = ApiPublicFeedbackRouteImport.update({
   id: '/api/public/feedback',
   path: '/api/public/feedback',
@@ -112,12 +118,6 @@ const ApiPublicSignupRoute = ApiPublicSignupRouteImport.update({
   path: '/api/public/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicCronPlaytestRemindersRoute =
-  ApiPublicCronPlaytestRemindersRouteImport.update({
-    id: '/api/public/cron/playtest-reminders',
-    path: '/api/public/cron/playtest-reminders',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -132,11 +132,11 @@ export interface FileRoutesByFullPath {
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary/': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/cron/playtest-reminders': typeof ApiCronPlaytestRemindersRoute
   '/api/public/feedback': typeof ApiPublicFeedbackRoute
   '/api/public/playtest-reservations': typeof ApiPublicPlaytestReservationsRoute
   '/api/public/playtest-sessions': typeof ApiPublicPlaytestSessionsRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
-  '/api/public/cron/playtest-reminders': typeof ApiPublicCronPlaytestRemindersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -150,11 +150,11 @@ export interface FileRoutesByTo {
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/cron/playtest-reminders': typeof ApiCronPlaytestRemindersRoute
   '/api/public/feedback': typeof ApiPublicFeedbackRoute
   '/api/public/playtest-reservations': typeof ApiPublicPlaytestReservationsRoute
   '/api/public/playtest-sessions': typeof ApiPublicPlaytestSessionsRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
-  '/api/public/cron/playtest-reminders': typeof ApiPublicCronPlaytestRemindersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -170,11 +170,11 @@ export interface FileRoutesById {
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary/': typeof BestiaryIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/cron/playtest-reminders': typeof ApiCronPlaytestRemindersRoute
   '/api/public/feedback': typeof ApiPublicFeedbackRoute
   '/api/public/playtest-reservations': typeof ApiPublicPlaytestReservationsRoute
   '/api/public/playtest-sessions': typeof ApiPublicPlaytestSessionsRoute
   '/api/public/signup': typeof ApiPublicSignupRoute
-  '/api/public/cron/playtest-reminders': typeof ApiPublicCronPlaytestRemindersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -191,11 +191,11 @@ export interface FileRouteTypes {
     | '/bestiary/$monster'
     | '/bestiary/'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/cron/playtest-reminders'
     | '/api/public/feedback'
     | '/api/public/playtest-reservations'
     | '/api/public/playtest-sessions'
     | '/api/public/signup'
-    | '/api/public/cron/playtest-reminders'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -209,11 +209,11 @@ export interface FileRouteTypes {
     | '/bestiary/$monster'
     | '/bestiary'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/cron/playtest-reminders'
     | '/api/public/feedback'
     | '/api/public/playtest-reservations'
     | '/api/public/playtest-sessions'
     | '/api/public/signup'
-    | '/api/public/cron/playtest-reminders'
   id:
     | '__root__'
     | '/'
@@ -228,11 +228,11 @@ export interface FileRouteTypes {
     | '/bestiary/$monster'
     | '/bestiary/'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/cron/playtest-reminders'
     | '/api/public/feedback'
     | '/api/public/playtest-reservations'
     | '/api/public/playtest-sessions'
     | '/api/public/signup'
-    | '/api/public/cron/playtest-reminders'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -246,11 +246,11 @@ export interface RootRouteChildren {
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  ApiCronPlaytestRemindersRoute: typeof ApiCronPlaytestRemindersRoute
   ApiPublicFeedbackRoute: typeof ApiPublicFeedbackRoute
   ApiPublicPlaytestReservationsRoute: typeof ApiPublicPlaytestReservationsRoute
   ApiPublicPlaytestSessionsRoute: typeof ApiPublicPlaytestSessionsRoute
   ApiPublicSignupRoute: typeof ApiPublicSignupRoute
-  ApiPublicCronPlaytestRemindersRoute: typeof ApiPublicCronPlaytestRemindersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -339,6 +339,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/cron/playtest-reminders': {
+      id: '/api/cron/playtest-reminders'
+      path: '/api/cron/playtest-reminders'
+      fullPath: '/api/cron/playtest-reminders'
+      preLoaderRoute: typeof ApiCronPlaytestRemindersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/feedback': {
       id: '/api/public/feedback'
       path: '/api/public/feedback'
@@ -365,13 +372,6 @@ declare module '@tanstack/react-router' {
       path: '/api/public/signup'
       fullPath: '/api/public/signup'
       preLoaderRoute: typeof ApiPublicSignupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/cron/playtest-reminders': {
-      id: '/api/public/cron/playtest-reminders'
-      path: '/api/public/cron/playtest-reminders'
-      fullPath: '/api/public/cron/playtest-reminders'
-      preLoaderRoute: typeof ApiPublicCronPlaytestRemindersRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -403,11 +403,11 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  ApiCronPlaytestRemindersRoute: ApiCronPlaytestRemindersRoute,
   ApiPublicFeedbackRoute: ApiPublicFeedbackRoute,
   ApiPublicPlaytestReservationsRoute: ApiPublicPlaytestReservationsRoute,
   ApiPublicPlaytestSessionsRoute: ApiPublicPlaytestSessionsRoute,
   ApiPublicSignupRoute: ApiPublicSignupRoute,
-  ApiPublicCronPlaytestRemindersRoute: ApiPublicCronPlaytestRemindersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
