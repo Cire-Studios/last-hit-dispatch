@@ -142,10 +142,12 @@ export async function listPendingReminders() {
 
 export async function markReminderSent(reservationId: string, kind: "24h" | "2h") {
   const database = await getPlaytestDatabase();
-  const field = kind === "24h" ? "reminder_24h_sent_at" : "reminder_2h_sent_at";
+  const sentAt = new Date().toISOString();
+  const update =
+    kind === "24h" ? { reminder_24h_sent_at: sentAt } : { reminder_2h_sent_at: sentAt };
   const { error } = await database
     .from("playtest_reservations")
-    .update({ [field]: new Date().toISOString() })
+    .update(update)
     .eq("id", reservationId);
 
   if (error) throw databaseError("marking a reminder sent", error);
