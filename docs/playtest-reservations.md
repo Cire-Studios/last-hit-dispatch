@@ -1,6 +1,6 @@
 # Playtest reservations
 
-The public page lives at `/utah-playtest`. Sessions, tables, reservations, and reminder delivery state live in the Lovable Cloud database. The schema is recorded in `drizzle/schema.ts` and `drizzle/migrations/0000_playtest_reservations.sql`.
+The public page lives at `/utah-playtest`. Sessions, tables, reservations, and reminder delivery state live in the Lovable Cloud database. The schema migration is recorded in `drizzle/migrations/0000_playtest_reservations.sql`, and Lovable keeps the generated database types in `src/integrations/supabase/types.ts`.
 
 After the branch syncs to Lovable, ask the project agent to apply the playtest reservation migration. Confirm that `playtest_sessions`, `playtest_tables`, and `playtest_reservations` appear under **More → Cloud → Database** before opening reservations.
 
