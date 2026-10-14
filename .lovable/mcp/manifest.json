@@ -31,7 +31,7 @@
       {
         "name": "list_mechanics",
         "title": "List core mechanics",
-        "description": "List the four core mechanics of Last Hit: programming in secret, positioning the attack lineup, splitting attention, and landing the last hit.",
+        "description": "List the core mechanics of Last Hit: secret planning, lineup positioning, dice and Boons, Reputation and Gold, and Market purchases and recovery.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -47,7 +47,7 @@
       {
         "name": "get_round_sequence",
         "title": "Get round sequence",
-        "description": "Get the ten ordered phases of a single round in Last Hit, from Recover through Reset & Refill.",
+        "description": "Get the eight ordered phases of a single round in Last Hit, from Plan through Refresh Attention.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -63,7 +63,7 @@
       {
         "name": "list_bounties",
         "title": "List starter bounties",
-        "description": "List the starter bounty monsters shown on the Last Hit landing page, with their health and Reputation values.",
+        "description": "List the starter bounty monsters shown on the Last Hit landing page, with links to their current cards for Health, Reputation, and behavior.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
