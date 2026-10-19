@@ -29,7 +29,7 @@ function PrivacyPage() {
       <BestiaryHeader />
       <article className="privacy-page mx-auto max-w-4xl px-5 lg:px-10">
         <header>
-          <p className="eyebrow">Last updated October 13, 2026</p>
+          <p className="eyebrow">Last updated October 19, 2026</p>
           <h1>Privacy Policy</h1>
           <p>
             Cire Studios LLC operates Last Hit. This policy applies to the website at{" "}
@@ -71,10 +71,14 @@ function PrivacyPage() {
             interaction information.
           </p>
           <p>
-            Cloudflare provides hosting and security services and may set an essential security
-            cookie such as <code>__cf_bm</code>. The feedback page also uses Cloudflare Turnstile to
-            help prevent abuse. Turnstile may receive browser, device, IP-address, and interaction
-            information needed to perform that check. See the{" "}
+            Vercel provides website hosting and may receive technical information needed to deliver
+            and protect the website. See the{" "}
+            <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noreferrer">
+              Vercel Privacy Policy
+            </a>
+            . Reservation and feedback forms also use Cloudflare Turnstile to help prevent abuse.
+            Turnstile may receive browser, device, IP-address, and interaction information needed to
+            perform that check. See the{" "}
             <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noreferrer">
               Cloudflare Privacy Policy
             </a>
@@ -175,11 +179,15 @@ function PrivacyPage() {
         <section>
           <h2>Service providers and disclosures</h2>
           <p>
-            The current website uses service providers for hosting, security, error monitoring,
-            subscription management, feedback delivery, and optional advertising measurement. These
-            include Cloudflare, Lovable, Resend, MailerLite, Discord, and Meta as described in this
-            policy. Lovable supports playtest reservation records, and Resend delivers reservation
-            confirmations and reminders.
+            The current website uses service providers for hosting, security, subscription
+            management, feedback delivery, and optional advertising measurement. These include
+            Vercel, Supabase, Cloudflare, Resend, MailerLite, Discord, and Meta as described in this
+            policy. Supabase stores playtest reservation records, and Resend delivers reservation
+            confirmations and reminders. See the{" "}
+            <a href="https://supabase.com/privacy" target="_blank" rel="noreferrer">
+              Supabase Privacy Policy
+            </a>
+            .
           </p>
           <p>
             Feedback submitted through the website is delivered to a private Cire Studios channel

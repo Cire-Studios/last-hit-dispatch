@@ -21,9 +21,8 @@ dist-ssr
 .env.*
 !.env.example
 
-# Wrangler / Cloudflare
-.wrangler/
-.dev.vars
+# Vercel project metadata
+.vercel/
 
 # Editor directories and files
 .vscode/*

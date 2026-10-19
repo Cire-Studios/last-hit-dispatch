@@ -423,9 +423,7 @@ function ReservationForm({
         }),
       });
       const payload = (await response.json().catch(() => null)) as
-        | PlaytestReservationResponse
-        | { error?: string; code?: string }
-        | null;
+        PlaytestReservationResponse | { error?: string; code?: string } | null;
       if (!response.ok || !payload || !("ok" in payload)) {
         const code = payload && "code" in payload ? payload.code : undefined;
         setStatus("error");

@@ -1,1 +1,0 @@
-COMMENT ON TABLE public.playtest_reservations IS 'Seat reservations for in-person Last Hit playtest sessions.';

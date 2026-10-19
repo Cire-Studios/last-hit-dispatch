@@ -56,7 +56,7 @@ export interface ReminderRow {
 }
 
 export function playtestDatabaseIsConfigured() {
-  return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+  return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SECRET_KEY);
 }
 
 export async function listPlaytestSessions(): Promise<PlaytestSession[]> {

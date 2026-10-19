@@ -1,8 +1,8 @@
 # Playtest reservations
 
-The public page lives at `/utah-playtest`. Sessions, tables, reservations, and reminder delivery state live in the Lovable Cloud database. The schema migration is recorded in `drizzle/migrations/0000_playtest_reservations.sql`, and Lovable keeps the generated database types in `src/integrations/supabase/types.ts`.
+The public page lives at `/utah-playtest`. Sessions, tables, reservations, and reminder delivery state live in Supabase Postgres. The schema migration is recorded in `supabase/migrations/20261019203643_create_playtest_reservations.sql`, and generated database types live in `src/integrations/supabase/types.ts`.
 
-After the branch syncs to Lovable, ask the project agent to apply the playtest reservation migration. Confirm that `playtest_sessions`, `playtest_tables`, and `playtest_reservations` appear under **More → Cloud → Database** before opening reservations.
+Link the repository to the intended Supabase project with `supabase link --project-ref <project-ref>`, then apply the migration with `supabase db push`. Confirm that `playtest_sessions`, `playtest_tables`, and `playtest_reservations` appear in the Supabase Table Editor before opening reservations.
 
 ## Add a playtest day
 
@@ -48,11 +48,11 @@ where reservation_code = 'LH-EXAMPLE';
 
 ## Environment
 
-- Lovable Cloud provides `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` to the deployed app. Add them locally only when testing against live Cloud data.
+- `SUPABASE_URL` and the server-only `SUPABASE_SECRET_KEY` connect the Vercel functions to Supabase. Never expose the secret key through a `VITE_` variable.
 - `TURNSTILE_SECRET_KEY` blocks automated submissions. The public site key is already configured with the other public settings.
 - `RESEND_API_KEY`, `PLAYTEST_EMAIL_FROM`, and optional `PLAYTEST_REPLY_TO` send confirmations and reminders.
-- Lovable Cloud provides and rotates `LOVABLE_CRON_SECRET` for the reminder Job.
+- Vercel sends `CRON_SECRET` as bearer authentication when it invokes the reminder endpoint.
 - `PLAYTEST_DEMO_MODE=true` shows interactive sample dates without writing data. Keep it disabled in production.
 - Existing MailerLite settings add guests to the playtesting list only when they opt in.
 
-Create a Lovable Cloud Job that sends a `POST` request to `/api/public/cron/playtest-reminders` every 30 minutes. The endpoint authenticates with Lovable's managed cron secret and sends reminders about 24 hours and 2 hours before each reservation. Review runs under **More → Cloud → Jobs**.
+`vercel.json` schedules a `GET` request to `/api/cron/playtest-reminders` every 30 minutes. The endpoint authenticates with `CRON_SECRET` and sends reminders about 24 hours and 2 hours before each reservation. This schedule requires Vercel Pro; Hobby permits only one cron execution per day. Review runs under **Project → Settings → Cron Jobs**.

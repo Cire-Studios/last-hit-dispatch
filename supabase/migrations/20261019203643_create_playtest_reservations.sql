@@ -1,4 +1,4 @@
-CREATE TABLE "playtest_reservations" (
+CREATE TABLE public."playtest_reservations" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"session_id" uuid NOT NULL,
 	"table_id" uuid NOT NULL,
@@ -17,8 +17,7 @@ CREATE TABLE "playtest_reservations" (
 	CONSTRAINT "playtest_reservations_seats" CHECK ("playtest_reservations"."seats" between 1 and 4),
 	CONSTRAINT "playtest_reservations_status" CHECK ("playtest_reservations"."status" in ('confirmed', 'cancelled'))
 );
---> statement-breakpoint
-CREATE TABLE "playtest_sessions" (
+CREATE TABLE public."playtest_sessions" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"starts_at" timestamp with time zone NOT NULL,
 	"ends_at" timestamp with time zone NOT NULL,
@@ -33,8 +32,7 @@ CREATE TABLE "playtest_sessions" (
 	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
 	CONSTRAINT "playtest_sessions_time_order" CHECK ("playtest_sessions"."ends_at" > "playtest_sessions"."starts_at")
 );
---> statement-breakpoint
-CREATE TABLE "playtest_tables" (
+CREATE TABLE public."playtest_tables" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"session_id" uuid NOT NULL,
 	"label" text NOT NULL,
@@ -45,14 +43,28 @@ CREATE TABLE "playtest_tables" (
 	CONSTRAINT "playtest_tables_session_label" UNIQUE("session_id","label"),
 	CONSTRAINT "playtest_tables_capacity" CHECK ("playtest_tables"."capacity" between 1 and 12)
 );
---> statement-breakpoint
-ALTER TABLE "playtest_reservations" ADD CONSTRAINT "playtest_reservations_session_id_playtest_sessions_id_fk" FOREIGN KEY ("session_id") REFERENCES "public"."playtest_sessions"("id") ON DELETE restrict ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "playtest_reservations" ADD CONSTRAINT "playtest_reservations_table_id_playtest_tables_id_fk" FOREIGN KEY ("table_id") REFERENCES "public"."playtest_tables"("id") ON DELETE restrict ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "playtest_tables" ADD CONSTRAINT "playtest_tables_session_id_playtest_sessions_id_fk" FOREIGN KEY ("session_id") REFERENCES "public"."playtest_sessions"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-CREATE UNIQUE INDEX "playtest_reservations_one_per_session_email" ON "playtest_reservations" USING btree ("session_id",lower("email")) WHERE "playtest_reservations"."status" = 'confirmed';--> statement-breakpoint
-CREATE INDEX "playtest_reservations_table_status" ON "playtest_reservations" USING btree ("table_id","status");
---> statement-breakpoint
-CREATE VIEW public.playtest_table_availability AS
+ALTER TABLE public."playtest_reservations"
+  ADD CONSTRAINT "playtest_reservations_session_id_playtest_sessions_id_fk"
+  FOREIGN KEY ("session_id") REFERENCES public."playtest_sessions"("id")
+  ON DELETE restrict ON UPDATE no action;
+
+ALTER TABLE public."playtest_reservations"
+  ADD CONSTRAINT "playtest_reservations_table_id_playtest_tables_id_fk"
+  FOREIGN KEY ("table_id") REFERENCES public."playtest_tables"("id")
+  ON DELETE restrict ON UPDATE no action;
+
+ALTER TABLE public."playtest_tables"
+  ADD CONSTRAINT "playtest_tables_session_id_playtest_sessions_id_fk"
+  FOREIGN KEY ("session_id") REFERENCES public."playtest_sessions"("id")
+  ON DELETE cascade ON UPDATE no action;
+
+CREATE UNIQUE INDEX "playtest_reservations_one_per_session_email"
+  ON public."playtest_reservations" USING btree ("session_id", lower("email"))
+  WHERE "playtest_reservations"."status" = 'confirmed';
+
+CREATE INDEX "playtest_reservations_table_status"
+  ON public."playtest_reservations" USING btree ("table_id", "status");
+CREATE VIEW public.playtest_table_availability WITH (security_invoker = true) AS
 SELECT
   t.id,
   t.session_id,
@@ -68,8 +80,7 @@ SELECT
 FROM public.playtest_tables t
 LEFT JOIN public.playtest_reservations r ON r.table_id = t.id
 GROUP BY t.id;
---> statement-breakpoint
-CREATE VIEW public.playtest_reminder_queue AS
+CREATE VIEW public.playtest_reminder_queue WITH (security_invoker = true) AS
 SELECT
   r.id AS reservation_id,
   r.name,
@@ -90,7 +101,6 @@ FROM public.playtest_reservations r
 JOIN public.playtest_tables t ON t.id = r.table_id
 JOIN public.playtest_sessions s ON s.id = r.session_id
 WHERE r.status = 'confirmed' AND s.is_active = true;
---> statement-breakpoint
 CREATE FUNCTION public.reserve_playtest_seats(
   p_table_id uuid,
   p_name text,
@@ -113,7 +123,7 @@ RETURNS TABLE (
 )
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = public
+SET search_path = ''
 AS $$
 DECLARE
   v_table public.playtest_tables%ROWTYPE;
@@ -199,33 +209,20 @@ BEGIN
     v_table.label;
 END;
 $$;
---> statement-breakpoint
 ALTER TABLE public.playtest_sessions ENABLE ROW LEVEL SECURITY;
---> statement-breakpoint
 ALTER TABLE public.playtest_tables ENABLE ROW LEVEL SECURITY;
---> statement-breakpoint
 ALTER TABLE public.playtest_reservations ENABLE ROW LEVEL SECURITY;
---> statement-breakpoint
-REVOKE ALL ON public.playtest_sessions FROM anon, authenticated;
---> statement-breakpoint
-REVOKE ALL ON public.playtest_tables FROM anon, authenticated;
---> statement-breakpoint
-REVOKE ALL ON public.playtest_reservations FROM anon, authenticated;
---> statement-breakpoint
-REVOKE ALL ON public.playtest_table_availability FROM anon, authenticated;
---> statement-breakpoint
-REVOKE ALL ON public.playtest_reminder_queue FROM anon, authenticated;
---> statement-breakpoint
+REVOKE ALL ON public.playtest_sessions FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON public.playtest_tables FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON public.playtest_reservations FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON public.playtest_table_availability FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON public.playtest_reminder_queue FROM PUBLIC, anon, authenticated;
 REVOKE ALL ON FUNCTION public.reserve_playtest_seats(uuid, text, text, integer, boolean, text) FROM PUBLIC, anon, authenticated;
---> statement-breakpoint
 GRANT SELECT, INSERT, UPDATE, DELETE ON public.playtest_sessions TO service_role;
---> statement-breakpoint
 GRANT SELECT, INSERT, UPDATE, DELETE ON public.playtest_tables TO service_role;
---> statement-breakpoint
 GRANT SELECT, INSERT, UPDATE, DELETE ON public.playtest_reservations TO service_role;
---> statement-breakpoint
 GRANT SELECT ON public.playtest_table_availability TO service_role;
---> statement-breakpoint
 GRANT SELECT ON public.playtest_reminder_queue TO service_role;
---> statement-breakpoint
 GRANT EXECUTE ON FUNCTION public.reserve_playtest_seats(uuid, text, text, integer, boolean, text) TO service_role;
+
+COMMENT ON TABLE public.playtest_reservations IS 'Seat reservations for in-person Last Hit playtest sessions.';
