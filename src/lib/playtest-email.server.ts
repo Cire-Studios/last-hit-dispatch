@@ -88,6 +88,25 @@ export async function sendPlaytestReminder(row: ReminderRow, kind: "24h" | "2h")
   });
 }
 
+export async function sendAdminLoginCode(to: string, code: string) {
+  await sendEmail({
+    to,
+    subject: `${code} is your Last Hit playtest admin code`,
+    text: [
+      "Use this code to open the Last Hit playtest schedule:",
+      "",
+      code,
+      "",
+      "This code expires in 10 minutes. If you didn’t request it, you can ignore this email.",
+    ].join("\n"),
+    html: emailFrame(`
+      <p style="margin:0 0 18px">Use this code to open the playtest schedule:</p>
+      <p style="margin:0 0 22px;color:#f1d598;font:700 36px/1 Georgia,serif;letter-spacing:.18em">${escapeHtml(code)}</p>
+      <p style="margin:0;color:#bcae95">This code expires in 10 minutes. If you didn’t request it, you can ignore this email.</p>
+    `),
+  });
+}
+
 async function sendEmail(message: EmailMessage) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.PLAYTEST_EMAIL_FROM;

@@ -1,0 +1,1247 @@
+.playtest-admin-shell,
+.playtest-admin-login-shell,
+.playtest-admin-loading {
+  --admin-ink: #11100e;
+  --admin-panel: #191713;
+  --admin-panel-raised: #211e19;
+  --admin-line: rgb(218 175 93 / 0.18);
+  --admin-gold: #e0ad56;
+  --admin-gold-light: #f4dba9;
+  --admin-copy: #eee3cc;
+  --admin-muted: #9f9687;
+  --admin-green: #6ca27d;
+  --admin-red: #c76152;
+  min-height: 100vh;
+  color: var(--admin-copy);
+  background:
+    radial-gradient(circle at 12% -5%, rgb(152 81 35 / 0.22), transparent 31rem),
+    radial-gradient(circle at 92% 5%, rgb(107 58 25 / 0.16), transparent 25rem), #0d0c0a;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.playtest-admin-shell button,
+.playtest-admin-login-shell button,
+.playtest-admin-shell input,
+.playtest-admin-shell textarea,
+.playtest-admin-login-shell input {
+  font: inherit;
+}
+
+.playtest-admin-topbar {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: flex;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  border-bottom: 1px solid var(--admin-line);
+  padding: 0.9rem max(3vw, 1.25rem);
+  background: rgb(13 12 10 / 0.9);
+  box-shadow: 0 16px 50px rgb(0 0 0 / 0.24);
+  backdrop-filter: blur(20px);
+}
+
+.playtest-admin-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--admin-copy);
+  text-decoration: none;
+}
+
+.playtest-admin-brand-mark {
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  place-items: center;
+  border: 1px solid rgb(224 173 86 / 0.48);
+  border-radius: 50%;
+  color: var(--admin-gold-light);
+  background: radial-gradient(circle at 36% 28%, rgb(255 226 164 / 0.18), transparent 42%), #21150d;
+  box-shadow: 0 0 24px rgb(209 160 78 / 0.15);
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.playtest-admin-brand > span:last-child {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.playtest-admin-brand strong {
+  color: var(--admin-gold-light);
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.playtest-admin-brand small {
+  color: var(--admin-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.playtest-admin-account {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  color: var(--admin-muted);
+  font-size: 0.78rem;
+}
+
+.playtest-admin-account a,
+.playtest-admin-account button,
+.playtest-admin-heading-actions button,
+.playtest-admin-session-actions button,
+.playtest-admin-table-actions button,
+.playtest-admin-table-heading button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  border: 1px solid var(--admin-line);
+  border-radius: 0.4rem;
+  padding: 0.58rem 0.72rem;
+  color: #c9beaa;
+  background: rgb(255 255 255 / 0.025);
+  cursor: pointer;
+  text-decoration: none;
+  transition: 160ms ease;
+}
+
+.playtest-admin-account a:hover,
+.playtest-admin-account button:hover,
+.playtest-admin-heading-actions button:hover,
+.playtest-admin-session-actions button:hover,
+.playtest-admin-table-actions button:hover,
+.playtest-admin-table-heading button:hover {
+  border-color: rgb(224 173 86 / 0.42);
+  color: var(--admin-gold-light);
+  background: rgb(224 173 86 / 0.07);
+}
+
+.playtest-admin-account svg,
+.playtest-admin-heading-actions svg,
+.playtest-admin-session-actions svg,
+.playtest-admin-table-actions svg,
+.playtest-admin-table-heading svg {
+  width: 0.92rem;
+  height: 0.92rem;
+}
+
+.playtest-admin-content {
+  width: min(1380px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: 3.5rem 0 6rem;
+}
+
+.playtest-admin-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.5rem 0 2.6rem;
+}
+
+.playtest-admin-eyebrow {
+  margin: 0 0 0.65rem;
+  color: var(--admin-gold);
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.playtest-admin-hero h1 {
+  margin: 0;
+  color: #f3e7ce;
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.playtest-admin-hero p:not(.playtest-admin-eyebrow) {
+  max-width: 42rem;
+  margin: 1rem 0 0;
+  color: var(--admin-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.playtest-admin-primary {
+  display: inline-flex;
+  min-height: 2.95rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid #e7b65f;
+  border-radius: 0.42rem;
+  padding: 0.72rem 1.05rem;
+  color: #21150b;
+  background: linear-gradient(180deg, #efc875, #d79d41);
+  box-shadow: 0 12px 28px rgb(163 99 28 / 0.2);
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 750;
+  white-space: nowrap;
+  transition: 160ms ease;
+}
+
+.playtest-admin-primary:hover {
+  filter: brightness(1.07);
+  transform: translateY(-1px);
+}
+
+.playtest-admin-primary:disabled,
+.playtest-admin-shell button:disabled {
+  cursor: wait;
+  opacity: 0.58;
+}
+
+.playtest-admin-primary svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.playtest-admin-stats {
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.playtest-admin-stat {
+  display: flex;
+  min-height: 7rem;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--admin-line);
+  border-radius: 0.7rem;
+  padding: 1.15rem;
+  background:
+    linear-gradient(140deg, rgb(255 255 255 / 0.025), transparent 55%), var(--admin-panel);
+  box-shadow: 0 18px 48px rgb(0 0 0 / 0.16);
+}
+
+.playtest-admin-stat > span {
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  place-items: center;
+  border: 1px solid rgb(224 173 86 / 0.22);
+  border-radius: 0.55rem;
+  color: var(--admin-gold);
+  background: rgb(224 173 86 / 0.07);
+}
+
+.playtest-admin-stat svg {
+  width: 1.25rem;
+}
+
+.playtest-admin-stat div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.playtest-admin-stat strong {
+  color: #f6ead1;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.playtest-admin-stat small {
+  color: var(--admin-muted);
+  font-size: 0.75rem;
+}
+
+.playtest-admin-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: -1.5rem 0 2rem;
+  border: 1px solid;
+  border-radius: 0.55rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.84rem;
+}
+
+.playtest-admin-banner.success {
+  border-color: rgb(108 162 125 / 0.38);
+  color: #bfe4ca;
+  background: rgb(66 120 82 / 0.13);
+}
+
+.playtest-admin-banner.error {
+  border-color: rgb(199 97 82 / 0.4);
+  color: #f1bbb2;
+  background: rgb(147 55 43 / 0.14);
+}
+
+.playtest-admin-banner button {
+  display: grid;
+  width: 1.7rem;
+  height: 1.7rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.playtest-admin-banner svg {
+  width: 1rem;
+}
+
+.playtest-admin-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.playtest-admin-section-heading h2 {
+  margin: 0;
+  color: #eee1c7;
+  font-size: 1.55rem;
+  letter-spacing: -0.02em;
+}
+
+.playtest-admin-heading-actions {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.playtest-admin-session-list {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.playtest-admin-session-card {
+  overflow: hidden;
+  border: 1px solid var(--admin-line);
+  border-radius: 0.75rem;
+  background: var(--admin-panel);
+  box-shadow: 0 20px 55px rgb(0 0 0 / 0.18);
+}
+
+.playtest-admin-session-card.is-hidden {
+  border-color: rgb(255 255 255 / 0.09);
+}
+
+.playtest-admin-session-card > header {
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.35rem;
+  background: linear-gradient(115deg, rgb(224 173 86 / 0.055), transparent 58%);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.playtest-admin-date-tile {
+  display: grid;
+  width: 4.15rem;
+  height: 4.15rem;
+  place-items: center;
+  border: 1px solid rgb(224 173 86 / 0.31);
+  border-radius: 0.62rem;
+  color: var(--admin-gold-light);
+  background: #21170f;
+  line-height: 1;
+}
+
+.playtest-admin-date-tile strong {
+  align-self: end;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.45rem;
+}
+
+.playtest-admin-date-tile span {
+  align-self: start;
+  color: var(--admin-gold);
+  font-size: 0.58rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+}
+
+.playtest-admin-session-title > div {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.playtest-admin-status {
+  display: inline-flex;
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 0.2rem 0.45rem;
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.playtest-admin-status.live {
+  border-color: rgb(108 162 125 / 0.38);
+  color: #96c6a4;
+  background: rgb(78 132 94 / 0.12);
+}
+.playtest-admin-status.hidden,
+.playtest-admin-status.past {
+  border-color: rgb(255 255 255 / 0.12);
+  color: #978f82;
+  background: rgb(255 255 255 / 0.035);
+}
+
+.playtest-admin-session-title h3 {
+  margin: 0;
+  color: #f0e4cb;
+  font-size: 1.1rem;
+}
+
+.playtest-admin-session-title p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.4rem 0 0;
+  color: var(--admin-muted);
+  font-size: 0.75rem;
+}
+
+.playtest-admin-session-title p svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-left: 0.3rem;
+  color: var(--admin-gold);
+}
+.playtest-admin-session-title p svg:first-child {
+  margin-left: 0;
+}
+
+.playtest-admin-session-actions,
+.playtest-admin-table-actions {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.playtest-admin-session-actions button,
+.playtest-admin-table-actions button {
+  font-size: 0.72rem;
+}
+
+.playtest-admin-session-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  border-top: 1px solid var(--admin-line);
+  border-bottom: 1px solid var(--admin-line);
+  padding: 0.72rem 1.35rem;
+  color: var(--admin-muted);
+  background: rgb(0 0 0 / 0.1);
+  font-size: 0.72rem;
+}
+
+.playtest-admin-session-summary span:not(:last-child)::after {
+  margin-left: 1.4rem;
+  color: rgb(224 173 86 / 0.32);
+  content: "•";
+}
+
+.playtest-admin-session-notes {
+  margin: 0;
+  border-bottom: 1px solid var(--admin-line);
+  padding: 0.8rem 1.35rem;
+  color: #b6aa97;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.playtest-admin-table-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.35rem 0.7rem;
+}
+
+.playtest-admin-table-heading h4 {
+  margin: 0;
+  color: #d9c9aa;
+  font-family: Inter, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.playtest-admin-table-heading button {
+  border: 0;
+  padding: 0.35rem;
+  color: var(--admin-gold);
+  background: transparent;
+  font-size: 0.72rem;
+}
+
+.playtest-admin-table-list {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0 1.35rem 1.25rem;
+}
+
+.playtest-admin-table-row {
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.07);
+  border-radius: 0.55rem;
+  padding: 0.85rem;
+  background: rgb(255 255 255 / 0.02);
+  grid-template-columns: minmax(220px, 1fr) minmax(190px, 0.7fr) auto;
+}
+
+.playtest-admin-table-row.is-hidden {
+  opacity: 0.62;
+}
+.playtest-admin-table-main {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.playtest-admin-table-icon {
+  display: grid;
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.45rem;
+  color: var(--admin-gold);
+  background: rgb(224 173 86 / 0.08);
+}
+.playtest-admin-table-icon svg {
+  width: 1.05rem;
+}
+.playtest-admin-table-main > div:last-child {
+  display: grid;
+  gap: 0.18rem;
+}
+.playtest-admin-table-main strong {
+  color: #e6d7ba;
+  font-size: 0.84rem;
+}
+.playtest-admin-table-main span {
+  color: var(--admin-muted);
+  font-size: 0.68rem;
+}
+
+.playtest-admin-capacity > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  color: #bcb09d;
+  font-size: 0.64rem;
+}
+.playtest-admin-capacity-track {
+  height: 0.32rem;
+  overflow: hidden;
+  margin: 0.38rem 0 0.25rem;
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 0.07);
+}
+.playtest-admin-capacity-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #9f6430, var(--admin-gold));
+}
+.playtest-admin-capacity small {
+  color: #786f63;
+  font-size: 0.58rem;
+}
+
+.playtest-admin-no-tables {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0 1.35rem 1.25rem;
+  border: 1px dashed rgb(224 173 86 / 0.21);
+  border-radius: 0.55rem;
+  padding: 1rem;
+  color: var(--admin-gold);
+  background: rgb(224 173 86 / 0.025);
+}
+.playtest-admin-no-tables > svg {
+  width: 1.3rem;
+}
+.playtest-admin-no-tables strong {
+  color: #d9c9aa;
+  font-size: 0.8rem;
+}
+.playtest-admin-no-tables p {
+  margin: 0.18rem 0 0;
+  color: var(--admin-muted);
+  font-size: 0.7rem;
+}
+
+.playtest-admin-roster-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  border-top: 1px solid var(--admin-line);
+  padding: 0.88rem 1.35rem;
+  color: #bdb19c;
+  background: rgb(0 0 0 / 0.12);
+  cursor: pointer;
+  font-size: 0.74rem;
+}
+.playtest-admin-roster-toggle > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.playtest-admin-roster-toggle strong {
+  display: grid;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #1b1209;
+  background: var(--admin-gold);
+  font-size: 0.62rem;
+}
+.playtest-admin-roster-toggle svg {
+  width: 0.95rem;
+  transition: transform 160ms ease;
+}
+.playtest-admin-roster-toggle svg.rotated {
+  transform: rotate(180deg);
+}
+
+.playtest-admin-roster {
+  display: grid;
+  gap: 1rem;
+  border-top: 1px solid var(--admin-line);
+  padding: 1.15rem 1.35rem 1.35rem;
+  background: rgb(4 4 3 / 0.2);
+}
+.playtest-admin-roster h5 {
+  margin: 0 0 0.55rem;
+  color: var(--admin-gold);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.playtest-admin-reservation-list {
+  display: grid;
+  gap: 0.4rem;
+}
+.playtest-admin-reservation {
+  display: grid;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid rgb(255 255 255 / 0.06);
+  border-radius: 0.45rem;
+  padding: 0.7rem;
+  background: rgb(255 255 255 / 0.018);
+  grid-template-columns: minmax(210px, 1fr) auto auto auto;
+}
+.playtest-admin-reservation.cancelled {
+  opacity: 0.52;
+}
+.playtest-admin-reservation-name {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.playtest-admin-reservation-name > span {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--admin-gold-light);
+  background: #332217;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.playtest-admin-reservation-name div {
+  display: grid;
+  gap: 0.08rem;
+}
+.playtest-admin-reservation-name strong {
+  color: #e2d3b8;
+  font-size: 0.76rem;
+}
+.playtest-admin-reservation-name a {
+  color: #918778;
+  font-size: 0.64rem;
+  text-decoration: none;
+}
+.playtest-admin-reservation-name a:hover {
+  color: var(--admin-gold);
+}
+.playtest-admin-reservation-detail {
+  display: grid;
+  gap: 0.08rem;
+  text-align: right;
+}
+.playtest-admin-reservation-detail span {
+  color: #c8bba4;
+  font-size: 0.7rem;
+}
+.playtest-admin-reservation-detail small {
+  color: #756d61;
+  font:
+    0.56rem ui-monospace,
+    monospace;
+}
+.playtest-admin-reminders {
+  display: flex;
+  gap: 0.25rem;
+}
+.playtest-admin-reminders span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.16rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: 999px;
+  padding: 0.2rem 0.35rem;
+  color: #766e63;
+  font-size: 0.52rem;
+}
+.playtest-admin-reminders span.sent {
+  border-color: rgb(108 162 125 / 0.28);
+  color: #8db99a;
+}
+.playtest-admin-reminders svg {
+  width: 0.55rem;
+}
+.playtest-admin-cancel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 0;
+  padding: 0.38rem;
+  color: #bd776d;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.64rem;
+}
+.playtest-admin-cancel:hover {
+  color: #ef9d90;
+}
+.playtest-admin-cancel svg {
+  width: 0.8rem;
+}
+.playtest-admin-cancelled-label {
+  color: #8a756f;
+  font-size: 0.62rem;
+}
+
+.playtest-admin-roster-empty,
+.playtest-admin-empty {
+  display: grid;
+  justify-items: center;
+  border: 1px dashed rgb(224 173 86 / 0.2);
+  border-radius: 0.75rem;
+  padding: 4.5rem 1.5rem;
+  color: var(--admin-gold);
+  background: rgb(255 255 255 / 0.012);
+  text-align: center;
+}
+.playtest-admin-roster-empty {
+  padding: 1.5rem;
+}
+.playtest-admin-empty > svg {
+  width: 2rem;
+  height: 2rem;
+}
+.playtest-admin-roster-empty > svg {
+  width: 1.4rem;
+}
+.playtest-admin-empty h3 {
+  margin: 1rem 0 0;
+  color: #e6d8bc;
+  font-size: 1.15rem;
+}
+.playtest-admin-empty p,
+.playtest-admin-roster-empty p {
+  max-width: 34rem;
+  margin: 0.55rem 0 1.2rem;
+  color: var(--admin-muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+.playtest-admin-roster-empty p {
+  margin-bottom: 0;
+}
+
+.playtest-admin-login-shell,
+.playtest-admin-loading {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.playtest-admin-login-card {
+  position: relative;
+  width: min(100%, 31rem);
+  overflow: hidden;
+  border: 1px solid rgb(224 173 86 / 0.24);
+  border-radius: 0.9rem;
+  padding: clamp(1.5rem, 5vw, 2.7rem);
+  background: radial-gradient(circle at 100% 0%, rgb(136 70 30 / 0.16), transparent 18rem), #171512;
+  box-shadow: 0 35px 100px rgb(0 0 0 / 0.42);
+}
+
+.playtest-admin-login-card::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, transparent, var(--admin-gold), transparent);
+}
+
+.playtest-admin-login-icon {
+  display: grid;
+  width: 3.2rem;
+  height: 3.2rem;
+  place-items: center;
+  margin: 3.2rem 0 1.3rem;
+  border: 1px solid rgb(224 173 86 / 0.32);
+  border-radius: 0.65rem;
+  color: var(--admin-gold);
+  background: rgb(224 173 86 / 0.07);
+}
+.playtest-admin-login-icon svg {
+  width: 1.5rem;
+}
+.playtest-admin-login-card h1 {
+  margin: 0;
+  color: #f0e2c5;
+  font-size: clamp(1.65rem, 5vw, 2.2rem);
+  letter-spacing: -0.035em;
+}
+.playtest-admin-login-card > p:not(.playtest-admin-eyebrow) {
+  margin: 0.75rem 0 1.7rem;
+  color: var(--admin-muted);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+.playtest-admin-login-card form {
+  display: grid;
+  gap: 0.9rem;
+}
+.playtest-admin-login-card label,
+.playtest-admin-modal label {
+  display: grid;
+  gap: 0.42rem;
+  color: #baae99;
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.playtest-admin-input-wrap {
+  position: relative;
+  display: block;
+}
+.playtest-admin-input-wrap svg {
+  position: absolute;
+  top: 50%;
+  left: 0.8rem;
+  width: 1rem;
+  color: #756a59;
+  transform: translateY(-50%);
+}
+.playtest-admin-input-wrap input {
+  padding-left: 2.45rem !important;
+}
+.playtest-admin-login-card input,
+.playtest-admin-modal input,
+.playtest-admin-modal textarea {
+  width: 100%;
+  border: 1px solid rgb(224 173 86 / 0.18);
+  border-radius: 0.42rem;
+  padding: 0.78rem 0.85rem;
+  color: #f0e3ca;
+  outline: 0;
+  background: rgb(7 6 5 / 0.52);
+  box-sizing: border-box;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+.playtest-admin-login-card input:focus,
+.playtest-admin-modal input:focus,
+.playtest-admin-modal textarea:focus {
+  border-color: rgb(224 173 86 / 0.62);
+  box-shadow: 0 0 0 3px rgb(224 173 86 / 0.08);
+}
+.playtest-admin-code-input {
+  text-align: center;
+  font:
+    700 1.6rem ui-monospace,
+    monospace !important;
+  letter-spacing: 0.35em;
+}
+.playtest-admin-login-message {
+  margin: 0 !important;
+  border-left: 2px solid var(--admin-gold);
+  padding: 0.55rem 0.7rem;
+  color: #baa98b !important;
+  background: rgb(224 173 86 / 0.05);
+  font-size: 0.72rem !important;
+}
+.playtest-admin-text-button {
+  border: 0;
+  padding: 0.35rem;
+  color: var(--admin-muted);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+.playtest-admin-text-button:hover {
+  color: var(--admin-gold);
+}
+.playtest-admin-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.7rem;
+  color: #877d6e;
+  font-size: 0.68rem;
+  text-decoration: none;
+}
+.playtest-admin-back-link:hover {
+  color: var(--admin-gold);
+}
+.playtest-admin-back-link svg {
+  width: 0.8rem;
+}
+.playtest-admin-loading {
+  align-content: center;
+  gap: 0.8rem;
+  color: var(--admin-gold);
+}
+.playtest-admin-loading svg {
+  width: 1.6rem;
+}
+.playtest-admin-loading p {
+  color: var(--admin-muted);
+  font-size: 0.8rem;
+}
+.playtest-admin-unavailable-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1.4rem;
+  color: var(--admin-gold);
+}
+
+.playtest-admin-modal-backdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  overflow-y: auto;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgb(3 3 2 / 0.78);
+  backdrop-filter: blur(10px);
+}
+
+.playtest-admin-modal {
+  width: min(100%, 42rem);
+  max-height: calc(100vh - 2.5rem);
+  overflow-y: auto;
+  border: 1px solid rgb(224 173 86 / 0.28);
+  border-radius: 0.8rem;
+  color: var(--admin-copy);
+  background: #191713;
+  box-shadow: 0 35px 100px rgb(0 0 0 / 0.58);
+}
+.playtest-admin-modal.compact {
+  width: min(100%, 34rem);
+}
+.playtest-admin-modal > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--admin-line);
+  padding: 1.35rem 1.5rem;
+}
+.playtest-admin-modal > header h2 {
+  margin: 0;
+  color: #f0e1c3;
+  font-size: 1.35rem;
+}
+.playtest-admin-modal > header button {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid var(--admin-line);
+  border-radius: 50%;
+  color: var(--admin-muted);
+  background: transparent;
+  cursor: pointer;
+}
+.playtest-admin-modal > header button:hover {
+  color: var(--admin-gold-light);
+  border-color: rgb(224 173 86 / 0.4);
+}
+.playtest-admin-modal > header svg {
+  width: 0.95rem;
+}
+.playtest-admin-modal form {
+  display: grid;
+  gap: 1rem;
+  padding: 1.4rem 1.5rem 1.5rem;
+}
+.playtest-admin-form-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+.playtest-admin-form-grid.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+.playtest-admin-form-grid.city {
+  grid-template-columns: minmax(0, 1fr) 5rem;
+}
+.playtest-admin-modal textarea {
+  resize: vertical;
+  line-height: 1.45;
+}
+.playtest-admin-field-note {
+  margin: -0.55rem 0 0;
+  color: #847a6b;
+  font-size: 0.65rem;
+  line-height: 1.45;
+}
+.playtest-admin-switch {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 0.7rem !important;
+  border: 1px solid var(--admin-line);
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  background: rgb(224 173 86 / 0.025);
+  cursor: pointer;
+}
+.playtest-admin-switch input {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  margin: 0.1rem 0 0;
+  accent-color: var(--admin-gold);
+}
+.playtest-admin-switch span {
+  display: grid;
+  gap: 0.18rem;
+}
+.playtest-admin-switch strong {
+  color: #d9c9ac;
+  font-size: 0.74rem;
+}
+.playtest-admin-switch small {
+  color: #877d6d;
+  font-size: 0.64rem;
+  font-weight: 400;
+}
+.playtest-admin-form-error {
+  margin: 0;
+  border-left: 2px solid var(--admin-red);
+  padding: 0.55rem 0.7rem;
+  color: #e9aaa0;
+  background: rgb(199 97 82 / 0.07);
+  font-size: 0.7rem;
+}
+.playtest-admin-modal footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  border-top: 1px solid var(--admin-line);
+  margin: 0 -1.5rem -1.5rem;
+  padding: 1rem 1.5rem;
+  background: rgb(0 0 0 / 0.12);
+}
+.playtest-admin-modal footer > button:not(.playtest-admin-primary) {
+  border: 1px solid var(--admin-line);
+  border-radius: 0.42rem;
+  padding: 0.65rem 0.95rem;
+  color: #afa38f;
+  background: transparent;
+  cursor: pointer;
+}
+
+.spin {
+  animation: playtest-admin-spin 900ms linear infinite;
+}
+@keyframes playtest-admin-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .playtest-admin-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .playtest-admin-table-row {
+    grid-template-columns: minmax(0, 1fr) minmax(170px, 0.8fr);
+  }
+  .playtest-admin-table-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+  .playtest-admin-reservation {
+    grid-template-columns: minmax(180px, 1fr) auto auto;
+  }
+  .playtest-admin-cancel,
+  .playtest-admin-cancelled-label {
+    grid-column: 3;
+  }
+}
+
+@media (max-width: 720px) {
+  .playtest-admin-account > span {
+    display: none;
+  }
+  .playtest-admin-account a {
+    display: none;
+  }
+  .playtest-admin-content {
+    width: min(100% - 1.25rem, 1380px);
+    padding-top: 2rem;
+  }
+  .playtest-admin-hero {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .playtest-admin-hero .playtest-admin-primary {
+    align-self: flex-start;
+  }
+  .playtest-admin-section-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .playtest-admin-heading-actions {
+    justify-content: space-between;
+  }
+  .playtest-admin-session-card > header {
+    align-items: start;
+    grid-template-columns: auto 1fr;
+  }
+  .playtest-admin-session-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+  .playtest-admin-table-row {
+    grid-template-columns: 1fr;
+  }
+  .playtest-admin-table-actions {
+    grid-column: auto;
+  }
+  .playtest-admin-session-summary span::after {
+    display: none;
+  }
+  .playtest-admin-reservation {
+    grid-template-columns: 1fr auto;
+  }
+  .playtest-admin-reminders {
+    grid-column: 1;
+  }
+  .playtest-admin-cancel,
+  .playtest-admin-cancelled-label {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 520px) {
+  .playtest-admin-topbar {
+    padding-inline: 0.75rem;
+  }
+  .playtest-admin-brand small {
+    display: none;
+  }
+  .playtest-admin-account {
+    gap: 0.4rem;
+  }
+  .playtest-admin-account button {
+    padding: 0.55rem;
+    font-size: 0;
+  }
+  .playtest-admin-account button svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  .playtest-admin-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
+  }
+  .playtest-admin-stat {
+    min-height: 5.5rem;
+    gap: 0.65rem;
+    padding: 0.8rem;
+  }
+  .playtest-admin-stat > span {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+  .playtest-admin-stat strong {
+    font-size: 1.25rem;
+  }
+  .playtest-admin-session-card > header,
+  .playtest-admin-table-heading,
+  .playtest-admin-roster,
+  .playtest-admin-roster-toggle {
+    padding-inline: 0.85rem;
+  }
+  .playtest-admin-table-list {
+    padding-inline: 0.85rem;
+  }
+  .playtest-admin-no-tables {
+    margin-inline: 0.85rem;
+  }
+  .playtest-admin-session-summary,
+  .playtest-admin-session-notes {
+    padding-inline: 0.85rem;
+  }
+  .playtest-admin-form-grid.two,
+  .playtest-admin-form-grid.city {
+    grid-template-columns: 1fr;
+  }
+  .playtest-admin-modal-backdrop {
+    padding: 0;
+    place-items: end center;
+  }
+  .playtest-admin-modal {
+    max-height: 94vh;
+    border-radius: 0.8rem 0.8rem 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .playtest-admin-shell *,
+  .playtest-admin-login-shell * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

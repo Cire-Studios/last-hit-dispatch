@@ -15,8 +15,11 @@ import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as PrintAndPlayRouteImport } from './routes/print-and-play'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as UtahPlaytestRouteImport } from './routes/utah-playtest'
+import { Route as AdminPlaytestsRouteImport } from './routes/admin.playtests'
 import { Route as BestiaryIndexRouteImport } from './routes/bestiary.index'
 import { Route as BestiaryMonsterRouteImport } from './routes/bestiary.$monster'
+import { Route as ApiAdminPlaytestAuthRouteImport } from './routes/api/admin/playtest-auth'
+import { Route as ApiAdminPlaytestsRouteImport } from './routes/api/admin/playtests'
 import { Route as ApiCronPlaytestRemindersRouteImport } from './routes/api/cron/playtest-reminders'
 import { Route as ApiPublicFeedbackRouteImport } from './routes/api/public/feedback'
 import { Route as ApiPublicPlaytestReservationsRouteImport } from './routes/api/public/playtest-reservations'
@@ -53,6 +56,11 @@ const UtahPlaytestRoute = UtahPlaytestRouteImport.update({
   path: '/utah-playtest',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPlaytestsRoute = AdminPlaytestsRouteImport.update({
+  id: '/admin/playtests',
+  path: '/admin/playtests',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BestiaryIndexRoute = BestiaryIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -62,6 +70,16 @@ const BestiaryMonsterRoute = BestiaryMonsterRouteImport.update({
   id: '/$monster',
   path: '/$monster',
   getParentRoute: () => BestiaryRoute,
+} as any)
+const ApiAdminPlaytestAuthRoute = ApiAdminPlaytestAuthRouteImport.update({
+  id: '/api/admin/playtest-auth',
+  path: '/api/admin/playtest-auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminPlaytestsRoute = ApiAdminPlaytestsRouteImport.update({
+  id: '/api/admin/playtests',
+  path: '/api/admin/playtests',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ApiCronPlaytestRemindersRoute =
   ApiCronPlaytestRemindersRouteImport.update({
@@ -99,8 +117,11 @@ export interface FileRoutesByFullPath {
   '/print-and-play': typeof PrintAndPlayRoute
   '/privacy': typeof PrivacyRoute
   '/utah-playtest': typeof UtahPlaytestRoute
+  '/admin/playtests': typeof AdminPlaytestsRoute
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary/': typeof BestiaryIndexRoute
+  '/api/admin/playtest-auth': typeof ApiAdminPlaytestAuthRoute
+  '/api/admin/playtests': typeof ApiAdminPlaytestsRoute
   '/api/cron/playtest-reminders': typeof ApiCronPlaytestRemindersRoute
   '/api/public/feedback': typeof ApiPublicFeedbackRoute
   '/api/public/playtest-reservations': typeof ApiPublicPlaytestReservationsRoute
@@ -113,8 +134,11 @@ export interface FileRoutesByTo {
   '/print-and-play': typeof PrintAndPlayRoute
   '/privacy': typeof PrivacyRoute
   '/utah-playtest': typeof UtahPlaytestRoute
+  '/admin/playtests': typeof AdminPlaytestsRoute
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary': typeof BestiaryIndexRoute
+  '/api/admin/playtest-auth': typeof ApiAdminPlaytestAuthRoute
+  '/api/admin/playtests': typeof ApiAdminPlaytestsRoute
   '/api/cron/playtest-reminders': typeof ApiCronPlaytestRemindersRoute
   '/api/public/feedback': typeof ApiPublicFeedbackRoute
   '/api/public/playtest-reservations': typeof ApiPublicPlaytestReservationsRoute
@@ -129,8 +153,11 @@ export interface FileRoutesById {
   '/print-and-play': typeof PrintAndPlayRoute
   '/privacy': typeof PrivacyRoute
   '/utah-playtest': typeof UtahPlaytestRoute
+  '/admin/playtests': typeof AdminPlaytestsRoute
   '/bestiary/$monster': typeof BestiaryMonsterRoute
   '/bestiary/': typeof BestiaryIndexRoute
+  '/api/admin/playtest-auth': typeof ApiAdminPlaytestAuthRoute
+  '/api/admin/playtests': typeof ApiAdminPlaytestsRoute
   '/api/cron/playtest-reminders': typeof ApiCronPlaytestRemindersRoute
   '/api/public/feedback': typeof ApiPublicFeedbackRoute
   '/api/public/playtest-reservations': typeof ApiPublicPlaytestReservationsRoute
@@ -146,8 +173,11 @@ export interface FileRouteTypes {
     | '/print-and-play'
     | '/privacy'
     | '/utah-playtest'
+    | '/admin/playtests'
     | '/bestiary/$monster'
     | '/bestiary/'
+    | '/api/admin/playtest-auth'
+    | '/api/admin/playtests'
     | '/api/cron/playtest-reminders'
     | '/api/public/feedback'
     | '/api/public/playtest-reservations'
@@ -160,8 +190,11 @@ export interface FileRouteTypes {
     | '/print-and-play'
     | '/privacy'
     | '/utah-playtest'
+    | '/admin/playtests'
     | '/bestiary/$monster'
     | '/bestiary'
+    | '/api/admin/playtest-auth'
+    | '/api/admin/playtests'
     | '/api/cron/playtest-reminders'
     | '/api/public/feedback'
     | '/api/public/playtest-reservations'
@@ -175,8 +208,11 @@ export interface FileRouteTypes {
     | '/print-and-play'
     | '/privacy'
     | '/utah-playtest'
+    | '/admin/playtests'
     | '/bestiary/$monster'
     | '/bestiary/'
+    | '/api/admin/playtest-auth'
+    | '/api/admin/playtests'
     | '/api/cron/playtest-reminders'
     | '/api/public/feedback'
     | '/api/public/playtest-reservations'
@@ -191,6 +227,9 @@ export interface RootRouteChildren {
   PrintAndPlayRoute: typeof PrintAndPlayRoute
   PrivacyRoute: typeof PrivacyRoute
   UtahPlaytestRoute: typeof UtahPlaytestRoute
+  AdminPlaytestsRoute: typeof AdminPlaytestsRoute
+  ApiAdminPlaytestAuthRoute: typeof ApiAdminPlaytestAuthRoute
+  ApiAdminPlaytestsRoute: typeof ApiAdminPlaytestsRoute
   ApiCronPlaytestRemindersRoute: typeof ApiCronPlaytestRemindersRoute
   ApiPublicFeedbackRoute: typeof ApiPublicFeedbackRoute
   ApiPublicPlaytestReservationsRoute: typeof ApiPublicPlaytestReservationsRoute
@@ -242,6 +281,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UtahPlaytestRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/playtests': {
+      id: '/admin/playtests'
+      path: '/admin/playtests'
+      fullPath: '/admin/playtests'
+      preLoaderRoute: typeof AdminPlaytestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bestiary/': {
       id: '/bestiary/'
       path: '/'
@@ -255,6 +301,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/bestiary/$monster'
       preLoaderRoute: typeof BestiaryMonsterRouteImport
       parentRoute: typeof BestiaryRoute
+    }
+    '/api/admin/playtest-auth': {
+      id: '/api/admin/playtest-auth'
+      path: '/api/admin/playtest-auth'
+      fullPath: '/api/admin/playtest-auth'
+      preLoaderRoute: typeof ApiAdminPlaytestAuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/playtests': {
+      id: '/api/admin/playtests'
+      path: '/api/admin/playtests'
+      fullPath: '/api/admin/playtests'
+      preLoaderRoute: typeof ApiAdminPlaytestsRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/api/cron/playtest-reminders': {
       id: '/api/cron/playtest-reminders'
@@ -315,6 +375,9 @@ const rootRouteChildren: RootRouteChildren = {
   PrintAndPlayRoute: PrintAndPlayRoute,
   PrivacyRoute: PrivacyRoute,
   UtahPlaytestRoute: UtahPlaytestRoute,
+  AdminPlaytestsRoute: AdminPlaytestsRoute,
+  ApiAdminPlaytestAuthRoute: ApiAdminPlaytestAuthRoute,
+  ApiAdminPlaytestsRoute: ApiAdminPlaytestsRoute,
   ApiCronPlaytestRemindersRoute: ApiCronPlaytestRemindersRoute,
   ApiPublicFeedbackRoute: ApiPublicFeedbackRoute,
   ApiPublicPlaytestReservationsRoute: ApiPublicPlaytestReservationsRoute,
