@@ -75,6 +75,7 @@ export const Route = createFileRoute("/api/public/playtest-reservations")({
               addressLine: selectedTable.session.addressLine,
               city: selectedTable.session.city,
               region: selectedTable.session.region,
+              postalCode: selectedTable.session.postalCode,
               tableLabel: selectedTable.table.label,
             },
           });
@@ -108,6 +109,7 @@ export const Route = createFileRoute("/api/public/playtest-reservations")({
               addressLine: reservation.address_line,
               city: reservation.city,
               region: reservation.region,
+              postalCode: reservation.postal_code,
               tableLabel: reservation.table_label,
             },
           });

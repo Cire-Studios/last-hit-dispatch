@@ -16,6 +16,7 @@ export interface PlaytestSession {
   addressLine: string;
   city: string;
   region: string;
+  postalCode: string;
   notes: string;
   tables: PlaytestTable[];
 }
@@ -36,6 +37,7 @@ export interface PlaytestReservationResponse {
     addressLine: string;
     city: string;
     region: string;
+    postalCode: string;
     tableLabel: string;
   };
 }
@@ -68,6 +70,7 @@ function createDemoSession(id: string, startsAt: Date, tables: PlaytestTable[]):
     addressLine: "Address shared after reservation",
     city: "Utah County",
     region: "UT",
+    postalCode: "",
     notes: "Prototype and everything needed to play are provided.",
     tables,
   };

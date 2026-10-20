@@ -326,6 +326,786 @@
   gap: 0.55rem;
 }
 
+.playtest-admin-calendar-panel {
+  overflow: hidden;
+  border: 1px solid var(--admin-line);
+  border-radius: 0.85rem;
+  background: #13120f;
+  box-shadow: 0 24px 70px rgb(0 0 0 / 0.22);
+}
+
+.playtest-admin-calendar-toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.4rem 1.5rem 1.2rem;
+  background:
+    radial-gradient(circle at 15% 0%, rgb(224 173 86 / 0.09), transparent 20rem),
+    linear-gradient(110deg, rgb(255 255 255 / 0.025), transparent 55%);
+}
+
+.playtest-admin-calendar-toolbar h2 {
+  margin: 0;
+  color: #f2e5ca;
+  font-family: Cinzel, Georgia, serif;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.playtest-admin-calendar-toolbar > div:first-child > p:last-child {
+  max-width: 39rem;
+  margin: 0.45rem 0 0;
+  color: var(--admin-muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.playtest-admin-calendar-actions,
+.playtest-admin-view-controls,
+.playtest-admin-month-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.playtest-admin-calendar-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.playtest-admin-view-controls,
+.playtest-admin-month-controls {
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--admin-line);
+  border-radius: 0.48rem;
+}
+
+.playtest-admin-view-controls button,
+.playtest-admin-month-controls button,
+.playtest-admin-calendar-refresh {
+  display: inline-flex;
+  min-height: 2.35rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.38rem;
+  border: 0;
+  padding: 0.55rem 0.68rem;
+  color: #cbbfa9;
+  background: rgb(255 255 255 / 0.025);
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+
+.playtest-admin-view-controls button + button,
+.playtest-admin-month-controls button + button {
+  border-left: 1px solid var(--admin-line);
+}
+
+.playtest-admin-view-controls button:hover,
+.playtest-admin-view-controls button.active,
+.playtest-admin-month-controls button:hover,
+.playtest-admin-calendar-refresh:hover {
+  color: var(--admin-gold-light);
+  background: rgb(224 173 86 / 0.08);
+}
+
+.playtest-admin-view-controls button.active {
+  box-shadow: inset 0 -2px var(--admin-gold);
+}
+
+.playtest-admin-month-controls svg,
+.playtest-admin-calendar-refresh svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.playtest-admin-calendar-refresh {
+  border: 1px solid var(--admin-line);
+  border-radius: 0.48rem;
+}
+
+.playtest-admin-calendar-legend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid var(--admin-line);
+  border-bottom: 1px solid var(--admin-line);
+  padding: 0.65rem 1.5rem;
+  color: #92897b;
+  background: rgb(0 0 0 / 0.12);
+  font-size: 0.63rem;
+}
+
+.playtest-admin-calendar-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.playtest-admin-calendar-legend strong {
+  margin-left: auto;
+  color: #b6aa96;
+  font-weight: 600;
+}
+
+.playtest-admin-calendar-scroll {
+  overflow-x: auto;
+}
+
+.playtest-admin-weekdays,
+.playtest-admin-calendar-grid {
+  min-width: 980px;
+}
+
+.playtest-admin-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  border-bottom: 1px solid var(--admin-line);
+  color: #7f776b;
+  background: #100f0d;
+}
+
+.playtest-admin-weekdays span {
+  padding: 0.58rem 0.72rem;
+  font-size: 0.58rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.playtest-admin-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.playtest-admin-calendar-day {
+  position: relative;
+  min-height: 10.5rem;
+  border-right: 1px solid var(--admin-line);
+  border-bottom: 1px solid var(--admin-line);
+  background: rgb(255 255 255 / 0.009);
+  transition: background 150ms ease;
+}
+
+.playtest-admin-calendar-day:nth-child(7n) {
+  border-right: 0;
+}
+
+.playtest-admin-calendar-day:nth-last-child(-n + 7) {
+  border-bottom: 0;
+}
+
+.playtest-admin-calendar-day:hover {
+  background: rgb(224 173 86 / 0.018);
+}
+
+.playtest-admin-calendar-day.outside {
+  background: rgb(0 0 0 / 0.11);
+}
+
+.playtest-admin-calendar-day.past {
+  filter: saturate(0.72);
+}
+
+.playtest-admin-calendar-day > header {
+  display: flex;
+  height: 2.35rem;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.55rem;
+}
+
+.playtest-admin-calendar-day > header > span {
+  display: grid;
+  width: 1.65rem;
+  height: 1.65rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #a99f90;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.playtest-admin-calendar-day.outside > header > span {
+  color: #5e584f;
+}
+
+.playtest-admin-calendar-day.today > header > span {
+  color: #201408;
+  background: var(--admin-gold);
+  box-shadow: 0 0 18px rgb(224 173 86 / 0.22);
+}
+
+.playtest-admin-calendar-day > header > strong {
+  color: var(--admin-gold);
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.playtest-admin-calendar-day > header > button {
+  display: grid;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-left: auto;
+  place-items: center;
+  border: 0;
+  border-radius: 0.35rem;
+  color: #7f7567;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+  transition: 150ms ease;
+}
+
+.playtest-admin-calendar-day:hover > header > button,
+.playtest-admin-calendar-day > header > button:focus-visible {
+  color: var(--admin-gold);
+  background: rgb(224 173 86 / 0.08);
+  opacity: 1;
+}
+
+.playtest-admin-calendar-day > header > button svg {
+  width: 0.85rem;
+}
+
+.playtest-admin-day-sessions {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0 0.42rem 0.55rem;
+}
+
+.playtest-admin-more-events {
+  width: 100%;
+  border: 1px dashed rgb(224 173 86 / 0.2);
+  border-radius: 0.35rem;
+  padding: 0.42rem 0.5rem;
+  color: #b8aa92;
+  background: rgb(224 173 86 / 0.035);
+  cursor: pointer;
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.playtest-admin-more-events:hover {
+  border-color: rgb(224 173 86 / 0.48);
+  color: var(--admin-gold-light);
+}
+
+.playtest-admin-calendar-event {
+  display: grid;
+  width: 100%;
+  gap: 0.13rem;
+  overflow: hidden;
+  border: 1px solid rgb(108 162 125 / 0.2);
+  border-left: 2px solid var(--admin-green);
+  border-radius: 0.38rem;
+  padding: 0.42rem 0.48rem;
+  color: #d9cdb8;
+  background: linear-gradient(100deg, rgb(76 124 91 / 0.12), rgb(255 255 255 / 0.015));
+  cursor: pointer;
+  text-align: left;
+  transition: 150ms ease;
+}
+
+.playtest-admin-calendar-event:hover {
+  border-color: rgb(224 173 86 / 0.42);
+  border-left-color: var(--admin-gold);
+  background: rgb(224 173 86 / 0.08);
+  transform: translateY(-1px);
+}
+
+.playtest-admin-calendar-event.hidden {
+  border-color: rgb(255 255 255 / 0.09);
+  border-left-color: #716a60;
+  background: rgb(255 255 255 / 0.025);
+}
+
+.playtest-admin-calendar-event.completed {
+  opacity: 0.58;
+}
+
+.playtest-admin-event-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--admin-gold);
+  font-size: 0.58rem;
+  font-weight: 750;
+}
+
+.playtest-admin-event-time svg {
+  width: 0.68rem;
+  height: 0.68rem;
+  color: #8a8174;
+}
+
+.playtest-admin-calendar-event-status {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.playtest-admin-calendar-status-icon {
+  display: inline-grid;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+}
+
+.playtest-admin-calendar-status-icon svg,
+.playtest-admin-event-time .playtest-admin-calendar-status-icon svg,
+.playtest-admin-timeline-event > span .playtest-admin-calendar-status-icon svg {
+  width: 0.62rem;
+  height: 0.62rem;
+  color: currentcolor;
+  stroke-width: 2.4;
+}
+
+.playtest-admin-calendar-status-icon.published {
+  color: #86c899;
+  background: rgb(66 130 85 / 0.16);
+}
+
+.playtest-admin-calendar-status-icon.hidden {
+  color: #91897c;
+  background: rgb(255 255 255 / 0.035);
+}
+
+.playtest-admin-calendar-status-icon.complete {
+  color: #d0ad61;
+  background: rgb(186 141 52 / 0.13);
+}
+
+.playtest-admin-calendar-status-icon.missed {
+  color: #c97a70;
+  background: rgb(166 65 54 / 0.12);
+}
+
+.playtest-admin-calendar-event > strong {
+  overflow: hidden;
+  color: #e7dac1;
+  font-size: 0.68rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playtest-admin-calendar-event > small {
+  overflow: hidden;
+  color: #8f8679;
+  font-size: 0.55rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playtest-admin-event-seats {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.22rem;
+  color: #a79c8b;
+  font-size: 0.52rem;
+  white-space: nowrap;
+}
+
+.playtest-admin-event-seats > i {
+  width: 2.5rem;
+  height: 0.2rem;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgb(255 255 255 / 0.09);
+}
+
+.playtest-admin-event-seats b {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #9b6232, var(--admin-gold));
+}
+
+.playtest-admin-week-scroll {
+  overflow-x: auto;
+}
+
+.playtest-admin-week-grid {
+  display: grid;
+  min-width: 980px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.playtest-admin-week-day {
+  min-width: 0;
+  border-right: 1px solid var(--admin-line);
+  background: rgb(255 255 255 / 0.009);
+}
+
+.playtest-admin-week-day:last-child {
+  border-right: 0;
+}
+
+.playtest-admin-week-day.today {
+  background: linear-gradient(180deg, rgb(224 173 86 / 0.055), transparent 13rem);
+}
+
+.playtest-admin-week-day > header {
+  display: flex;
+  min-height: 4.6rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  border-bottom: 1px solid var(--admin-line);
+  padding: 0.7rem 0.55rem;
+}
+
+.playtest-admin-week-day > header > button:first-child {
+  display: grid;
+  min-width: 0;
+  justify-items: start;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.playtest-admin-week-day > header span {
+  color: #857c6f;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.playtest-admin-week-day > header strong {
+  color: #d9ccb5;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.2rem;
+}
+
+.playtest-admin-week-day.today > header strong {
+  color: var(--admin-gold-light);
+}
+
+.playtest-admin-week-day > header small {
+  color: var(--admin-gold);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.playtest-admin-week-add {
+  display: grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--admin-line);
+  border-radius: 0.38rem;
+  color: #8c8273;
+  background: rgb(255 255 255 / 0.02);
+  cursor: pointer;
+}
+
+.playtest-admin-week-add:hover {
+  border-color: rgb(224 173 86 / 0.4);
+  color: var(--admin-gold);
+}
+
+.playtest-admin-week-add svg {
+  width: 0.85rem;
+}
+
+.playtest-admin-week-events {
+  display: grid;
+  max-height: 34rem;
+  min-height: 24rem;
+  align-content: start;
+  gap: 0.48rem;
+  overflow-y: auto;
+  padding: 0.55rem;
+  scrollbar-color: rgb(224 173 86 / 0.25) transparent;
+  scrollbar-width: thin;
+}
+
+.playtest-admin-week-empty {
+  display: flex;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 1px dashed rgb(255 255 255 / 0.09);
+  border-radius: 0.42rem;
+  color: #71695e;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.6rem;
+}
+
+.playtest-admin-week-empty:hover {
+  border-color: rgb(224 173 86 / 0.28);
+  color: var(--admin-gold);
+}
+
+.playtest-admin-week-empty svg {
+  width: 0.8rem;
+}
+
+.playtest-admin-day-view {
+  border-top: 1px solid var(--admin-line);
+}
+
+.playtest-admin-day-view-heading {
+  display: flex;
+  min-height: 3.65rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 1.1rem 0.65rem 4.85rem;
+  background: #100f0d;
+}
+
+.playtest-admin-day-view-heading > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.playtest-admin-day-view-heading strong {
+  color: var(--admin-gold-light);
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+}
+
+.playtest-admin-day-view-heading span {
+  color: var(--admin-muted);
+  font-size: 0.68rem;
+}
+
+.playtest-admin-day-view-heading > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--admin-line);
+  border-radius: 0.4rem;
+  padding: 0.52rem 0.7rem;
+  color: #d4c6ae;
+  background: rgb(255 255 255 / 0.025);
+  cursor: pointer;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.playtest-admin-day-view-heading > button:hover {
+  border-color: rgb(224 173 86 / 0.4);
+  color: var(--admin-gold-light);
+}
+
+.playtest-admin-day-view-heading svg {
+  width: 0.85rem;
+}
+
+.playtest-admin-day-timeline-scroll {
+  height: min(68vh, 46rem);
+  overflow: auto;
+  scrollbar-color: rgb(224 173 86 / 0.3) transparent;
+  scrollbar-width: thin;
+}
+
+.playtest-admin-day-timeline {
+  position: relative;
+  min-width: 620px;
+  background: rgb(255 255 255 / 0.006);
+}
+
+.playtest-admin-hour-line {
+  position: absolute;
+  right: 0;
+  left: 4.7rem;
+  border-top: 1px solid rgb(218 175 93 / 0.11);
+}
+
+.playtest-admin-hour-line::after {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  left: 0;
+  border-top: 1px dashed rgb(218 175 93 / 0.045);
+  content: "";
+}
+
+.playtest-admin-hour-line > span {
+  position: absolute;
+  top: -0.48rem;
+  right: calc(100% + 0.6rem);
+  width: 3.55rem;
+  color: #776f64;
+  font-size: 0.56rem;
+  text-align: right;
+}
+
+.playtest-admin-day-event-layer {
+  position: absolute;
+  inset: 0 0 0 4.7rem;
+}
+
+.playtest-admin-timeline-event {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  align-content: start;
+  gap: 0.18rem;
+  overflow: hidden;
+  border: 1px solid rgb(108 162 125 / 0.35);
+  border-left: 3px solid var(--admin-green);
+  border-radius: 0.42rem;
+  padding: 0.48rem 0.58rem;
+  color: #ded1ba;
+  background: linear-gradient(115deg, #203026, #181d19);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.2);
+  cursor: pointer;
+  text-align: left;
+  transition: 140ms ease;
+}
+
+.playtest-admin-timeline-event:hover {
+  z-index: 4;
+  border-color: rgb(224 173 86 / 0.55);
+  border-left-color: var(--admin-gold);
+  filter: brightness(1.08);
+}
+
+.playtest-admin-timeline-event.hidden {
+  border-color: rgb(255 255 255 / 0.12);
+  border-left-color: #746c61;
+  background: linear-gradient(115deg, #292724, #1c1b19);
+}
+
+.playtest-admin-timeline-event.completed {
+  opacity: 0.62;
+}
+
+.playtest-admin-timeline-event > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  color: var(--admin-gold);
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.playtest-admin-timeline-event > span svg {
+  width: 0.75rem;
+}
+
+.playtest-admin-timeline-event > strong {
+  overflow: hidden;
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playtest-admin-timeline-event > small {
+  overflow: hidden;
+  color: #a69b89;
+  font-size: 0.58rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playtest-admin-now-line {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  left: 4.45rem;
+  border-top: 1px solid #d15d4f;
+  pointer-events: none;
+}
+
+.playtest-admin-now-line i {
+  position: absolute;
+  top: -0.28rem;
+  left: 0;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #d15d4f;
+  box-shadow: 0 0 12px rgb(209 93 79 / 0.55);
+}
+
+.playtest-admin-modal-backdrop.detail {
+  align-items: flex-start;
+  padding: 4vh 1.25rem;
+}
+
+.playtest-admin-detail-modal {
+  width: min(100%, 1080px);
+  max-height: 92vh;
+  overflow: auto;
+  border: 1px solid rgb(224 173 86 / 0.24);
+  border-radius: 0.85rem;
+  background: #12110f;
+  box-shadow: 0 40px 120px rgb(0 0 0 / 0.62);
+}
+
+.playtest-admin-detail-modal > header {
+  position: sticky;
+  z-index: 4;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--admin-line);
+  padding: 1rem 1.2rem;
+  background: rgb(18 17 15 / 0.94);
+  backdrop-filter: blur(18px);
+}
+
+.playtest-admin-detail-modal > header h2 {
+  margin: 0;
+  color: #f0e2c7;
+  font-size: 1.2rem;
+}
+
+.playtest-admin-detail-modal > header button {
+  display: grid;
+  width: 2.15rem;
+  height: 2.15rem;
+  place-items: center;
+  border: 1px solid var(--admin-line);
+  border-radius: 50%;
+  color: var(--admin-muted);
+  background: transparent;
+  cursor: pointer;
+}
+
+.playtest-admin-detail-modal > header button:hover {
+  color: var(--admin-gold-light);
+  border-color: rgb(224 173 86 / 0.38);
+}
+
+.playtest-admin-detail-modal > header svg {
+  width: 1rem;
+}
+
+.playtest-admin-detail-body {
+  padding: 1rem;
+}
+
+.playtest-admin-detail-body .playtest-admin-session-card {
+  box-shadow: none;
+}
+
 .playtest-admin-session-list {
   display: grid;
   gap: 1.1rem;
@@ -386,6 +1166,8 @@
 
 .playtest-admin-status {
   display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   border: 1px solid;
   border-radius: 999px;
   padding: 0.2rem 0.45rem;
@@ -395,16 +1177,32 @@
   text-transform: uppercase;
 }
 
-.playtest-admin-status.live {
+.playtest-admin-status .playtest-admin-calendar-status-icon {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.playtest-admin-status.published {
   border-color: rgb(108 162 125 / 0.38);
   color: #96c6a4;
   background: rgb(78 132 94 / 0.12);
 }
-.playtest-admin-status.hidden,
-.playtest-admin-status.past {
+.playtest-admin-status.hidden {
   border-color: rgb(255 255 255 / 0.12);
   color: #978f82;
   background: rgb(255 255 255 / 0.035);
+}
+
+.playtest-admin-status.complete {
+  border-color: rgb(186 141 52 / 0.34);
+  color: #d6b76f;
+  background: rgb(186 141 52 / 0.1);
+}
+
+.playtest-admin-status.missed {
+  border-color: rgb(166 65 54 / 0.32);
+  color: #d18a80;
+  background: rgb(166 65 54 / 0.09);
 }
 
 .playtest-admin-session-title h3 {
@@ -1020,7 +1818,7 @@
   grid-template-columns: repeat(2, 1fr);
 }
 .playtest-admin-form-grid.city {
-  grid-template-columns: minmax(0, 1fr) 5rem;
+  grid-template-columns: minmax(0, 1fr) 5rem 7rem;
 }
 .playtest-admin-modal textarea {
   resize: vertical;
@@ -1098,6 +1896,13 @@
 }
 
 @media (max-width: 900px) {
+  .playtest-admin-calendar-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .playtest-admin-calendar-actions {
+    justify-content: flex-start;
+  }
   .playtest-admin-stats {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1194,6 +1999,33 @@
     grid-template-columns: 1fr 1fr;
     gap: 0.45rem;
   }
+  .playtest-admin-calendar-toolbar {
+    padding: 1.1rem;
+  }
+  .playtest-admin-calendar-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .playtest-admin-view-controls button {
+    flex: 1;
+  }
+  .playtest-admin-month-controls button:nth-child(2) {
+    flex: 1;
+  }
+  .playtest-admin-calendar-legend {
+    flex-wrap: wrap;
+    padding-inline: 1.1rem;
+  }
+  .playtest-admin-calendar-legend strong {
+    width: 100%;
+    margin-left: 0;
+  }
+  .playtest-admin-day-view-heading {
+    padding-left: 1.1rem;
+  }
+  .playtest-admin-day-timeline {
+    min-width: 560px;
+  }
   .playtest-admin-stat {
     min-height: 5.5rem;
     gap: 0.65rem;
@@ -1233,6 +2065,17 @@
   .playtest-admin-modal {
     max-height: 94vh;
     border-radius: 0.8rem 0.8rem 0 0;
+  }
+  .playtest-admin-modal-backdrop.detail {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .playtest-admin-detail-modal {
+    max-height: 96vh;
+    border-radius: 0.8rem 0.8rem 0 0;
+  }
+  .playtest-admin-detail-body {
+    padding: 0.6rem;
   }
 }
 

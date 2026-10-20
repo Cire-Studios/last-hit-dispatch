@@ -25,6 +25,10 @@ const session = z.object({
   addressLine: z.string().trim().min(3).max(200),
   city: z.string().trim().min(2).max(100),
   region: z.string().trim().min(2).max(30),
+  postalCode: z
+    .string()
+    .trim()
+    .regex(/^\d{5}(?:-\d{4})?$/),
   notes: z.string().trim().max(600),
   isActive: z.boolean(),
 });

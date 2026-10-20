@@ -24,7 +24,14 @@ export interface AdminSession {
   email: string;
 }
 
+export function localAdminBypassIsEnabled() {
+  return (
+    process.env.NODE_ENV !== "production" && process.env.PLAYTEST_ADMIN_LOCAL_BYPASS === "true"
+  );
+}
+
 export function adminAuthIsConfigured() {
+  if (localAdminBypassIsEnabled()) return Boolean(process.env.PLAYTEST_ADMIN_EMAIL);
   return Boolean(
     process.env.PLAYTEST_ADMIN_EMAIL &&
     process.env.PLAYTEST_ADMIN_SESSION_SECRET &&
@@ -42,6 +49,7 @@ export function assertSameOrigin(request: Request) {
 }
 
 export async function readAdminSession(request: Request): Promise<AdminSession | null> {
+  if (localAdminBypassIsEnabled()) return { email: requiredAdminEmail() };
   const token = readCookie(request, SESSION_COOKIE);
   if (!token) return null;
   const payload = await verifyToken<SessionPayload>(token);

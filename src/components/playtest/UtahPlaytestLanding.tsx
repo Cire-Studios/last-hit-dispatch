@@ -280,6 +280,7 @@ function SessionHeading({ session }: { session: PlaytestSession }) {
       </div>
       <p>
         <MapPin aria-hidden="true" /> {session.venueName} · {session.city}, {session.region}
+        {session.postalCode ? ` ${session.postalCode}` : ""}
       </p>
     </header>
   );
@@ -513,6 +514,7 @@ function ReservationForm({
         </p>
         <p>
           <MapPin aria-hidden="true" /> {session.venueName} · {session.city}, {session.region}
+          {session.postalCode ? ` ${session.postalCode}` : ""}
         </p>
         <div className="playtest-party-size">
           <span>Seats</span>

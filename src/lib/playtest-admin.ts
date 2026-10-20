@@ -31,6 +31,7 @@ export interface AdminPlaytestSession {
   addressLine: string;
   city: string;
   region: string;
+  postalCode: string;
   notes: string;
   isActive: boolean;
   tables: AdminPlaytestTable[];
@@ -49,6 +50,7 @@ export interface SessionDraft {
   addressLine: string;
   city: string;
   region: string;
+  postalCode: string;
   notes: string;
   isActive: boolean;
 }

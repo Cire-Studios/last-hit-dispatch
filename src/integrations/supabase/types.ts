@@ -96,6 +96,7 @@ export type Database = {
           id: string
           is_active: boolean
           notes: string | null
+          postal_code: string
           region: string
           starts_at: string
           timezone: string
@@ -110,6 +111,7 @@ export type Database = {
           id?: string
           is_active?: boolean
           notes?: string | null
+          postal_code?: string
           region?: string
           starts_at: string
           timezone?: string
@@ -124,6 +126,7 @@ export type Database = {
           id?: string
           is_active?: boolean
           notes?: string | null
+          postal_code?: string
           region?: string
           starts_at?: string
           timezone?: string
@@ -179,6 +182,7 @@ export type Database = {
           email: string | null
           ends_at: string | null
           name: string | null
+          postal_code: string | null
           region: string | null
           reminder_24h_sent_at: string | null
           reminder_2h_sent_at: string | null
@@ -228,6 +232,7 @@ export type Database = {
           address_line: string
           city: string
           ends_at: string
+          postal_code: string
           region: string
           reservation_code: string
           reservation_id: string

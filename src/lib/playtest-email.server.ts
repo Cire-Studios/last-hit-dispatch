@@ -165,8 +165,13 @@ function formatLocation(location: {
   address_line: string;
   city: string;
   region: string;
+  postal_code: string;
 }) {
-  return [location.venue_name, location.address_line, `${location.city}, ${location.region}`]
+  return [
+    location.venue_name,
+    location.address_line,
+    `${location.city}, ${location.region}${location.postal_code ? ` ${location.postal_code}` : ""}`,
+  ]
     .filter(Boolean)
     .join(" · ");
 }

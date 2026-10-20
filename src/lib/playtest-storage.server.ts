@@ -12,6 +12,7 @@ interface SessionRow {
   address_line: string;
   city: string;
   region: string;
+  postal_code: string;
   notes: string | null;
 }
 
@@ -34,6 +35,7 @@ export interface ReservationResult {
   address_line: string;
   city: string;
   region: string;
+  postal_code: string;
   table_label: string;
 }
 
@@ -51,6 +53,7 @@ export interface ReminderRow {
   address_line: string;
   city: string;
   region: string;
+  postal_code: string;
   reminder_24h_sent_at: string | null;
   reminder_2h_sent_at: string | null;
 }
@@ -64,7 +67,7 @@ export async function listPlaytestSessions(): Promise<PlaytestSession[]> {
   const now = new Date().toISOString();
   const { data: sessions, error: sessionError } = await database
     .from("playtest_sessions")
-    .select("id,starts_at,ends_at,timezone,venue_name,address_line,city,region,notes")
+    .select("id,starts_at,ends_at,timezone,venue_name,address_line,city,region,postal_code,notes")
     .eq("is_active", true)
     .gte("starts_at", now)
     .order("starts_at", { ascending: true });
@@ -94,6 +97,7 @@ export async function listPlaytestSessions(): Promise<PlaytestSession[]> {
     addressLine: session.address_line,
     city: session.city,
     region: session.region,
+    postalCode: session.postal_code ?? "",
     notes: session.notes ?? "",
     tables: (tables as TableAvailabilityRow[])
       .filter((table) => table.session_id === session.id)

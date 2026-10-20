@@ -7,6 +7,7 @@ type PlaytestSessionRow = {
   address_line: string;
   city: string;
   region: string;
+  postal_code: string;
   notes: string | null;
   is_active: boolean;
   created_at: string;
@@ -57,6 +58,7 @@ type ReservationResultRow = {
   address_line: string;
   city: string;
   region: string;
+  postal_code: string;
   table_label: string;
 };
 
@@ -112,6 +114,7 @@ export type PlaytestDatabase = {
           address_line: string;
           city: string;
           region: string;
+          postal_code: string;
         };
         Relationships: [];
       };
